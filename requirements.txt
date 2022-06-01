@@ -1,0 +1,9 @@
+matplotlib
+ai2thor
+Cython
+scikit-image
+opencv-python
+h5py
+gputil
+tensorboardX
+
