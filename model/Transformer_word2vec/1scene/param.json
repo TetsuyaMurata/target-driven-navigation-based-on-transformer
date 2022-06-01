@@ -1,0 +1,52 @@
+{
+    "task_list": {
+        "train": {
+            "FloorPlan1": [
+                {
+                    "object": "CoffeeMachine"
+                }
+            ]
+        },
+        "eval": {            
+        "FloorPlan22": [
+            {
+                "object": "Toaster"
+            },
+            {
+                "object": "Microwave"
+            },
+            {
+                "object": "Fridge"
+            },
+            {
+                "object": "CoffeeMachine"
+            },
+            {
+                "object": "GarbageCan"
+            },
+            {
+                "object": "Bowl"
+            }
+        ]
+    }
+    },
+    "total_step": 100000000,
+    "h5_file_path": "./data/{scene}.h5",
+    "saving_period": 200000,
+    "max_t": 5,
+    "action_size": 9,
+    "SSL":false,
+    "NGPU":4,
+    "train_param": {
+        "cuda": true,
+        "num_thread": 40,
+        "gamma": 0.7,
+        "seed": 1993,
+        "reward": "soft_goal",
+        "mask_size": 16
+    },
+    "eval_param": {
+        "num_episode": 250
+    },
+    "method": "Transformer_word2vec_notarget"
+}
