@@ -24,14 +24,6 @@ import pathlib #ADD
 import glob #ADD
 
 # ###### ADD ######
-# output_log_path = '/home/aac13109bi/target-driven-navigation-based-on-transformer/model/Transformer_word2vec/80scene/45deg/1layer/grid_memory/50cm/seed/4hist/61/concat'
-# output_log_path = '/home/dl-box/target-driven-navigation-based-on-transformer/model/Transformer_word2vec/80scene/45deg/1layer/grid_memory/50cm/seed/32hist/61' #origin
-# p_new = pathlib.Path(f"/home/dl-box/target-driven-navigation-based-on-transformer/model/Transformer_word2vec/80scene/45deg/1layer/grid_memory/50cm/seed/4hist/61/concat/{restore_point}")
-# with p_new.open(mode='w', encoding="utf-8") as f:
-#   f.write('')
-# target_path = '/home/dl-box/target-driven-navigation-based-on-transformer/model/Transformer_word2vec/80scene/45deg/1layer/grid_memory/50cm/seed/4hist/61/concat' #add
-# target_path = '/home/dl-box/target-driven-navigation-based-on-transformer/model/Transformer_word2vec/80scene/45deg/1layer/grid_memory/50cm/seed/4hist/61' #add
-# target_path = '/home/dl-box/target-driven-navigation-based-on-transformer/model/Transformer_word2vec/80scene/45deg/1layer/grid_memory/50cm/seed/32hist/61' #add
 with open('target_path.txt', mode='r', encoding='utf-8') as f:
     target_path = f.readline().replace('\n', '')
 
