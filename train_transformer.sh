@@ -8,6 +8,3 @@ cd /home/dl-box/target-driven-navigation-based-on-transformer
 #source activate env_ai
 python memory_size.py #memory_size can be changed
 singularity exec --nv /home/dl-box/target-driven-navigation-based-on-transformer/cenotate_transformer.simg python -u train.py #origin
-#python -u train.py #add
-#singularity exec --nv /cenotate_transformer.simg python -u train.py
-#singularity exec --nv /home/aac13109bi/visual-navigation-agent-pytorch/visual-navigation-agent-pytorch.simg python -u train.py -e EXPERIMENTS/glove_sim_conv16_softgoal_notarget_40scenes/param.json
