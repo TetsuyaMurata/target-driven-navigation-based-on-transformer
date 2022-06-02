@@ -40,7 +40,7 @@ Next you need to construct the dataset. To do so run the command:
 
 The dataset is composed of one hdf5 file per scene.
 Each file contains:
-- **resnet_feature** 2048-d ResNet-50 feature extracted from the observations
+- **resnet_feature** 2048-d ResNet-50 feature extracted from the observations("agent/resnet/resnet50_places365.pth.tar" is needed)
 - **observation** 300x400x3 RGB image (agent's first-person view)
 - **location** (x,y) coordinates of the sampled scene locations on a discrete grid with 0.5-meter offset
 - **rotation** (x,y,z) rortation of the orientation of the agent for each location.
