@@ -75,7 +75,7 @@ Methods available are:
 
 # Yolo_dataset
 
-You can find in the `yolo_dataset` folder the cfg and weights of the pretrained network. This network was trained on the same dataset as previously. You can use the script `dataset_to_yolo.py` to create this dataset
+You can find in the `yolo_dataset` folder the cfg and weights of the pretrained network. This network was trained on the same dataset as previously. You can use the script `dataset_to_yolo.py` to create this dataset. You need `yolo_dataset/backup/yolov3_ai2thor_last.weights`. 
 
 # Visual genome
 
