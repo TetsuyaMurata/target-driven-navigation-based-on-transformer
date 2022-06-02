@@ -1388,22 +1388,3 @@ class Evaluation:
             writer.writerow(["Scene", "Task", "Success percent", "Reward", "length", "Collision","SPL"])
         #if 'csv_file' in self.config and self.config['csv_file'] is not None:
         export_to_csv(resultData2, self.config['csv_file'])
-
-
-    # #Rap log 
-    # output_avg_tra_len = ('\nResults (average trajectory length):\n')
-    # if VERBOSE:
-    #     with open("test.log", "a", encoding="utf-8") as f:
-    #         f.write(output_avg_tra_len)
-    #     if VERBOSE:
-    #         with open("test.log", "a", encoding="utf-8") as f:
-    #             # output_ep_nb=('{:.0f}\n'.format(output_avg_tra_len))#add
-    #             log_tail_step = np.mean(scene_stats[scene_scope]["length"])
-    #             log_tail_spl = np.mean(scene_stats[scene_scope]["spl"])
-    #             log_tail_success = np.mean(scene_stats[scene_scope]["success"])
-    #             log_tail_spl_ov5 = np.mean(scene_stats[scene_scope]["spl_long"])
-    #             log_tail_success_ov5 = np.mean(scene_stats[scene_scope]["success_long"])
-    #             log_tail_fail_lost =  np.nanmean(scene_stats[scene_scope]["failure_lost"])
-    #             log_tail_fail_done = np.nanmean(scene_stats[scene_scope]["failure_done_visible"])
-    #             output_tail = ('\n{0}: {:.2f} steps | {:.3f} spl | {:.2f} success | {:.3f} spl > 5 | {:.2f} success > 5 | {:.2f} lost | {:.2f} done visible\n'.format(scene_scope,log_tail_step,log_tail_spl,log_tail_success,log_tail_spl_ov5,log_tail_success_ov5,log_tail_fail_lost,log_tail_fail_done))
-    #             f.write(f"{output_tail}\n")#ADD
