@@ -29,8 +29,10 @@ Clone the repo and download submodules:
 
 Install requirements using pip:
 
+    python3 -m venv .vna
+    source .vna/bin/activate
+    python -m pip install --upgrade pip
     pip install -r requirements.txt
-    python -m spacy download en_core_web_lg
 
 Next you need to construct the dataset. To do so run the command:
     
