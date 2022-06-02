@@ -733,8 +733,8 @@ def main():
             else:
                 if not os.path.exists("data/"):
                     os.makedirs("data/")
-                # h5_file = h5py.File("data/" + name + '.h5', 'a') #origin
-                h5_file = h5py.File("/home/dl-box/mnt/a/visual-navigation-agent-pytorch-data/data/" + name + '.h5', 'a') #add
+                h5_file = h5py.File("data/" + name + '.h5', 'a') #origin
+                #h5_file = h5py.File("/home/dl-box/mnt/a/visual-navigation-agent-pytorch-data/data/" + name + '.h5', 'a') #add
 
         write_object_feature(h5_file,
                              object_feature, object_vector_spacy, object_vector_visualgenome)
