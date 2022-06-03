@@ -45,7 +45,7 @@ Each file contains:
 If you would run `create_dateset.py`, you need `resnet50_places365.pth.tar` and `yolov3_ai2thor_last.weights`. 
   
 ### Training or Evaluation
-to train or evaluate your network you need to use a json file as experiment. You can create a experiment file using the script `create_experiment.py`. One experiment file contains training set and evaluation set, reward function and network used. You can set these values using the script (``--help`` to see documentation). Experiment files can be found under folder which is named `target_path.txt`.
+to train or evaluate your network you need to use a json file as experiment. You can create a experiment file using the script `create_experiment.py`. One experiment file contains training set and evaluation set, reward function and network used. You can set these values using the script (``--help`` to see documentation). Experiment files which is named `target_path.txt` can be found under folder.
 
 Set experiment in `target_path.txt` file e.g. :
     `./model/Transformer_word2vec/80scene/45deg/1layer/grid_memory/50cm/seed/32hist/61`
