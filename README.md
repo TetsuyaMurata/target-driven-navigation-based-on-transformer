@@ -42,6 +42,7 @@ Each file contains:
 - **object_vector** 300-d spacy feature extracted using object name
 - **object_vector_visualgenome** 300-d spacy feature extracted using object name using weigh trained on visualgenome caption
 - **shortest_path_distance** a square matrix of shortest path distance (in number of steps) between pairwise locations, where `-1` means two states are unreachable from each other.  
+  
 If you would run `create_dateset.py`, you need `resnet50_places365.pth.tar` and `yolov3_ai2thor_last.weights`. 
   
 ### Training or Evaluation
