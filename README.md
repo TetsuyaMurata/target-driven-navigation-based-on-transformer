@@ -11,9 +11,9 @@ It uses [Docker](http://docker.com/) to automate instalation process. In order t
 ### Docker
 To use docker please install [docker](https://docs.docker.com/install/), [docker-compose](https://docs.docker.com/compose/install/) and [nvidia-docker2](https://github.com/NVIDIA/nvidia-docker#upgrading-with-nvidia-docker2-deprecated).
 
-Set experiment in `target_path.txt` file e.g :
+Set experiment in `.env` file e.g :
 
-    example : './model/Transformer_word2vec/80scene/45deg/1layer/grid_memory/50cm/seed/32hist/61`
+    EXPERIMENT=experiment_folder
 
 To train 
 
@@ -58,7 +58,7 @@ Each file contains:
 - **shortest_path_distance** a square matrix of shortest path distance (in number of steps) between pairwise locations, where `-1` means two states are unreachable from each other.
   
 ### Training or Evaluation
-to train or evaluate your network you need to use a json file as experiment. You can create a experiment file using the script `create_experiment.py`. One experiment file contains training set and evaluation set, reward function and network used. You can set these values using the script (``--help`` to see documentation). Experiment files can be found under EXPERIMENTS folder
+to train or evaluate your network you need to use a json file as experiment. You can create a experiment file using the script `create_experiment.py`. One experiment file contains training set and evaluation set, reward function and network used. You can set these values using the script (``--help`` to see documentation). Experiment files can be found under model folder. Set experiment in `target_path.txt` file e.g.example:'./model/Transformer_word2vec/80scene/45deg/1layer/grid_memory/50cm/seed/32hist/61`
 - Train : `bash train_transformer.sh`
 - Eval : `bash eval_transformer.sh`
 
