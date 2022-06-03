@@ -29,6 +29,7 @@ Clone the repo and download submodules:
 
 Install requirements using pip:
 
+    cd target-driven-navigation-based-on-transformer
     python3 -m venv .vna
     source .vna/bin/activate
     python -m pip install --upgrade pip
