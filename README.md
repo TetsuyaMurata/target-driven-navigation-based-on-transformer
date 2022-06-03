@@ -41,7 +41,7 @@ Next you need to construct the dataset. To do so run the command:
 
 The dataset is composed of one hdf5 file per scene.
 Each file contains:
-- **resnet_feature** 2048-d ResNet-50 feature extracted from the observations("agent/resnet/resnet50_places365.pth.tar" is needed)
+- **resnet_feature** 2048-d ResNet-50 feature extracted from the observations
 - **observation** 300x400x3 RGB image (agent's first-person view)
 - **location** (x,y) coordinates of the sampled scene locations on a discrete grid with 0.5-meter offset
 - **rotation** (x,y,z) rortation of the orientation of the agent for each location.
@@ -76,7 +76,7 @@ Methods available are:
 
 # Yolo_dataset
 
-You can find in the `yolo_dataset` folder the cfg and weights of the pretrained network. This network was trained on the same dataset as previously. You can use the script `dataset_to_yolo.py` to create this dataset. You need `yolo_dataset/backup/yolov3_ai2thor_last.weights`. 
+You can find in the `yolo_dataset` folder the cfg and weights of the pretrained network. This network was trained on the same dataset as previously. You can use the script `dataset_to_yolo.py` to create this dataset. You need `agent/resnet/resnet50_places365.pth.tar` and `yolo_dataset/backup/yolov3_ai2thor_last.weights`. 
 
 # Visual genome
 
