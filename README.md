@@ -57,7 +57,7 @@ You can use `category_score_mean.py` to calculate the average score of an agent 
 
 # Yolo_dataset
 
-You can find in the `yolo_dataset` folder the cfg and weights of the pretrained network. This network was trained on the same dataset as previously. You can use the script `dataset_to_yolo.py` to create this dataset. If you would create h5 files for training, you need to run `create_dateset.py`. You need  `agent/resnet/resnet50_places365.pth.tar` and `yolo_dataset/backup/yolov3_ai2thor_last.weights`. 
+You can find in the `yolo_dataset` folder the cfg and weights of the pretrained network. This network was trained on the same dataset as previously. You can use the script `dataset_to_yolo.py` to create this dataset. If you would create h5 files for training, you need to run `create_dateset.py`. To do so,  you need `agent/resnet/resnet50_places365.pth.tar` and `yolo_dataset/backup/yolov3_ai2thor_last.weights`. 
 
 # Visual genome
 
