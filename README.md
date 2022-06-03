@@ -6,7 +6,7 @@ This is repo is a fork of [Jkulhanek work](https://github.com/jkulhanek/visual-n
 This repository provides a PyTorch implementation of the paper [Visual Object Search by Context Learning](https://ieeexplore.ieee.org/abstract/document/8963758)
 
 ## Setup and run
-This code is implemented in [Pytorch 1.0](https://pytorch.org/) and python 3.7. It uses [Docker](http://docker.com/) to automate instalation process. In order to run this code, you can either run the docker or install the requirements using pip.
+It uses [Docker](http://docker.com/) to automate instalation process. In order to run this code, you can either run the docker or install the requirements using pip.
 
 ### Docker
 To use docker please install [docker](https://docs.docker.com/install/), [docker-compose](https://docs.docker.com/compose/install/) and [nvidia-docker2](https://github.com/NVIDIA/nvidia-docker#upgrading-with-nvidia-docker2-deprecated).
@@ -59,6 +59,8 @@ Each file contains:
   
 ### Training or Evaluation
 to train or evaluate your network you need to use a json file as experiment. You can create a experiment file using the script `create_experiment.py`. One experiment file contains training set and evaluation set, reward function and network used. You can set these values using the script (``--help`` to see documentation). Experiment files can be found under EXPERIMENTS folder
+Train : `bash train_transformer.sh`
+Eval : `bash eval_transformer.sh`
 
 Rewards available are:
 - **soft_goal** Agent needs to output the ``Done`` signal to stop and start the evaluation. Reward from paper
