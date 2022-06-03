@@ -1,5 +1,5 @@
 # Visual Object Search by Context Learning
-This is repo is a fork of [Jkulhanek work](https://github.com/jkulhanek/visual-navigation-agent-pytorch) 
+This is repo is a fork of [RuiFukushima work](https://github.com/jkulhanek/visual-navigation-agent-pytorch) 
 
 ## Introduction
 
@@ -25,7 +25,7 @@ Please install Git LFS before cloning
 
 Clone the repo and download submodules:
 
-    git clone --recurse-submodules https://github.com/norips/visual-navigation-agent-pytorch.git
+    git clone --recurse-submodules git@github.com:TetsuyaMurata/target-driven-navigation-based-on-transformer.git
 
 Install requirements using pip:
 
