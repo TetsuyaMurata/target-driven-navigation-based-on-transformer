@@ -42,6 +42,7 @@ Each file contains:
 - **object_vector** 300-d spacy feature extracted using object name
 - **object_vector_visualgenome** 300-d spacy feature extracted using object name using weigh trained on visualgenome caption
 - **shortest_path_distance** a square matrix of shortest path distance (in number of steps) between pairwise locations, where `-1` means two states are unreachable from each other.
+- If you would create h5 files for training, you need to run `create_dateset.py`. To do so,  you need `agent/resnet/resnet50_places365.pth.tar` and `yolo_dataset/backup/yolov3_ai2thor_last.weights`. 
   
 ### Training or Evaluation
 to train or evaluate your network you need to use a json file as experiment. You can create a experiment file using the script `create_experiment.py`. One experiment file contains training set and evaluation set, reward function and network used. You can set these values using the script (``--help`` to see documentation). Experiment files can be found under folder which is named `target_path.txt`.
@@ -57,7 +58,7 @@ You can use `category_score_mean.py` to calculate the average score of an agent 
 
 # Yolo_dataset
 
-You can find in the `yolo_dataset` folder the cfg and weights of the pretrained network. This network was trained on the same dataset as previously. You can use the script `dataset_to_yolo.py` to create this dataset. If you would create h5 files for training, you need to run `create_dateset.py`. To do so,  you need `agent/resnet/resnet50_places365.pth.tar` and `yolo_dataset/backup/yolov3_ai2thor_last.weights`. 
+You can find in the `yolo_dataset` folder the cfg and weights of the pretrained network. This network was trained on the same dataset as previously. You can use the script `dataset_to_yolo.py` to create this dataset.
 
 # Visual genome
 
