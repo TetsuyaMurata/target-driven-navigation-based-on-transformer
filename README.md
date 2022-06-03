@@ -55,12 +55,6 @@ Set experiment in `target_path.txt` file e.g. :
 ### Calculation
 to caluculate agent's average score by FloorPlan from log file after evaluation, you can use `catefory_score_mean.py`.
 
-Set experiment in `target_path.txt` file e.g. :
-    `./model/Transformer_word2vec/80scene/45deg/1layer/grid_memory/50cm/seed/32hist/61`
-    
-- Train : `bash train_transformer.sh`
-- Eval : `bash eval_transformer.sh`
-
 # Yolo_dataset
 
 You can find in the `yolo_dataset` folder the cfg and weights of the pretrained network. This network was trained on the same dataset as previously. You can use the script `dataset_to_yolo.py` to create this dataset. You also need `agent/resnet/resnet50_places365.pth.tar` and `yolo_dataset/backup/yolov3_ai2thor_last.weights`. 
