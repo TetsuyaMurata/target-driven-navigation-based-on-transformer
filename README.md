@@ -41,7 +41,8 @@ Each file contains:
 - **object_feature** 2048-d ResNet-50 feature extracted from the objects
 - **object_vector** 300-d spacy feature extracted using object name
 - **object_vector_visualgenome** 300-d spacy feature extracted using object name using weigh trained on visualgenome caption
-- **shortest_path_distance** a square matrix of shortest path distance (in number of steps) between pairwise locations, where `-1` means two states are unreachable from each other.  If you would run `create_dateset.py`, you need `agent/resnet/resnet50_places365.pth.tar` and `yolo_dataset/backup/yolov3_ai2thor_last.weights`. 
+- **shortest_path_distance** a square matrix of shortest path distance (in number of steps) between pairwise locations, where `-1` means two states are unreachable from each other.  
+If you would run `create_dateset.py`, you need `agent/resnet/resnet50_places365.pth.tar` and `yolo_dataset/backup/yolov3_ai2thor_last.weights`. 
   
 ### Training or Evaluation
 to train or evaluate your network you need to use a json file as experiment. You can create a experiment file using the script `create_experiment.py`. One experiment file contains training set and evaluation set, reward function and network used. You can set these values using the script (``--help`` to see documentation). Experiment files can be found under folder which is named `target_path.txt`.
