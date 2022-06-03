@@ -6,9 +6,6 @@ This is repo is a fork of [Jkulhanek work](https://github.com/jkulhanek/visual-n
 This repository provides a PyTorch implementation of the paper [Visual Object Search by Context Learning](https://ieeexplore.ieee.org/abstract/document/8963758)
 
 ## Setup and run
-It uses [Docker](http://docker.com/) to automate instalation process. In order to run this code, you can either run the docker or install the requirements using pip.
-
-### Run
 
 Please install Git LFS before cloning 
 
