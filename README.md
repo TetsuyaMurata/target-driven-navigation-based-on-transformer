@@ -11,9 +11,9 @@ It uses [Docker](http://docker.com/) to automate instalation process. In order t
 ### Docker
 To use docker please install [docker](https://docs.docker.com/install/), [docker-compose](https://docs.docker.com/compose/install/) and [nvidia-docker2](https://github.com/NVIDIA/nvidia-docker#upgrading-with-nvidia-docker2-deprecated).
 
-Set experiment in `.env` file e.g :
+Set experiment in `target_path.txt` file e.g :
 
-    EXPERIMENT=experiment_folder
+    example : './model/Transformer_word2vec/80scene/45deg/1layer/grid_memory/50cm/seed/32hist/61`
 
 To train 
 
