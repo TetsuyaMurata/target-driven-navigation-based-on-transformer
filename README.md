@@ -59,8 +59,8 @@ Each file contains:
   
 ### Training or Evaluation
 to train or evaluate your network you need to use a json file as experiment. You can create a experiment file using the script `create_experiment.py`. One experiment file contains training set and evaluation set, reward function and network used. You can set these values using the script (``--help`` to see documentation). Experiment files can be found under EXPERIMENTS folder
-Train : `bash train_transformer.sh`
-Eval : `bash eval_transformer.sh`
+- Train : `bash train_transformer.sh`
+- Eval : `bash eval_transformer.sh`
 
 Rewards available are:
 - **soft_goal** Agent needs to output the ``Done`` signal to stop and start the evaluation. Reward from paper
