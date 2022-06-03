@@ -1,5 +1,5 @@
 # Target Driven Navigation Based On Transformer
-This is repo is a fork of [Jkulhanek work](https://github.com/jkulhanek/visual-navigation-agent-pytorch) 
+This is repo is a fork of [RuiFukushima work](https://github.com/TetsuyaMurata/target-driven-navigation-based-on-transformer/tree/rui) 
 
 ## Introduction
 
