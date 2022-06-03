@@ -53,7 +53,7 @@ Set experiment in `target_path.txt` file e.g. :
 - Eval : `bash eval_transformer.sh`
 
 ### Calculation
-to caluculate agent's average score by FloorPlan from a log file after evaluation on the condition of having a lot of log files, you can use `category_score_mean.py`.
+You can use `category_score_mean.py` to calculate the average score of an agent by FloorPlan from the log files after evaluation, even if there are a large number of log files.
 
 # Yolo_dataset
 
