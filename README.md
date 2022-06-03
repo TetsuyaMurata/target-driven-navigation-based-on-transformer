@@ -1,4 +1,4 @@
-# Visual Object Search by Context Learning
+# Object Memory Transformer for Object Goal Navigation
 This is repo is a fork of [Jkulhanek work](https://github.com/jkulhanek/visual-navigation-agent-pytorch) 
 
 ## Introduction
