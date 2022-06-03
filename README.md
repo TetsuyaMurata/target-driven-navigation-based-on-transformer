@@ -1,4 +1,4 @@
-# Object Memory Transformer for Object Goal Navigation
+# Target Driven Navigation Based On Transformer
 This is repo is a fork of [Jkulhanek work](https://github.com/jkulhanek/visual-navigation-agent-pytorch) 
 
 ## Introduction
