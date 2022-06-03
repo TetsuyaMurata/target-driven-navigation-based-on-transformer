@@ -3,7 +3,7 @@ This is repo is a fork of [RuiFukushima work](https://github.com/TetsuyaMurata/t
 
 ## Introduction
 
-This repository provides a PyTorch implementation of the paper [Visual Object Search by Context Learning](https://ieeexplore.ieee.org/abstract/document/8963758)
+This repository provides a PyTorch implementation of the paper [Object Memory Transformer for Object Goal Navigation](https://arxiv.org/abs/2203.14708)
 
 ## Setup and run
 
