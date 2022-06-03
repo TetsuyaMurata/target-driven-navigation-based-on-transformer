@@ -9,15 +9,8 @@ import glob
 
 with open('target_path.txt', mode='r', encoding='utf-8') as f:
     target_path = f.readline().replace('\n', '')
-# get_hist_num = target_path.replace(' ', '').split("hist")[0].split("/")[-1]
-# print("!!! {}hist !!!".format(get_hist_num)) #test
 os.chdir(target_path)
 print("TARGET : {}".format(target_path)) #test
-# os.chdir('EXPERIMENTS')
-#os.chdir('/home/dl-box/target-driven-navigation-based-on-transformer/model/Transformer_word2vec/80scene/45deg/1layer/grid_memory/50cm/seed/4hist/61/concat') #origin
-#os.chdir('/home/dl-box/target-driven-navigation-based-on-transformer/model/Transformer_word2vec/80scene/45deg/1layer/grid_memory/50cm/seed/32hist/61') #origin
-# os.chdir('/home/dl-box/target-driven-navigation-based-on-transformer/model/Transformer_word2vec/80scene/45deg/1layer/grid_memory/50cm/seed/4hist/61') #origin
-# os.chdir('/home/dl-box/target-driven-navigation-based-on-transformer/tmp') #test
 
 print(glob.glob('*'))
 
