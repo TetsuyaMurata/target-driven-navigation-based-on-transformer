@@ -52,21 +52,6 @@ Set experiment in `target_path.txt` file e.g. :
 - Train : `bash train_transformer.sh`
 - Eval : `bash eval_transformer.sh`
 
-Rewards available are:
-- **soft_goal** Agent needs to output the ``Done`` signal to stop and start the evaluation. Reward from paper
-- **env_goal** The environment will stop the agent when it reach a goal state. Reward from paper
-- **step** The environment will stop the agent when it reach a goal state. Reward from target driven paper
-
-Methods available are:
-- **word2vec** Paper method with word embedding as input
-- **word2vec_noconv** Paper method without convolution
-- **word2vec_notarget** Paper method
-- **word2vec_nosimi** Baseline in the paper
-- **aop** [Active Object Perceiver](https://arxiv.org/abs/1807.11174) implementation
-- **aop_we** [Active Object Perceiver](https://arxiv.org/abs/1807.11174) implementation using word embedding instead of renset feature as target
-- **target_driven** [Target driven](https://arxiv.org/abs/1609.05143) implementation
-- **gcn** [Visual Semantic Navigation using Scene Priors](https://arxiv.org/abs/1810.06543) implementation 
-
 # Yolo_dataset
 
 You can find in the `yolo_dataset` folder the cfg and weights of the pretrained network. This network was trained on the same dataset as previously. You can use the script `dataset_to_yolo.py` to create this dataset. You also need `agent/resnet/resnet50_places365.pth.tar` and `yolo_dataset/backup/yolov3_ai2thor_last.weights`. 
