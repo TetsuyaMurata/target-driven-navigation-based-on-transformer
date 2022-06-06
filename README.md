@@ -1,34 +1,24 @@
-# Visual Object Search by Context Learning
-This is repo is a fork of [Jkulhanek work](https://github.com/jkulhanek/visual-navigation-agent-pytorch) 
+# Target Driven Navigation Based On Transformer
+This is repo is a fork of [RuiFukushima work](https://github.com/TetsuyaMurata/target-driven-navigation-based-on-transformer/tree/rui) 
 
 ## Introduction
 
-This repository provides a PyTorch implementation of the paper [Visual Object Search by Context Learning](https://ieeexplore.ieee.org/abstract/document/8963758)
+This repository provides a PyTorch implementation of the paper "[Object Memory Transformer for Object Goal Navigation](https://arxiv.org/abs/2203.14708)"
 
 ## Setup and run
-This code is implemented in [Pytorch 1.0](https://pytorch.org/) and python 3.7. It uses [Docker](http://docker.com/) to automate instalation process. In order to run this code, you can either run the docker or install the requirements using pip.
-
-### Docker
-To use docker please install [docker](https://docs.docker.com/install/), [docker-compose](https://docs.docker.com/compose/install/) and [nvidia-docker2](https://github.com/NVIDIA/nvidia-docker#upgrading-with-nvidia-docker2-deprecated).
-
-Set experiment in `.env` file e.g :
-
-    EXPERIMENT=experiment_folder
-
-To train 
-
-    docker-compose run train
-
-### Run
 
 Please install Git LFS before cloning 
 
 Clone the repo and download submodules:
 
-    git clone --recurse-submodules https://github.com/norips/visual-navigation-agent-pytorch.git
+    git clone --recurse-submodules git@github.com:TetsuyaMurata/target-driven-navigation-based-on-transformer.git
 
 Install requirements using pip:
 
+<<<<<<< HEAD
+=======
+    cd target-driven-navigation-based-on-transformer
+>>>>>>> 656105dc0f394b0599d8906597b6bfeb3fb52d5c
     python3 -m venv .vna
     source .vna/bin/activate
     python -m pip install --upgrade pip
@@ -53,33 +43,35 @@ Each file contains:
 - **object_feature** 2048-d ResNet-50 feature extracted from the objects
 - **object_vector** 300-d spacy feature extracted using object name
 - **object_vector_visualgenome** 300-d spacy feature extracted using object name using weigh trained on visualgenome caption
-- **shortest_path_distance** a square matrix of shortest path distance (in number of steps) between pairwise locations, where `-1` means two states are unreachable from each other.
+- **shortest_path_distance** a square matrix of shortest path distance (in number of steps) between pairwise locations, where `-1` means two states are unreachable from each other.  
+  
+　If you would run `create_dateset.py`, you need `resnet50_places365.pth.tar` and `yolov3_ai2thor_last.weights`. 
   
 ### Training or Evaluation
-to train or evaluate your network you need to use a json file as experiment. You can create a experiment file using the script `create_experiment.py`. One experiment file contains training set and evaluation set, reward function and network used. You can set these values using the script (``--help`` to see documentation). Experiment files can be found under EXPERIMENTS folder
+to train or evaluate your network you need to use a json file as experiment. You can create a experiment file using the script `create_experiment.py`. One experiment file contains training set and evaluation set, reward function and network used. You can set these values using the script (``--help`` to see documentation). An experiment file which is named `target_path.txt` can be found under folder.
 
-Rewards available are:
-- **soft_goal** Agent needs to output the ``Done`` signal to stop and start the evaluation. Reward from paper
-- **env_goal** The environment will stop the agent when it reach a goal state. Reward from paper
-- **step** The environment will stop the agent when it reach a goal state. Reward from target driven paper
+Set experiment in `target_path.txt` file e.g. :
+    `./model/Transformer_word2vec/80scene/45deg/1layer/grid_memory/50cm/seed/32hist/61`
+    
+- Train : `bash train_transformer.sh`
+- Eval : `bash eval_transformer.sh`
 
-Methods available are:
-- **word2vec** Paper method with word embedding as input
-- **word2vec_noconv** Paper method without convolution
-- **word2vec_notarget** Paper method
-- **word2vec_nosimi** Baseline in the paper
-- **aop** [Active Object Perceiver](https://arxiv.org/abs/1807.11174) implementation
-- **aop_we** [Active Object Perceiver](https://arxiv.org/abs/1807.11174) implementation using word embedding instead of renset feature as target
-- **target_driven** [Target driven](https://arxiv.org/abs/1609.05143) implementation
-- **gcn** [Visual Semantic Navigation using Scene Priors](https://arxiv.org/abs/1810.06543) implementation 
+`memory_size.py` is used getting memory size from hist of `target_path.txt`. It is run by executiing `train_transformer.sh` or `eval_transformer.sh`.
+
+### Calculation
+You can use `category_score_mean.py` to calculate an average score of an agent by FloorPlan from the log files after evaluation, even if there are a lot of them. You also are able to use `step_mean_sample_count.py` to know average steps or a number of data by FloorPlan under the circumstances are "Failure on the way", "Failure at max(300steps)", "Success".
 
 # Yolo_dataset
 
-You can find in the `yolo_dataset` folder the cfg and weights of the pretrained network. This network was trained on the same dataset as previously. You can use the script `dataset_to_yolo.py` to create this dataset
+You can find in the `yolo_dataset` folder the cfg and weights of the pretrained network. This network was trained on the same dataset as previously. You can use the script `dataset_to_yolo.py` to create this dataset.
 
 # Visual genome
 
 You can find in the `word2vec_visualgenome` folder, the pretrained word2vec model from gensim with visualgenome dataset. You can re-train it by adding `region_descriptions.json.gz` in dataset folder and running the main.py script
+
+# Singularity
+
+On the condition that you use python3 and singularity is installed, if you would like to use these scripts without environment construction, you cau use a image of singularity. You needn't install packages by using `cenotate_transformer.simg`.
 
 # Citation
 Please use this BibTex entry to cite our paper.

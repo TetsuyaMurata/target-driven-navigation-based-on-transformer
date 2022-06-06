@@ -34,7 +34,7 @@ get_steps = lambda x : int(re.split("[ ]", x)[4])
 
 print("\n")
 
-# 途中で失敗(episode failure done)
+# Failure on the way
 df_fa_way = []
 for ind in get_ind:
     floor_name = df.loc[ind, "log"].split(" ")[1]
@@ -49,12 +49,12 @@ get_num = lambda y : int(y.replace("FloorPlan", ""))
 df_fa_way_calc = df_fa_way.groupby("floor_name").agg({"step":"mean", "success":"count"}).reset_index(drop=False)
 df_fa_way_calc["floor_num"] = pd.DataFrame(map(get_num, df_fa_way_calc["floor_name"]))
 df_fa_way_calc_output = df_fa_way_calc.sort_values("floor_num").drop("floor_num", axis=1).rename(columns={"step":"step_mean","success":"sample_count"})
-print("{} : \n{}".format(log_file_name.replace(".log", "_ep_fail_on_the_way"), df_fa_way_calc_output))
+print("{} : \n{}".format("'Failure on the way'", df_fa_way_calc_output))
 print("\n")
 # df_fa_way_calc_output.to_csv(target_path  + "/" + "steps_mean" + "/" + log_file_name.replace(".log", "_ep_fail_on_the_way.csv"), index=False)
 
 
-# max(300steps)で失敗
+# Failure at max(300steps)
 df_fa_max = []
 for ind in get_ind:
     floor_name = df.loc[ind, "log"].split(" ")[1]
@@ -69,12 +69,12 @@ get_num = lambda y : int(y.replace("FloorPlan", ""))
 df_fa_max_calc = df_fa_max.groupby("floor_name").agg({"step":"mean", "success":"count"}).reset_index(drop=False)
 df_fa_max_calc["floor_num"] = pd.DataFrame(map(get_num, df_fa_max_calc["floor_name"]))
 df_fa_max_calc_output = df_fa_max_calc.sort_values("floor_num").drop("floor_num", axis=1).rename(columns={"step":"step_mean","success":"sample_count"})
-print("{} : \n{}".format(log_file_name.replace(".log", "_ep_fail_max_300"), df_fa_max_calc_output))
+print("{} : \n{}".format("'Failure at max(300steps)'", df_fa_max_calc_output))
 print("\n")
 #  df_fa_max_calc_output.to_csv(target_path  + "/" + "steps_mean" + "/" + log_file_name.replace(".log", "_ep_fail_max_300.csv"), index=False)
 
 
-# 成功したバージョン
+# Success
 df_suc = []
 for ind in get_ind:
     floor_name = df.loc[ind, "log"].split(" ")[1]
@@ -89,6 +89,6 @@ get_num = lambda y : int(y.replace("FloorPlan", ""))
 df_suc_calc = df_suc.groupby("floor_name").agg({"step":"mean", "success":"count"}).reset_index(drop=False)
 df_suc_calc["floor_num"] = pd.DataFrame(map(get_num, df_suc_calc["floor_name"]))
 df_suc_calc_output = df_suc_calc.sort_values("floor_num").drop("floor_num", axis=1).rename(columns={"step":"step_mean","success":"sample_count"})
-print("{} : \n{}".format(log_file_name.replace(".log", "_ep_success"), df_suc_calc_output))
+print("{} : \n{}".format("'Success'", df_suc_calc_output))
 print("\n")
 # df_suc_calc_output.to_csv(target_path  + "/" + "steps_mean" + "/" + log_file_name.replace(".log", "_ep_success.csv"), index=False)
