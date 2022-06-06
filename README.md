@@ -69,7 +69,7 @@ You can find in the `word2vec_visualgenome` folder, the pretrained word2vec mode
 
 # ABCI
 
-If you would like to use these scripts in ABCI, you cau use a image of singularity. You needn't install packages by using `cenotate_transformer.simg`.
+If you would like to use these scripts at ABCI, you cau use a image of singularity. You needn't install packages by using `cenotate_transformer.simg`.
 
 # Citation
 Please use this BibTex entry to cite our paper.
