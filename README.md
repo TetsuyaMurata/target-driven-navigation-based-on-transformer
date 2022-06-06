@@ -67,6 +67,10 @@ You can find in the `yolo_dataset` folder the cfg and weights of the pretrained 
 
 You can find in the `word2vec_visualgenome` folder, the pretrained word2vec model from gensim with visualgenome dataset. You can re-train it by adding `region_descriptions.json.gz` in dataset folder and running the main.py script
 
+# ABCI
+
+If you would like to use these scripts in ABCI, you cau use a image of singularity. You needn't install packages by using `cenotate_transformer.simg`.
+
 # Citation
 Please use this BibTex entry to cite our paper.
 ```
