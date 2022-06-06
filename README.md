@@ -69,7 +69,7 @@ You can find in the `word2vec_visualgenome` folder, the pretrained word2vec mode
 
 # Singularity
 
-On the condition that you use python3, if you would like to use these scripts without environment construction, you cau use a image of singularity. You needn't install packages by using `cenotate_transformer.simg`.
+On the condition that you use python3 and singularity is installed, if you would like to use these scripts without environment construction, you cau use a image of singularity. You needn't install packages by using `cenotate_transformer.simg`.
 
 # Citation
 Please use this BibTex entry to cite our paper.
