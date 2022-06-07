@@ -57,7 +57,7 @@ Set experiment in `target_path.txt` file e.g. :
 `memory_size.py` is used getting memory size from hist of `target_path.txt`. It is run by executiing `train_transformer.sh` or `eval_transformer.sh`.
 
 ### ABCI
-If you would use these scripts at `ABCI`(AI Bridging Cloud Infrastructure), you can run below.  
+If you would use these scripts at `ABCI`(AI Bridging Cloud Infrastructure), they can be executed in the following way.  
 
 - Train : `bash train_transformer_abci.sh`
 - Eval : `bash eval_transformer_abci.sh`
