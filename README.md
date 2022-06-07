@@ -74,16 +74,11 @@ On the condition that you use python3 and singularity is installed, if you would
 # Citation
 Please use this BibTex entry to cite our paper.
 ```
-@ARTICLE{8963758,
-author={R. {Druon} and Y. {Yoshiyasu} and A. {Kanezaki} and A. {Watt}},
-journal={IEEE Robotics and Automation Letters},
-title={Visual Object Search by Learning Spatial Context},
-year={2020},
-volume={5},
-number={2},
-pages={1279-1286},
-keywords={Deep learning in robotics and automation;visual-based navigation;autonomous agents},
-doi={10.1109/LRA.2020.2967677},
-ISSN={2377-3774},
-month={April},}
+@ARTICLE{
+author={Fukushima, Rui and Ota, Kei and Kanezaki, Asako and Sasaki, Yoko and Yoshiyasu, Yusuke},
+journal={ICRA},
+title={Object Memory Transformer for Object Goal Navigation},
+year={2022},
+doi={10.48550/ARXIV.2203.14708},}
 ```
+
