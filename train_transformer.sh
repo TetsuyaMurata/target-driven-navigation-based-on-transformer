@@ -1,5 +1,5 @@
 #!/bin/bash
-source /etc/profile.d/modules.sh #abci
+#source /etc/profile.d/modules.sh #abci
 #export SINGULARITY_BINDPATH=/groups/gac50631 #abci
 #module load singularitypro #abci
 #module load cuda/10.2/10.2.89 #abci

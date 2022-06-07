@@ -18,7 +18,7 @@ Install requirements using pip:
     cd target-driven-navigation-based-on-transformer
     python3 -m venv .vna
     source .vna/bin/activate
-    python -m pip install --upgrade pip
+    python3 -m pip install --upgrade pip
     pip install -r requirements.txt
 
 Next you need to construct the dataset. To do so run the command:
