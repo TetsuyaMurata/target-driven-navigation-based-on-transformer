@@ -5,7 +5,7 @@ scikit-image
 h5py
 tensorboardX
 torchvision
-keras
+Keras==2.3.1
 tqdm
 gputil
 opencv-python
@@ -13,4 +13,4 @@ scipy
 networkx
 gensim
 spacy
-tensorflow
+tensorflow==2.2.0
