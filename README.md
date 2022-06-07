@@ -20,6 +20,7 @@ Install requirements using pip:
     source .vna/bin/activate
     python3 -m pip install --upgrade pip
     pip install -r requirements.txt
+    python -m spacy download en_core_web_lg
 
 Next you need to construct the dataset. To do so run the command:
     
