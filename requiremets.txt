@@ -1,0 +1,16 @@
+matplotlib
+ai2thor==2.0.0
+Cython
+scikit-image
+h5py
+tensorboardX
+torchvision
+keras
+tqdm
+gputil
+opencv-python
+scipy
+networkx
+gensim
+spacy
+tensorflow

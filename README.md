@@ -1,5 +1,5 @@
 # Target Driven Navigation Based On Transformer
-This is repo is created based on [jkulhanek work](https://github.com/jkulhanek/visual-navigation-agent-pytorch) and [norips work](https://github.com/norips/visual-navigation-agent-pytorch) which is already disappeared. 
+This is repo is created based on [jkulhanek work](https://github.com/jkulhanek/visual-navigation-agent-pytorch) and [norips work (which is already disappeared)](https://github.com/norips/visual-navigation-agent-pytorch)  
 
 ## Introduction
 
