@@ -18,7 +18,11 @@ Install requirements using pip:
     cd target-driven-navigation-based-on-transformer
     python3 -m venv .vna
     source .vna/bin/activate
+<<<<<<< HEAD
     python3 -m pip install --upgrade pip
+=======
+    python -m pip install --upgrade pip
+>>>>>>> 617470c79de4457614c5b4a7e962a9af9dc1fac5
     pip install -r requirements.txt
 
 Next you need to construct the dataset. To do so run the command:
@@ -41,6 +45,11 @@ Each file contains:
 - **object_vector** 300-d spacy feature extracted using object name
 - **object_vector_visualgenome** 300-d spacy feature extracted using object name using weigh trained on visualgenome caption
 - **shortest_path_distance** a square matrix of shortest path distance (in number of steps) between pairwise locations, where `-1` means two states are unreachable from each other.  
+<<<<<<< HEAD
+=======
+  
+　If you would run `create_dateset.py`, you need `resnet50_places365.pth.tar` to "agent/resnet" and `yolov3_ai2thor_last.weights` to "yolo_dataset/backup". 
+>>>>>>> 617470c79de4457614c5b4a7e962a9af9dc1fac5
   
 ### Training or Evaluation
 to train or evaluate your network you need to use a json file as experiment. You can create a experiment file using the script `create_experiment.py`. One experiment file contains training set and evaluation set, reward function and network used. You can set these values using the script (``--help`` to see documentation). An experiment file which is named `target_path.txt` can be found under folder.
@@ -53,6 +62,15 @@ Set experiment in `target_path.txt` file e.g. :
 
 `memory_size.py` is used getting memory size from hist of `target_path.txt`. It is run by executiing `train_transformer.sh` or `eval_transformer.sh`.
 
+<<<<<<< HEAD
+=======
+### ABCI
+If you would use these scripts at `ABCI`(AI Bridging Cloud Infrastructure), they can be executed in the following way.  
+
+- Train : `bash train_transformer_abci.sh`
+- Eval : `bash eval_transformer_abci.sh`
+
+>>>>>>> 617470c79de4457614c5b4a7e962a9af9dc1fac5
 ### Calculation
 You can use `category_score_mean.py` to calculate an average score of an agent by FloorPlan from the log files after evaluation, even if there are a lot of them. You also are able to use `step_mean_sample_count.py` to know average steps or a number of data by FloorPlan under the circumstances are "Failure on the way", "Failure at max(300steps)", "Success".
 
@@ -78,3 +96,4 @@ title={Object Memory Transformer for Object Goal Navigation},
 year={2022},
 doi={10.48550/ARXIV.2203.14708},}
 ```
+

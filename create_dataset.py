@@ -12,8 +12,13 @@ import spacy
 # import tensorflow as tf # before
 import tensorflow.compat.v1 as tf # after
 import torch
+<<<<<<< HEAD
 from tensorflow.keras.applications import resnet50
 from keras.backend import set_session
+=======
+from keras.applications import resnet50
+from keras.backend.tensorflow_backend import set_session
+>>>>>>> 617470c79de4457614c5b4a7e962a9af9dc1fac5
 from tensorflow.python.keras import backend as K # add
 from PIL import Image
 from tqdm import tqdm
@@ -707,8 +712,13 @@ def main():
 
 
     m = Darknet("yolo_dataset/yolov3_ai2thor.cfg")
+<<<<<<< HEAD
     m.load_weights("yolo_dataset/backup/yolov3_ai2thor_best.weights") # before
     # m.load_weights("yolo_dataset/backup/yolov3_ai2thor_last.weights") # after
+=======
+    # m.load_weights("yolo_dataset/backup/yolov3_ai2thor_best.weights") # before
+    m.load_weights("yolo_dataset/backup/yolov3_ai2thor_last.weights") # after
+>>>>>>> 617470c79de4457614c5b4a7e962a9af9dc1fac5
     m.print_network()
     m.cuda()
 
