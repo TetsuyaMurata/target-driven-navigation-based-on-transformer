@@ -1,3 +1,7 @@
+from pathlib import Path
+
+Path("tmp").mkdir(exist_ok=True)
+
 with open('target_path.txt', mode='r', encoding='utf-8') as f:
     target_path = f.readline().replace('\n', '')
 get_hist_num = target_path.replace(' ', '').split("hist")[0].split("/")[-1]
