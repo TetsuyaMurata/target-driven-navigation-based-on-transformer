@@ -12,8 +12,10 @@ import spacy
 # import tensorflow as tf # before
 import tensorflow.compat.v1 as tf # after
 import torch
-from keras.applications import resnet50
-from keras.backend.tensorflow_backend import set_session
+# from keras.applications import resnet50 #before
+from tensorflow.keras.applications import resnet50 #after
+# from keras.backend.tensorflow_backend import set_session #before
+from tensorflow.python.keras.backend import set_session #after
 from tensorflow.python.keras import backend as K # add
 from PIL import Image
 from tqdm import tqdm
