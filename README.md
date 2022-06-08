@@ -20,7 +20,6 @@ Install requirements using pip:
     source .vna/bin/activate
     python -m pip install --upgrade pip
     pip install -r requirements.txt
-    python -m spacy download en_core_web_lg
 
 Next you need to construct the dataset. To do so run the command:
     
@@ -43,7 +42,7 @@ Each file contains:
 - **object_vector_visualgenome** 300-d spacy feature extracted using object name using weigh trained on visualgenome caption
 - **shortest_path_distance** a square matrix of shortest path distance (in number of steps) between pairwise locations, where `-1` means two states are unreachable from each other.  
   
-　If you would run `create_dateset.py`, you need `resnet50_places365.pth.tar` to "agent/resnet" and `yolov3_ai2thor_last.weights` to "yolo_dataset/backup". 
+　If you would run `create_dateset.py`, you need libraries of `requirements_tem.txt` and run `python -m spacy download en_core_web_lg`. You also put `resnet50_places365.pth.tar` to "agent/resnet" and `yolov3_ai2thor_last.weights` to "yolo_dataset/backup". 
   
 ### Training or Evaluation
 to train or evaluate your network you need to use a json file as experiment. You can create a experiment file using the script `create_experiment.py`. One experiment file contains training set and evaluation set, reward function and network used. You can set these values using the script (``--help`` to see documentation). An experiment file which is named `target_path.txt` can be found under folder.
