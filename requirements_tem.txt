@@ -1,5 +1,5 @@
 absl-py==0.13.0
-ai2thor==1.0.1
+ai2thor==2.0.0
 astunparse==1.6.3
 blis==0.7.4
 cachetools==4.2.2
