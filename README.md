@@ -51,7 +51,7 @@ to train or evaluate your network you need to use a json file as experiment. You
 
 If you would adopt method of 'grid_memory', you cau run `create_experiment.py` like below. 
  - `python create_experiment.py --method grid_memory`
-You will get a param.json with the agent's training and evaluation requirements
+You will get a `param.json` with the agent's training and evaluation requirements.
 
 An experiment file which is named `target_path.txt` can be found under folder.
 
