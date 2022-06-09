@@ -96,8 +96,8 @@ if __name__ == '__main__':
 
     parser.add_argument('--eval_range', nargs=2, default=TEST_SPLIT,
                         help='train scene range Ex : 22 27')
-    parser.add_argument('--method', type=str, default="word2vec_notarget",
-                        help='Method to use Ex : word2vec_notarget')
+    parser.add_argument('--method', type=str, default="grid_memory",
+                        help='Method to use Ex : grid_memory')
     parser.add_argument('--reward', type=str, default="soft_goal",
                         help='Method to use Ex : soft_goal')
 
