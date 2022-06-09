@@ -177,6 +177,8 @@ if __name__ == '__main__':
     data["saving_period"] = 1000000
     data["max_t"] = 5
     data["action_size"] = 9
+    data["SSL"] = False #add
+    data["NGPU"] = 4 #add
 
     train_param = {}
     train_param["cuda"] = True
