@@ -44,7 +44,7 @@ Each file contains:
   
 If you would run `create_dateset.py`, you need libraries of `requirements_tem.txt` and run `python -m spacy download en_core_web_lg`. It is also needed for you to put `resnet50_places365.pth.tar` to "agent/resnet" and `yolov3_ai2thor_last.weights` to "yolo_dataset/backup". 
 
-If you want to change the angle at which the agent bends, change `rotation_possible_inplace` on line 77 of `create_dataset.py`. 360 divided by `rotation_possible_inplace` is the number of directions to bend, e.g. it is good for you to change `rotation_possible_ inplace = 4` for 90 degrees, and `rotation_possible_inplace = 8` for 45 degrees.
+If you want to change the angle at which the agent bends, change `rotation_possible_inplace` on line 77 of `create_dataset.py`. 360 divided by `rotation_possible_inplace` is the number of directions to bend, e.g., it is good for you to change `rotation_possible_ inplace = 4` for 90 degrees, and `rotation_possible_inplace = 8` for 45 degrees.
   
 ### Training or Evaluation
 to train or evaluate your network you need to use a json file as experiment. You can create a experiment file using the script `create_experiment.py`. One experiment file contains training set and evaluation set, reward function and network used. You can set these values using the script (``--help`` to see documentation).
