@@ -182,7 +182,7 @@ if __name__ == '__main__':
 
     train_param = {}
     train_param["cuda"] = True
-    train_param["num_thread"] = 40 # before 8
+    train_param["num_thread"] = 8
     train_param["gamma"] = 0.7
     train_param["seed"] = 1993
     train_param["reward"] = args["reward"]
