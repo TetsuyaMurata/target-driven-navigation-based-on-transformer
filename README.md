@@ -81,7 +81,7 @@ Symbolic link datasets:
 
     cd Code/target-driven-navigation-based-on-transformer/
     mkdir data 
-    ln -s /groups/gae50891/OMT/dataset/8action_45deg/ ./data/
+    ln -s /your/data/path ./data/
 
 In your json file (training setting file), please cahnge `"h5_file_path": "./data/{scene}.h5"` to `"h5_file_path": "./data/8action_45deg/{scene}.h5"`
     
@@ -91,7 +91,8 @@ If you would use these scripts at `ABCI`(AI Bridging Cloud Infrastructure), they
 - Eval : `bash eval_transformer_abci.sh`
 
 ### Calculation
-You can use `category_score_mean.py` to calculate an average score of an agent by FloorPlan from the log files after evaluation, even if there are a lot of them. You also are able to use `step_mean_sample_count.py` to know average steps or a number of data by FloorPlan under the circumstances are "Failure on the way", "Failure at max(300steps)", "Success". These scripts need a `pandas` of library.
+You can use `category_score_mean.py` to calculate an average score of an agent by FloorPlan from the log files after evaluation, even if there are a lot of them. The results will be generated as `category_score_mean_eval...csv`. You also are able to use `step_mean_sample_count.py` to know average steps or a number of data by FloorPlan under the circumstances are "Failure on the way", "Failure at max(300steps)", "Success". These scripts need a `pandas` of library.
+
 
 # Yolo_dataset
 
