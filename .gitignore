@@ -1,3 +1,8 @@
-__pycache__
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
 .vna
+*.log
 *.pyc
