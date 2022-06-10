@@ -71,11 +71,17 @@ Set up your venv on abci:
     git clone --recurse-submodules git@github.com:TetsuyaMurata/target-driven-navigation-based-on-transformer.git
     qrsh -g grpname -l rt_F=1 -l h_rt=00:10:00 (only need to create venv)
     module load gcc/11.2.0 python/3.7/3.7.13
+    cd Code/target-driven-navigation-based-on-transformer/
     python3 -m venv .vna
     source .vna/bin/activate
     python -m pip install --upgrade pip
     pip install -r requirements.txt
+    
+Symbolic link datasets:
 
+    cd Code/target-driven-navigation-based-on-transformer/
+    sl -s /groups/gae50891/OMT/dataset/8action_45deg/ ./data/
+    
 If you would use these scripts at `ABCI`(AI Bridging Cloud Infrastructure), they can be executed in the following way.  
 
 - Train : `bash train_transformer_abci.sh`
