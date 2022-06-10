@@ -82,6 +82,8 @@ Symbolic link datasets:
     cd Code/target-driven-navigation-based-on-transformer/
     mkdir data 
     ln -s /groups/gae50891/OMT/dataset/8action_45deg/ ./data/
+
+In your json file (training setting file), please cahnge `"h5_file_path": "./data/{scene}.h5"` to `"h5_file_path": "./data/8action_45deg/{scene}.h5"`
     
 If you would use these scripts at `ABCI`(AI Bridging Cloud Infrastructure), they can be executed in the following way.  
 
