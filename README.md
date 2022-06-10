@@ -66,7 +66,7 @@ Set experiment in `target_path.txt` file e.g. :
 Set up your venv on abci:
 
     ssh abci (assume you heve suted up abci and ssh already)
-    mkdri Code
+    mkdir Code
     cd Code 
     git clone --recurse-submodules git@github.com:TetsuyaMurata/target-driven-navigation-based-on-transformer.git
     qrsh -g grpname -l rt_F=1 -l h_rt=00:10:00 (only need to create venv)
@@ -80,7 +80,8 @@ Set up your venv on abci:
 Symbolic link datasets:
 
     cd Code/target-driven-navigation-based-on-transformer/
-    sl -s /groups/gae50891/OMT/dataset/8action_45deg/ ./data/
+    mkdir data 
+    ln -s /groups/gae50891/OMT/dataset/8action_45deg/ ./data/
     
 If you would use these scripts at `ABCI`(AI Bridging Cloud Infrastructure), they can be executed in the following way.  
 
