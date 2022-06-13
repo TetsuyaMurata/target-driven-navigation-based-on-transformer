@@ -6,11 +6,6 @@ import multiprocessing as mp
 from agent.training import Training
 from agent.utils import populate_config
 
-# target_path = './model/Transformer_word2vec/80scene/45deg/1layer/grid_memory/50cm/seed/4hist/61/concat' #add
-# target_path = '/home/dl-box/target-driven-navigation-based-on-transformer/model/Transformer_word2vec/80scene/45deg/1layer/grid_memory/50cm/seed/4hist/61' #add
-# target_path = '/home/dl-box/target-driven-navigation-based-on-transformer/model/Transformer_word2vec/80scene/45deg/1layer/grid_memory/50cm/seed/32hist/61' #add
-# with open('target_path.txt', mode='r', encoding='utf-8') as f:
-    # target_path = f.readline().replace('\n', '')
 with open('.env', mode='r', encoding='utf-8') as f:
     target_path = "EXPERIMENT/" + f.readline().replace('\n', '')
 print("TARGET : {}".format(target_path.replace("EXPERIMENT/", "")))
