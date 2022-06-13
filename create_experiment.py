@@ -6,6 +6,7 @@ import h5py
 import numpy as np
 import spacy
 from scipy import spatial
+import os #add
 
 KITCHEN_ID = 0
 LIVINGROOM_ID = 200
@@ -103,6 +104,10 @@ if __name__ == '__main__':
 
     parser.add_argument('--eval_objects', action="store_true")
 
+    parser.add_argument('--env', default='grid_memory') #add
+
+    args_env = parser.parse_args() #add
+
     args = vars(parser.parse_args())
     str_range = list(args["train_range"])
     for i, s in enumerate(str_range):
@@ -192,6 +197,13 @@ if __name__ == '__main__':
     data["eval_param"] = {}
     data["eval_param"]["num_episode"] = 250
     data["method"] = args["method"]
+
+    os.makedirs("EXPERIMENT/" + args_env.env, exist_ok=True) #add
+
+    with open('.env', mode='w', encoding='utf-8') as f: #add
+        f.write(str(args_env.env)) #add
+
+    os.chdir("EXPERIMENT/" + args_env.env) #add
 
     with open('param.json', 'w') as outfile:
         outfile.write(json.dumps(data, indent=4))
