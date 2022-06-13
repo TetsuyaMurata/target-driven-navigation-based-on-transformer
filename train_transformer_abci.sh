@@ -12,6 +12,5 @@ module load cudnn/8.0/8.0.5 #abci
 cd Code/target-driven-navigation-based-on-transformer
 
 source .vna/bin/activate
-python memory_size.py #memory_size can be changed
 #singularity exec --nv cenotate_transformer.simg python -u train.py #abci
 python -u train.py #local
