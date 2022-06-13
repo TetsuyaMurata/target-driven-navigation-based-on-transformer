@@ -52,7 +52,7 @@ to train or evaluate your network you need to use a json file as experiment. You
 If you would adopt method of 'grid_memory' to reproduce `Object Memory Transformer`, you cau run `create_experiment.py` like below. You will get a `param.json` with the agent's training and evaluation requirements.
  - `python create_experiment.py --method grid_memory`
 
-and `python create_experiment.py` e.g. :
+and e.g. :
     `python create_experiment.py --env grid_memory`
 
 An experiment file which is named `.env` can be found under folder. And In ENVIRONMENT, you can find a folder you made for example "grid_memory" and param.json in it.  
