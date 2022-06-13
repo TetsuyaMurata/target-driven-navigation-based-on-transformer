@@ -6,8 +6,10 @@ import re
 import glob
 # from pathlib import Path
 
-with open('target_path.txt', mode='r', encoding='utf-8') as f:
-    target_path = f.readline().replace('\n', '')
+# with open('target_path.txt', mode='r', encoding='utf-8') as f:
+#     target_path = f.readline().replace('\n', '')
+with open('.env', mode='r', encoding='utf-8') as f:
+    target_path = "EXPERIMENT/" + f.readline().replace('\n', '')
 print("TARGET : {}".format(target_path)) #test
 
 # Path(target_path  + "/" + "steps_mean").mkdir(exist_ok=True)

@@ -7,8 +7,10 @@ import re
 import os
 import glob
 
-with open('target_path.txt', mode='r', encoding='utf-8') as f:
-    target_path = f.readline().replace('\n', '')
+# with open('target_path.txt', mode='r', encoding='utf-8') as f:
+    # target_path = f.readline().replace('\n', '')
+with open('.env', mode='r', encoding='utf-8') as f:
+    target_path = "EXPERIMENT/" + f.readline().replace('\n', '')
 os.chdir(target_path)
 print("TARGET : {}".format(target_path)) #test
 
