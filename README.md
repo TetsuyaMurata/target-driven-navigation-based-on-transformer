@@ -52,15 +52,16 @@ to train or evaluate your network you need to use a json file as experiment. You
 If you would adopt method of 'grid_memory' to reproduce `Object Memory Transformer`, you cau run `create_experiment.py` like below. You will get a `param.json` with the agent's training and evaluation requirements.
  - `python create_experiment.py --method grid_memory`
 
-An experiment file which is named `target_path.txt` can be found under folder.
+run `env_maker.py` e.g. :
+    `python env_maker.py --env grid_memory`
 
-Set experiment in `target_path.txt` file e.g. :
-    `./model/Transformer_word2vec/80scene/45deg/1layer/grid_memory/50cm/seed/32hist/61`
-    
-- Train : `bash train_transformer.sh`
-- Eval : `bash eval_transformer.sh`
+An experiment file which is named `.env` can be found under folder. And In ENVIRONMENT, you can find a folder you made for example "grid_memory".  
 
-`memory_size.py` is used getting memory size from hist of `target_path.txt`. It is run by executiing `train_transformer.sh` or `eval_transformer.sh`.
+If you would like to train or eval, execute below.
+- Train : `python -u train.py`
+- Eval : `python -u eval.py`
+
+`memory_size.py` is used to make memory size, e.g.,`python memory_size.py --memory 32`
 
 ### ABCI
 Set up your venv on abci:
@@ -111,5 +112,3 @@ journal={ICRA},
 title={Object Memory Transformer for Object Goal Navigation},
 year={2022},
 doi={10.48550/ARXIV.2203.14708},}
-```
-
