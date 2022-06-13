@@ -11,13 +11,13 @@ Please install Git LFS before cloning
 
 Clone the repo and download submodules:
 
-    git clone --recurse-submodules git@github.com:TetsuyaMurata/target-driven-navigation-based-on-transformer-Rap.git
+    git clone --recurse-submodules -b rap git@github.com:TetsuyaMurata/target-driven-navigation-based-on-transformer.git
 
 (Before install following pakages, please make sure you have Python 3.7.13 installed (try python3 -V))
 
 Install requirements using pip:
 
-    cd target-driven-navigation-based-on-transformer-Rap
+    cd target-driven-navigation-based-on-transformer
     python3 -m venv .vna
     source .vna/bin/activate
     python -m pip install --upgrade pip
