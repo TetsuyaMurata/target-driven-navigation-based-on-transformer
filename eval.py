@@ -13,7 +13,6 @@ with open('.target_path', mode='r', encoding='utf-8') as f_target:
     target_path = f_target.readline()
 print("!!! target_path !!! : {}".format(target_path))
 
-
 if __name__ == '__main__':
     # mp.set_start_method('spawn')
     argparse.ArgumentParser(description="")
