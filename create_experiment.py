@@ -104,7 +104,7 @@ if __name__ == '__main__':
 
     parser.add_argument('--eval_objects', action="store_true")
 
-    parser.add_argument('--env', default='grid_memory') #add
+    parser.add_argument('--env', default='') #add Default reduce in EXPERIMENT, Escape override
 
     args_env = parser.parse_args() #add
 
