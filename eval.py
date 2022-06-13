@@ -5,7 +5,9 @@ import multiprocessing as mp
 
 from agent.evaluation import Evaluation
 from agent.utils import populate_config
+from pathlib import Path
 
+Path("tmp").mkdir(exist_ok=True)
 ### ADD ###
 # target_path = './model/Transformer_word2vec/80scene/45deg/1layer/grid_memory/50cm/seed/4hist/61/concat'
 # target_path = './model/Transformer_word2vec/80scene/45deg/1layer/grid_memory/50cm/seed/32hist/61' #add
