@@ -55,7 +55,7 @@ If you would adopt method of 'grid_memory' to reproduce `Object Memory Transform
 and e.g. :
     `python create_experiment.py --env grid_memory`
 
-An experiment file which is named `.env` can be found under folder. And In ENVIRONMENT, you can find a folder you made for example "grid_memory" and param.json in it.  
+An experiment file which is named `.env` is for specifying processing target can be found under folder. And In ENVIRONMENT, you can find a folder you made for example "grid_memory" and `param.json` in it.  
 
 If you would like to train or eval, execute below.
 - Train : `python -u train.py`
