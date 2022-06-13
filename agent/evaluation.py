@@ -24,8 +24,12 @@ import pathlib #ADD
 import glob #ADD
 
 # ###### ADD ######
-with open('target_path.txt', mode='r', encoding='utf-8') as f:
-    target_path = f.readline().replace('\n', '')
+# with open('target_path.txt', mode='r', encoding='utf-8') as f:
+#     target_path = f.readline().replace('\n', '')
+
+with open('.env', mode='r', encoding='utf-8') as f:
+    target_path = "EXPERIMENT/" + f.readline().replace('\n', '')
+print("TARGET : {}".format(target_path.replace("EXPERIMENT/", "")))
 
 with open('.target_path', mode='w', encoding='utf-8') as f:
     f.write(target_path)
@@ -35,8 +39,9 @@ with open(".error_point", mode="w", encoding="utf-8") as f_error:
 
 with open(".memory_size", mode="r", encoding="utf-8") as f_memory:
     memory_size_read = int(f_memory.readline())
-get_hist_num = target_path.replace(' ', '').split("hist")[0].split("/")[-1]
-print("!!! evaluation {}hist !!!".format(get_hist_num)) #test
+print("!!! memory_size : {} !!!".format(memory_size_read)) #test
+# get_hist_num = target_path.replace(' ', '').split("hist")[0].split("/")[-1]
+# print("!!! evaluation {} !!!".format(get_hist_num)) #test
 
 output_log_path = target_path
 

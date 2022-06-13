@@ -72,8 +72,8 @@ def populate_config(config, mode='train', checkpoint=True):
     config['action_size'] = int(json_dump['action_size'])
     config['method'] = json_dump['method']
     config['SSL'] = json_dump['SSL']
-    config['Posi'] = json_dump['Posi']
-    config['Key'] = json_dump['Key']
+    # config['Posi'] = json_dump['Posi']
+    # config['Key'] = json_dump['Key']
     config['NGPU'] = json_dump['NGPU']
 
     return config
