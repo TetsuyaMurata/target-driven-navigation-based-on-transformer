@@ -12,5 +12,5 @@ opencv-python
 scipy
 networkx
 gensim
-spacy
+spacy==2.3.5
 tensorflow==2.2.0
