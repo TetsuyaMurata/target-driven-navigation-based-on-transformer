@@ -13,7 +13,7 @@ Clone the repo and download submodules:
 
     git clone --recurse-submodules git@github.com:TetsuyaMurata/target-driven-navigation-based-on-transformer.git
 
-(Before install following pakages, please make sure you have Python 3.7.13 installed (try python3 -V))
+(Before install following pakages, please make sure you have Python 3.6.13 installed (try python3 -V))
 
 Install requirements using pip:
 
