@@ -50,18 +50,19 @@ If you want to change the angle at which the agent bends, change `rotation_possi
 ### Training or Evaluation
 to train or evaluate your network you need to use a json file as experiment. You can create a experiment file using the script `create_experiment.py`. One experiment file contains training set and evaluation set, reward function and network used. You can set these values using the script (``--help`` to see documentation).
 
-If you would adopt method of 'grid_memory' to reproduce `Object Memory Transformer`, you cau run `create_experiment.py` like below. You will get a `param.json` with the agent's training and evaluation requirements.
+If you would adopt method of 'grid_memory' to reproduce `Object Memory Transformer`, you cau run `create_experiment.py` like below. You will get a `param.json` with the agent's training and evaluation requirements in EXPERIMENT.
  - `python create_experiment.py --method grid_memory`
 
-An experiment file which is named `target_path.txt` can be found under folder.
+and e.g. :
+    `python create_experiment.py --env grid_memory --method grid_memory`
 
-Set experiment in `target_path.txt` file e.g. :
-    `./model/Transformer_word2vec/80scene/45deg/1layer/grid_memory/50cm/seed/32hist/61`
-    
-- Train : `bash train_transformer.sh`
-- Eval : `bash eval_transformer.sh`
+An experiment file which is named `.env` is for specifying processing target can be found under folder. And In ENVIRONMENT, you can find a folder you made for example "grid_memory" and `param.json` in it.  
 
-`memory_size.py` is used getting memory size from hist of `target_path.txt`. It is run by executiing `train_transformer.sh` or `eval_transformer.sh`.
+If you would like to train or eval, execute below.
+- Train : `python -u train.py`
+- Eval : `python -u eval.py`
+
+`memory_size.py` is used to make memory size, e.g.,`python memory_size.py --memory 32`
 
 ### ABCI
 Set up your venv on abci:
