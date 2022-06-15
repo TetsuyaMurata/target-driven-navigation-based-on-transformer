@@ -189,8 +189,7 @@ if __name__ == '__main__':
 
     train_param = {}
     train_param["cuda"] = True
-    # train_param["num_thread"] = 8 #origin
-    train_param["num_thread"] = args_add.thread
+    train_param["num_thread"] = args_add.thread #origin 8
     train_param["gamma"] = 0.7
     train_param["seed"] = 1993
     train_param["reward"] = args["reward"]
