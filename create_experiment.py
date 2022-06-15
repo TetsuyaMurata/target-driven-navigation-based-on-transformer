@@ -116,6 +116,8 @@ if __name__ == '__main__':
 
     parser.add_argument('--seed', default=1993) #add
 
+    parser.add_argument('--nepi', default=250) #add
+
     args_add = parser.parse_args() #add
 
     args = vars(parser.parse_args())
@@ -205,7 +207,7 @@ if __name__ == '__main__':
 
     data["train_param"] = train_param
     data["eval_param"] = {}
-    data["eval_param"]["num_episode"] = 250
+    data["eval_param"]["num_episode"] = args_add.nepi #origin 250
     data["method"] = args["method"]
 
     os.makedirs("EXPERIMENT/" + args_add.env, exist_ok=True) #add
