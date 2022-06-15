@@ -15,10 +15,10 @@ from agent.environment.ai2thor_file import \
     THORDiscreteEnvironment as THORDiscreteEnvironmentFile
 from agent.utils import populate_config
 
-from pathlib import Path #add
+import os #add
 import shutil #add
 
-Path("data_view").mkdir(exist_ok=True) #add
+os.makedirs("data_view", exist_ok=True) #add
 
 shutil.copy2("data/FloorPlan201.h5", "data_view") #add
 
