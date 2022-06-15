@@ -3,19 +3,19 @@
         "train": {
             "FloorPlan1": [
                 {
+                    "object": "Fridge"
+                },
+                {
                     "object": "Bowl"
+                },
+                {
+                    "object": "Toaster"
                 },
                 {
                     "object": "Microwave"
                 },
                 {
                     "object": "CoffeeMachine"
-                },
-                {
-                    "object": "Toaster"
-                },
-                {
-                    "object": "Fridge"
                 },
                 {
                     "object": "GarbageCan"
@@ -23,19 +23,19 @@
             ],
             "FloorPlan2": [
                 {
+                    "object": "Fridge"
+                },
+                {
                     "object": "Bowl"
+                },
+                {
+                    "object": "Toaster"
                 },
                 {
                     "object": "Microwave"
                 },
                 {
                     "object": "CoffeeMachine"
-                },
-                {
-                    "object": "Toaster"
-                },
-                {
-                    "object": "Fridge"
                 },
                 {
                     "object": "GarbageCan"
@@ -43,19 +43,19 @@
             ],
             "FloorPlan3": [
                 {
+                    "object": "Fridge"
+                },
+                {
                     "object": "Bowl"
+                },
+                {
+                    "object": "Toaster"
                 },
                 {
                     "object": "Microwave"
                 },
                 {
                     "object": "CoffeeMachine"
-                },
-                {
-                    "object": "Toaster"
-                },
-                {
-                    "object": "Fridge"
                 },
                 {
                     "object": "GarbageCan"
@@ -63,19 +63,19 @@
             ],
             "FloorPlan4": [
                 {
+                    "object": "Fridge"
+                },
+                {
                     "object": "Bowl"
+                },
+                {
+                    "object": "Toaster"
                 },
                 {
                     "object": "Microwave"
                 },
                 {
                     "object": "CoffeeMachine"
-                },
-                {
-                    "object": "Toaster"
-                },
-                {
-                    "object": "Fridge"
                 },
                 {
                     "object": "GarbageCan"
@@ -83,19 +83,19 @@
             ],
             "FloorPlan5": [
                 {
+                    "object": "Fridge"
+                },
+                {
                     "object": "Bowl"
+                },
+                {
+                    "object": "Toaster"
                 },
                 {
                     "object": "Microwave"
                 },
                 {
                     "object": "CoffeeMachine"
-                },
-                {
-                    "object": "Toaster"
-                },
-                {
-                    "object": "Fridge"
                 },
                 {
                     "object": "GarbageCan"
@@ -103,19 +103,19 @@
             ],
             "FloorPlan6": [
                 {
+                    "object": "Fridge"
+                },
+                {
                     "object": "Bowl"
+                },
+                {
+                    "object": "Toaster"
                 },
                 {
                     "object": "Microwave"
                 },
                 {
                     "object": "CoffeeMachine"
-                },
-                {
-                    "object": "Toaster"
-                },
-                {
-                    "object": "Fridge"
                 },
                 {
                     "object": "GarbageCan"
@@ -123,19 +123,19 @@
             ],
             "FloorPlan7": [
                 {
+                    "object": "Fridge"
+                },
+                {
                     "object": "Bowl"
+                },
+                {
+                    "object": "Toaster"
                 },
                 {
                     "object": "Microwave"
                 },
                 {
                     "object": "CoffeeMachine"
-                },
-                {
-                    "object": "Toaster"
-                },
-                {
-                    "object": "Fridge"
                 },
                 {
                     "object": "GarbageCan"
@@ -143,19 +143,19 @@
             ],
             "FloorPlan8": [
                 {
+                    "object": "Fridge"
+                },
+                {
                     "object": "Bowl"
+                },
+                {
+                    "object": "Toaster"
                 },
                 {
                     "object": "Microwave"
                 },
                 {
                     "object": "CoffeeMachine"
-                },
-                {
-                    "object": "Toaster"
-                },
-                {
-                    "object": "Fridge"
                 },
                 {
                     "object": "GarbageCan"
@@ -163,19 +163,19 @@
             ],
             "FloorPlan9": [
                 {
+                    "object": "Fridge"
+                },
+                {
                     "object": "Bowl"
+                },
+                {
+                    "object": "Toaster"
                 },
                 {
                     "object": "Microwave"
                 },
                 {
                     "object": "CoffeeMachine"
-                },
-                {
-                    "object": "Toaster"
-                },
-                {
-                    "object": "Fridge"
                 },
                 {
                     "object": "GarbageCan"
@@ -183,19 +183,19 @@
             ],
             "FloorPlan10": [
                 {
+                    "object": "Fridge"
+                },
+                {
                     "object": "Bowl"
+                },
+                {
+                    "object": "Toaster"
                 },
                 {
                     "object": "Microwave"
                 },
                 {
                     "object": "CoffeeMachine"
-                },
-                {
-                    "object": "Toaster"
-                },
-                {
-                    "object": "Fridge"
                 },
                 {
                     "object": "GarbageCan"
@@ -206,13 +206,13 @@
                     "object": "Bowl"
                 },
                 {
+                    "object": "Pillow"
+                },
+                {
                     "object": "Laptop"
                 },
                 {
                     "object": "GarbageCan"
-                },
-                {
-                    "object": "Pillow"
                 },
                 {
                     "object": "Television"
@@ -220,16 +220,16 @@
             ],
             "FloorPlan202": [
                 {
-                    "object": "Television"
+                    "object": "GarbageCan"
+                },
+                {
+                    "object": "Pillow"
                 },
                 {
                     "object": "Laptop"
                 },
                 {
-                    "object": "GarbageCan"
-                },
-                {
-                    "object": "Pillow"
+                    "object": "Television"
                 }
             ],
             "FloorPlan203": [
@@ -237,13 +237,13 @@
                     "object": "Bowl"
                 },
                 {
+                    "object": "Pillow"
+                },
+                {
                     "object": "Laptop"
                 },
                 {
                     "object": "GarbageCan"
-                },
-                {
-                    "object": "Pillow"
                 },
                 {
                     "object": "Television"
@@ -251,30 +251,30 @@
             ],
             "FloorPlan204": [
                 {
-                    "object": "Television"
+                    "object": "GarbageCan"
+                },
+                {
+                    "object": "Pillow"
                 },
                 {
                     "object": "Laptop"
                 },
                 {
-                    "object": "GarbageCan"
-                },
-                {
-                    "object": "Pillow"
+                    "object": "Television"
                 }
             ],
             "FloorPlan205": [
                 {
-                    "object": "Television"
+                    "object": "GarbageCan"
+                },
+                {
+                    "object": "Pillow"
                 },
                 {
                     "object": "Laptop"
                 },
                 {
-                    "object": "GarbageCan"
-                },
-                {
-                    "object": "Pillow"
+                    "object": "Television"
                 }
             ],
             "FloorPlan206": [
@@ -282,13 +282,13 @@
                     "object": "Bowl"
                 },
                 {
+                    "object": "Pillow"
+                },
+                {
                     "object": "Laptop"
                 },
                 {
                     "object": "GarbageCan"
-                },
-                {
-                    "object": "Pillow"
                 },
                 {
                     "object": "Television"
@@ -296,58 +296,58 @@
             ],
             "FloorPlan207": [
                 {
-                    "object": "Television"
+                    "object": "GarbageCan"
+                },
+                {
+                    "object": "Pillow"
                 },
                 {
                     "object": "Laptop"
                 },
                 {
-                    "object": "GarbageCan"
-                },
-                {
-                    "object": "Pillow"
+                    "object": "Television"
                 }
             ],
             "FloorPlan208": [
                 {
-                    "object": "Television"
+                    "object": "GarbageCan"
+                },
+                {
+                    "object": "Pillow"
                 },
                 {
                     "object": "Laptop"
                 },
                 {
-                    "object": "GarbageCan"
-                },
-                {
-                    "object": "Pillow"
+                    "object": "Television"
                 }
             ],
             "FloorPlan209": [
                 {
-                    "object": "Television"
+                    "object": "GarbageCan"
+                },
+                {
+                    "object": "Pillow"
                 },
                 {
                     "object": "Laptop"
                 },
                 {
-                    "object": "GarbageCan"
-                },
-                {
-                    "object": "Pillow"
+                    "object": "Television"
                 }
             ],
             "FloorPlan210": [
                 {
-                    "object": "Television"
+                    "object": "GarbageCan"
+                },
+                {
+                    "object": "Pillow"
                 },
                 {
                     "object": "Laptop"
                 },
                 {
-                    "object": "GarbageCan"
-                },
-                {
-                    "object": "Pillow"
+                    "object": "Television"
                 }
             ],
             "FloorPlan301": [
@@ -363,10 +363,10 @@
                     "object": "AlarmClock"
                 },
                 {
-                    "object": "Book"
+                    "object": "HousePlant"
                 },
                 {
-                    "object": "HousePlant"
+                    "object": "Book"
                 }
             ],
             "FloorPlan303": [
@@ -422,10 +422,10 @@
                     "object": "AlarmClock"
                 },
                 {
-                    "object": "Book"
+                    "object": "HousePlant"
                 },
                 {
-                    "object": "HousePlant"
+                    "object": "Book"
                 }
             ],
             "FloorPlan310": [
@@ -433,10 +433,10 @@
                     "object": "AlarmClock"
                 },
                 {
-                    "object": "Book"
+                    "object": "Lamp"
                 },
                 {
-                    "object": "Lamp"
+                    "object": "Book"
                 }
             ],
             "FloorPlan401": [
@@ -444,13 +444,13 @@
                     "object": "ToiletPaper"
                 },
                 {
-                    "object": "LightSwitch"
+                    "object": "Sink"
                 },
                 {
                     "object": "SoapBottle"
                 },
                 {
-                    "object": "Sink"
+                    "object": "LightSwitch"
                 }
             ],
             "FloorPlan402": [
@@ -458,10 +458,10 @@
                     "object": "ToiletPaper"
                 },
                 {
-                    "object": "LightSwitch"
+                    "object": "Sink"
                 },
                 {
-                    "object": "Sink"
+                    "object": "LightSwitch"
                 }
             ],
             "FloorPlan403": [
@@ -469,13 +469,13 @@
                     "object": "ToiletPaper"
                 },
                 {
-                    "object": "LightSwitch"
+                    "object": "Sink"
                 },
                 {
                     "object": "SoapBottle"
                 },
                 {
-                    "object": "Sink"
+                    "object": "LightSwitch"
                 }
             ],
             "FloorPlan404": [
@@ -483,13 +483,13 @@
                     "object": "ToiletPaper"
                 },
                 {
-                    "object": "LightSwitch"
+                    "object": "Sink"
                 },
                 {
                     "object": "SoapBottle"
                 },
                 {
-                    "object": "Sink"
+                    "object": "LightSwitch"
                 }
             ],
             "FloorPlan405": [
@@ -497,13 +497,13 @@
                     "object": "ToiletPaper"
                 },
                 {
-                    "object": "LightSwitch"
+                    "object": "Sink"
                 },
                 {
                     "object": "SoapBottle"
                 },
                 {
-                    "object": "Sink"
+                    "object": "LightSwitch"
                 }
             ],
             "FloorPlan406": [
@@ -511,13 +511,13 @@
                     "object": "ToiletPaper"
                 },
                 {
-                    "object": "LightSwitch"
+                    "object": "Sink"
                 },
                 {
                     "object": "SoapBottle"
                 },
                 {
-                    "object": "Sink"
+                    "object": "LightSwitch"
                 }
             ],
             "FloorPlan407": [
@@ -525,13 +525,13 @@
                     "object": "ToiletPaper"
                 },
                 {
-                    "object": "LightSwitch"
+                    "object": "Sink"
                 },
                 {
                     "object": "SoapBottle"
                 },
                 {
-                    "object": "Sink"
+                    "object": "LightSwitch"
                 }
             ],
             "FloorPlan408": [
@@ -539,13 +539,13 @@
                     "object": "ToiletPaper"
                 },
                 {
-                    "object": "LightSwitch"
+                    "object": "Sink"
                 },
                 {
                     "object": "SoapBottle"
                 },
                 {
-                    "object": "Sink"
+                    "object": "LightSwitch"
                 }
             ],
             "FloorPlan409": [
@@ -553,13 +553,13 @@
                     "object": "ToiletPaper"
                 },
                 {
-                    "object": "LightSwitch"
+                    "object": "Sink"
                 },
                 {
                     "object": "SoapBottle"
                 },
                 {
-                    "object": "Sink"
+                    "object": "LightSwitch"
                 }
             ],
             "FloorPlan410": [
@@ -567,13 +567,13 @@
                     "object": "ToiletPaper"
                 },
                 {
-                    "object": "LightSwitch"
+                    "object": "Sink"
                 },
                 {
                     "object": "SoapBottle"
                 },
                 {
-                    "object": "Sink"
+                    "object": "LightSwitch"
                 }
             ]
         },
@@ -741,6 +741,8 @@
     "max_t": 5,
     "action_size": 9,
     "SSL": false,
+    "Posi": false,
+    "Key": "word2vec",
     "NGPU": 4,
     "train_param": {
         "cuda": true,
