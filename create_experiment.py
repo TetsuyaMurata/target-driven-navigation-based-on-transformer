@@ -105,7 +105,7 @@ if __name__ == '__main__':
     parser.add_argument('--eval_objects', action="store_true")
 
     parser.add_argument('--env', default='',
-                        help='Make directory and .env') #add Default, Output to EXPERIMENT, Escape override
+                        help='Create a directory and .env') #add Default, Output to EXPERIMENT, Escape override
 
     parser.add_argument('--tstep', default=25000000,
                         help='total_step Ex : 25000000') #add
