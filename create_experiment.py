@@ -108,7 +108,7 @@ if __name__ == '__main__':
 
     parser.add_argument('--thread', default=8) #add
 
-    parser.add_argument('--ngpu', default=8) #add
+    parser.add_argument('--ngpu', default=4) #add
 
     args_add = parser.parse_args() #add
 
