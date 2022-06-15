@@ -196,25 +196,25 @@ if __name__ == '__main__':
     data["task_list"] = {}
     data["task_list"]["train"] = training
     data["task_list"]["eval"] = evaluation
-    data["total_step"] = args_add.tstep #origin 25000000
+    data["total_step"] = int(args_add.tstep) #origin 25000000
     data["h5_file_path"] = "./data/{scene}.h5"
-    data["saving_period"] = args_add.period #origin 1000000
+    data["saving_period"] = int(args_add.period) #origin 1000000
     data["max_t"] = 5
     data["action_size"] = 9
     data["SSL"] = False #add
-    data["NGPU"] = args_add.ngpu #add origin 4
+    data["NGPU"] = int(args_add.ngpu) #add origin 4
 
     train_param = {}
     train_param["cuda"] = True
-    train_param["num_thread"] = args_add.thread #origin 8
+    train_param["num_thread"] = int(args_add.thread) #origin 8
     train_param["gamma"] = 0.7
-    train_param["seed"] = args_add.seed #origin 1993
+    train_param["seed"] = int(args_add.seed) #origin 1993
     train_param["reward"] = args["reward"]
     train_param["mask_size"] = 16
 
     data["train_param"] = train_param
     data["eval_param"] = {}
-    data["eval_param"]["num_episode"] = args_add.nepi #origin 250
+    data["eval_param"]["num_episode"] = int(args_add.nepi) #origin 250
     data["method"] = args["method"]
 
     os.makedirs("EXPERIMENT/" + args_add.env, exist_ok=True) #add
