@@ -202,6 +202,8 @@ if __name__ == '__main__':
     data["max_t"] = 5
     data["action_size"] = 9
     data["SSL"] = False #add
+    data["Posi"] = False #add
+    data["Key"] = "word2vec" #add
     data["NGPU"] = int(args_add.ngpu) #add origin 4
 
     train_param = {}
