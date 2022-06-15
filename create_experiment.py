@@ -106,6 +106,10 @@ if __name__ == '__main__':
 
     parser.add_argument('--env', default='') #add Default, Output to EXPERIMENT, Escape override
 
+    parser.add_argument('--tstep', default=25000000) #add
+
+    parser.add_argument('--period', default=1000000) #add
+
     parser.add_argument('--thread', default=8) #add
 
     parser.add_argument('--ngpu', default=4) #add
@@ -181,9 +185,9 @@ if __name__ == '__main__':
     data["task_list"] = {}
     data["task_list"]["train"] = training
     data["task_list"]["eval"] = evaluation
-    data["total_step"] = 25000000
+    data["total_step"] = args_add.tstep #origin 25000000
     data["h5_file_path"] = "./data/{scene}.h5"
-    data["saving_period"] = 1000000
+    data["saving_period"] = args_add.period #origin 1000000
     data["max_t"] = 5
     data["action_size"] = 9
     data["SSL"] = False #add
