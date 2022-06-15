@@ -50,7 +50,7 @@ If you want to change the angle at which the agent bends, change `rotation_possi
 ### Training or Evaluation
 to train or evaluate your network you need to use a json file as experiment. You can create a experiment file using the script `create_experiment.py`. One experiment file contains training set and evaluation set, reward function and network used. You can set these values using the script (``--help`` to see documentation).
 
-If you would adopt method of 'grid_memory' to reproduce `Object Memory Transformer`, you cau run `create_experiment.py` like below. You will get a param.json with the agent's training and evaluation requirements in the folder to be processed of EXPERIMENT.
+If you would adopt method of 'grid_memory' to reproduce `Object Memory Transformer`, you cau run `create_experiment.py` like below. You will get a `param.json` with the agent's training and evaluation requirements in the folder to be processed of EXPERIMENT.
  - `python create_experiment.py --env grid_memory --method grid_memory`
 
 and if you would like to change the number of threads and GPUs used e.g. :
