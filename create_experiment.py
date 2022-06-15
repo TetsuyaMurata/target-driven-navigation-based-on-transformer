@@ -114,6 +114,8 @@ if __name__ == '__main__':
 
     parser.add_argument('--ngpu', default=4) #add
 
+    parser.add_argument('--seed', default=1993) #add
+
     args_add = parser.parse_args() #add
 
     args = vars(parser.parse_args())
@@ -197,7 +199,7 @@ if __name__ == '__main__':
     train_param["cuda"] = True
     train_param["num_thread"] = args_add.thread #origin 8
     train_param["gamma"] = 0.7
-    train_param["seed"] = 1993
+    train_param["seed"] = args_add.seed #origin 1993
     train_param["reward"] = args["reward"]
     train_param["mask_size"] = 16
 
