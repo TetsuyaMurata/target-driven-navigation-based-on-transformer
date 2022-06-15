@@ -108,6 +108,8 @@ if __name__ == '__main__':
 
     parser.add_argument('--thread', default=8) #add
 
+    parser.add_argument('--ngpu', default=8) #add
+
     args_add = parser.parse_args() #add
 
     args = vars(parser.parse_args())
@@ -185,7 +187,7 @@ if __name__ == '__main__':
     data["max_t"] = 5
     data["action_size"] = 9
     data["SSL"] = False #add
-    data["NGPU"] = 4 #add
+    data["NGPU"] = args_add.ngpu #add origin 4
 
     train_param = {}
     train_param["cuda"] = True
