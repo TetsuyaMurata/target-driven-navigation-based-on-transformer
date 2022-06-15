@@ -54,7 +54,7 @@ If you would adopt method of 'grid_memory' to reproduce `Object Memory Transform
  - `python create_experiment.py --method grid_memory`
 
 and e.g. :
-    `python create_experiment.py --env grid_memory --method grid_memory --thread 4`
+    `python create_experiment.py --env grid_memory --method grid_memory --thread 8`
 
 An experiment file which is named `.env` is for specifying processing target can be found under folder. And In ENVIRONMENT, you can find a folder you made for example "grid_memory" and `param.json` in it.  
 
