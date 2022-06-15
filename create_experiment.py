@@ -106,7 +106,9 @@ if __name__ == '__main__':
 
     parser.add_argument('--env', default='') #add Default, Output to EXPERIMENT, Escape override
 
-    args_env = parser.parse_args() #add
+    parser.add_argument('--thread', default=8) #add
+
+    args_add = parser.parse_args() #add
 
     args = vars(parser.parse_args())
     str_range = list(args["train_range"])
@@ -187,7 +189,8 @@ if __name__ == '__main__':
 
     train_param = {}
     train_param["cuda"] = True
-    train_param["num_thread"] = 8
+    # train_param["num_thread"] = 8 #origin
+    train_param["num_thread"] = args_add.thread
     train_param["gamma"] = 0.7
     train_param["seed"] = 1993
     train_param["reward"] = args["reward"]
@@ -198,12 +201,12 @@ if __name__ == '__main__':
     data["eval_param"]["num_episode"] = 250
     data["method"] = args["method"]
 
-    os.makedirs("EXPERIMENT/" + args_env.env, exist_ok=True) #add
+    os.makedirs("EXPERIMENT/" + args_add.env, exist_ok=True) #add
 
     with open('.env', mode='w', encoding='utf-8') as f: #add
-        f.write(str(args_env.env)) #add
+        f.write(str(args_add.env)) #add
 
-    os.chdir("EXPERIMENT/" + args_env.env) #add
+    os.chdir("EXPERIMENT/" + args_add.env) #add
 
     with open('param.json', 'w') as outfile:
         outfile.write(json.dumps(data, indent=4))
