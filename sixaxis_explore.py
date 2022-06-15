@@ -15,6 +15,13 @@ from agent.environment.ai2thor_file import \
     THORDiscreteEnvironment as THORDiscreteEnvironmentFile
 from agent.utils import populate_config
 
+from pathlib import Path #add
+import shutil #add
+
+Path("data_view").mkdir(exist_ok=True) #add
+
+shutil.copy2("data/FloorPlan201.h5", "data_view") #add
+
 joystick_tolerance = 20000
 
 KITCHEN_OBJECT_CLASS_LIST = [
