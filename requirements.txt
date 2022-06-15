@@ -14,4 +14,3 @@ networkx
 gensim
 spacy==2.3.5
 tensorflow==2.2.0
-torch==1.10.1
