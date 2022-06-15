@@ -56,7 +56,7 @@ If you would adopt method of 'grid_memory' to reproduce `Object Memory Transform
 and if you would also like to change the number of threads and GPUs used e.g. :
  - `python create_experiment.py --env grid_memory --method grid_memory --thread 8 --ngpu 2`
 
-An experiment file which is named `.env` is for specifying processing target can be outputted. And In ENVIRONMENT, you can find a folder you made for example "grid_memory" and `param.json` in it.  
+An experiment file which is named `.env` is for specifying processing target will be outputted. And In ENVIRONMENT, you can find a folder you made for example "grid_memory" and `param.json` in it.  
 
 If you would like to train or eval, execute below.
 - Train : `python -u train.py`
