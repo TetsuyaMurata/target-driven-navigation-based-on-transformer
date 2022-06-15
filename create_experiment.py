@@ -104,19 +104,26 @@ if __name__ == '__main__':
 
     parser.add_argument('--eval_objects', action="store_true")
 
-    parser.add_argument('--env', default='') #add Default, Output to EXPERIMENT, Escape override
+    parser.add_argument('--env', default='',
+                        help='Make directory and .env Ex : grid_memory') #add Default, Output to EXPERIMENT, Escape override
 
-    parser.add_argument('--tstep', default=25000000) #add
+    parser.add_argument('--tstep', default=25000000,
+                        help='total_step Ex : 25000000') #add
 
-    parser.add_argument('--period', default=1000000) #add
+    parser.add_argument('--period', default=1000000,
+                        help='saving_period Ex : 1000000') #add
 
-    parser.add_argument('--thread', default=8) #add
+    parser.add_argument('--thread', default=8,
+                        help='num_thread Ex : 8') #add
 
-    parser.add_argument('--ngpu', default=4) #add
+    parser.add_argument('--ngpu', default=4,
+                        help='NGPU Ex : 4') #add
 
-    parser.add_argument('--seed', default=1993) #add
+    parser.add_argument('--seed', default=1993,
+                        help='seed Ex : 1993') #add
 
-    parser.add_argument('--nepi', default=250) #add
+    parser.add_argument('--nepi', default=250,
+                        help='num_episode Ex : 250') #add
 
     args_add = parser.parse_args() #add
 
