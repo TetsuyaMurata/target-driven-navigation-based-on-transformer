@@ -13,10 +13,14 @@ from agent.utils import populate_config
 import numpy as np
 
 from agent.tools import SimpleImageViewer
-from pathlib import Path #add
+import os #add
 import shutil #add
+import glob
 
-Path("data_old").mkdir(exist_ok=True) #add
+os.makedirs("data_old", exist_ok=True) #add
+
+for file in glob.glob('data_old/*.h5'):
+    os.remove(file)
 
 shutil.copy2("data/FloorPlan1.h5", "data_old") #add
 #
