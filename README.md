@@ -54,7 +54,7 @@ If you would adopt method of 'grid_memory' to reproduce `Object Memory Transform
  - `python create_experiment.py --env grid_memory --method grid_memory`
 
 and if you would like to change the number of threads and GPUs used e.g. :
-    `python create_experiment.py --env grid_memory --method grid_memory --thread 8 --ngpu 2`
+ - `python create_experiment.py --env grid_memory --method grid_memory --thread 8 --ngpu 2`
 
 An experiment file which is named `.env` is for specifying processing target can be found under folder. And In ENVIRONMENT, you can find a folder you made for example "grid_memory" and `param.json` in it.  
 
@@ -94,7 +94,6 @@ If you would use these scripts at `ABCI`(AI Bridging Cloud Infrastructure), they
 
 ### Calculation
 You can use `category_score_mean.py` to calculate an average score of an agent by FloorPlan from the log files after evaluation, even if there are a lot of them. The results will be generated as `category_score_mean_eval...csv`. You also are able to use `step_mean_sample_count.py` to know average steps or a number of data by FloorPlan under the circumstances are "Failure on the way", "Failure at max(300steps)", "Success". These scripts need a `pandas` of library.
-
 
 # Yolo_dataset
 
