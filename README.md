@@ -105,6 +105,7 @@ You can find in the `word2vec_visualgenome` folder, the pretrained word2vec mode
 
 # Manual agent operation
 You cau operate an Agent by using keyboard or GameController.
+
 `python keyboard_explore.py -s {AI2THOR scene name}` (keyboard)
 - e.g., `python keyboard_explore.py -s FloorPlan7`
 
