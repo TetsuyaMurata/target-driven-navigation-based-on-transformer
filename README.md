@@ -106,10 +106,10 @@ You can find in the `word2vec_visualgenome` folder, the pretrained word2vec mode
 # Manual agent operation
 You cau operate an Agent by using keyboard or GameController.
 
-`python keyboard_explore.py -s {AI2THOR scene name}` (keyboard)
+ (keyboard) : `python keyboard_explore.py -s {AI2THOR scene name}`
 - e.g., `python keyboard_explore.py -s FloorPlan7`
 
-`python sixaxis_explore.py -e {a path of param.json} -s {AI2THOR scene name} -o {target object}` (GameController)
+(GameController) : `python sixaxis_explore.py -e {a path of param.json} -s {AI2THOR scene name} -o {target object}`
 - e.g., `python sixaxis_explore.py -e ./EXPERIMENT/grid_memory/param.json -s FloorPlan7 -o Bowl`
 
 # Citation
