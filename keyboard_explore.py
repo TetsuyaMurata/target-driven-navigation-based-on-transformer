@@ -15,10 +15,13 @@ import numpy as np
 from agent.tools import SimpleImageViewer
 import os #add
 import shutil #add
+import glob #add
 
 os.makedirs("data_old", exist_ok=True) #add
 
-shutil.copy2("data/FloorPlan1.h5", "data_old") #add
+for file in glob.glob('data_old/*.h5'): #add
+    os.remove(file) #add
+
 #
 # Navigate the scene using your keyboard
 #
@@ -100,6 +103,8 @@ if __name__ == '__main__':
 
     print("Loading scene dump {}".format(args.scene_name))
     
+    shutil.copy2("data/" + str(args.scene_name) + ".h5", "data_old") #add
+
     env = reset_env(args.scene_name, {"object":"GarbageCan"})
     human_agent_action = None
     human_wants_restart = False
