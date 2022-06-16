@@ -24,8 +24,6 @@ os.makedirs("data_view", exist_ok=True) #add
 for file in glob.glob('data_view/*.h5'): #add
     os.remove(file) #add
 
-# shutil.copy2("data/FloorPlan201.h5", "data_view") #add
-
 joystick_tolerance = 20000
 
 KITCHEN_OBJECT_CLASS_LIST = [
