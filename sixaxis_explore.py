@@ -17,10 +17,14 @@ from agent.utils import populate_config
 
 import os #add
 import shutil #add
+import glob #add
 
 os.makedirs("data_view", exist_ok=True) #add
 
-shutil.copy2("data/FloorPlan201.h5", "data_view") #add
+for file in glob.glob('data_view/*.h5'): #add
+    os.remove(file) #add
+
+# shutil.copy2("data/FloorPlan201.h5", "data_view") #add
 
 joystick_tolerance = 20000
 
@@ -135,7 +139,17 @@ def main():
     # Use experiment.json
     parser.add_argument('--exp', '-e', type=str,
                         help='Experiment parameters.json file', required=True)
+    parser.add_argument("-s", "--scene_name", type=str, default="FloorPlan1",
+                    help="AI2THOR scene name") #add
+    parser.add_argument("-o", "--target_object", type=str, default="Bowl",
+                    help="param.json TARGET_OBJECT") #add
     args = vars(parser.parse_args())
+    args_fl = parser.parse_args() #add
+    
+    shutil.copy2("data/" + str(args_fl.scene_name) + ".h5", "data_view") #add
+    
+    print("Loading scene dump {}".format(args_fl.scene_name)) #add
+
     config = populate_config(args, mode="eval")
 
     # Choose first controller
@@ -171,7 +185,8 @@ def main():
     # Store episode results
     episodes_param = []
     current_ep_action = []
-    scene_name, current_target = "FloorPlan201", {"object": "Television"}
+    # scene_name, current_target = "FloorPlan201", {"object": "Television"} #origin
+    scene_name, current_target = args_fl.scene_name, {"object": str(args_fl.target_object)}
     # Display target
     display_target(current_target, wait=True)
 
