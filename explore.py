@@ -86,11 +86,16 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument("-s", "--scene_name", type=str, default="FloorPlan1",
                         help="AI2THOR scene name")
+    parser.add_argument("-sw", "--player_screen_width", type=str, default=400,
+                    help="Screen Width")
+    parser.add_argument("-sh", "--player_screen_height", type=str, default=300,
+                    help="Screen Height")
     args = parser.parse_args()
 
     print("Loading scene dump {}".format(args.scene_name))
     controller = ai2thor.controller.Controller()
-    controller.start(player_screen_width=400, player_screen_height=300)
+    # controller.start(player_screen_width=400, player_screen_height=300) #origin
+    controller.start(player_screen_width=int(args.player_screen_width), player_screen_height=int(args.player_screen_height)) #add
     controller.reset(args.scene_name)
     for i in range(5):
         state = controller.step(dict(action='InitialRandomSpawn',
