@@ -106,12 +106,12 @@ You can find in the `yolo_dataset` folder the cfg and weights of the pretrained 
 You can find in the `word2vec_visualgenome` folder, the pretrained word2vec model from gensim with visualgenome dataset. You can re-train it by adding `region_descriptions.json.gz` in dataset folder and running the main.py script
 
 # Manual agent operation
-You cau operate an Agent by using keyboard or GameController(GC).
+You cau operate an Agent by using KeyBoard or GameController(GC).
 
- (keyboard) : `python keyboard_explore.py -s {AI2THOR scene name}`
+ (KB) : `python keyboard_explore.py -s {AI2THOR scene name}`
 - e.g., `python keyboard_explore.py -s FloorPlan7`
 
- (keyboard [Resizable]) : `python explore.py -s {AI2THOR scene name} -sw {Screen Width} -sh {Screen Height}`
+ (KB [Resizable]) : `python explore.py -s {AI2THOR scene name} -sw {Screen Width} -sh {Screen Height}`
 - e.g., `python explore.py -s FloorPlan7 -sw 1000 -sh 800`
 
 (GC) : `python sixaxis_explore.py -e {a path of param.json} -s {AI2THOR scene name} -o {target object}`
