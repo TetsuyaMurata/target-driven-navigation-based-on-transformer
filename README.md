@@ -111,7 +111,7 @@ You cau operate an Agent by using keyboard or GameController(GC).
  (keyboard) : `python keyboard_explore.py -s {AI2THOR scene name}`
 - e.g., `python keyboard_explore.py -s FloorPlan7`
 
- (keyboard[screen size changable]) : `python explore.py -s {AI2THOR scene name} -sw {Screen Width} -sh {Screen Height}`
+ (keyboard [screen size changable]) : `python explore.py -s {AI2THOR scene name} -sw {Screen Width} -sh {Screen Height}`
 - e.g., `python explore.py -s FloorPlan7 -sw 1000 -sh 800`
 
 (GC) : `python sixaxis_explore.py -e {a path of param.json} -s {AI2THOR scene name} -o {target object}`
