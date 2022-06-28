@@ -9,6 +9,16 @@ from skimage.transform import resize
 from agent.environment.environment import Environment
 from torchvision import transforms
 from scipy import spatial
+
+with open('.env', mode='r', encoding='utf-8') as f:
+    target_path = "EXPERIMENT/" + f.readline().replace('\n', '')
+
+json_open = open(target_path + "/"+ "param.json", "r")
+json_load = json.load(json_open)
+
+bbox_method = json_load['bbox_method']
+print("bbox_method : {}".format(str(bbox_method))) #test
+
 class THORDiscreteEnvironment(Environment):
     acts = ["MoveForward", "RotateRight", "RotateLeft", "MoveBackward", "LookUp", "LookDown", "MoveRight", "MoveLeft", "Done"]
     @staticmethod
@@ -28,7 +38,8 @@ class THORDiscreteEnvironment(Environment):
             screen_height = 224,
             terminal_state_id = 0,
             terminal_state=0,
-            bbox_method=None,
+            # bbox_method=None,#origin
+            bbox_method=bbox_method,
             initial_state_id = None,
             h5_file_path = None,
             mask_size: int = 16,
@@ -242,9 +253,12 @@ class THORDiscreteEnvironment(Environment):
 
     @property
     def boudingbox(self):
-        if self.bbox_method is None:
+        # if self.bbox_method is None: #origin
+        if self.bbox_method == 'bbox':
+            # print("1) self.bbox_method : {}".format(self.bbox_method)) #test
             return json.loads(self.h5_file['bbox'][self.current_state_id])
         elif self.bbox_method == 'yolo':
+            # print("2) self.bbox_method : {}".format(self.bbox_method)) #test
             return json.loads(self.h5_file['yolo_bbox'][self.current_state_id])
 
     def render(self, mode):
