@@ -125,6 +125,9 @@ if __name__ == '__main__':
     parser.add_argument('--nepi', default=250,
                         help='num_episode Ex : 250') #add
 
+    parser.add_argument('--bbox_method', default='bbox',
+                    help='bbox_method can be changed : bbox or yolo') #add
+
     args_add = parser.parse_args() #add
 
     args = vars(parser.parse_args())
@@ -205,6 +208,7 @@ if __name__ == '__main__':
     data["Posi"] = False #add
     data["Key"] = "word2vec" #add
     data["NGPU"] = int(args_add.ngpu) #add origin 4
+    data["bbox_method"] = str(args_add.bbox_method) #add
 
     train_param = {}
     train_param["cuda"] = True
