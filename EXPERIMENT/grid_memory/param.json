@@ -1495,7 +1495,7 @@
     "bbox_method": "bbox",
     "train_param": {
         "cuda": true,
-        "num_thread": 20,
+        "num_thread": 8,
         "gamma": 0.7,
         "seed": 1993,
         "reward": "soft_goal",
