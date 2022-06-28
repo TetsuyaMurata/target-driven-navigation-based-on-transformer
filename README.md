@@ -55,16 +55,14 @@ to train or evaluate your network you need to use a json file as experiment. You
 If you would adopt method of 'grid_memory' to reproduce `Object Memory Transformer`, you cau run `create_experiment.py` like below.
  - `python create_experiment.py --env grid_memory --method grid_memory`
 
-and if you would also like to change the number of threads and GPUs used e.g. :
- - `python create_experiment.py --env grid_memory --method grid_memory --thread 8 --ngpu 2`
+and if you would also like to change the number of threads, GPUs and memory size used e.g. :
+ - `python create_experiment.py --env grid_memory --method grid_memory --thread 8 --ngpu 2 --memory 32`
 
 An experiment file which is named `.env` is for specifying processing target will be outputted. And In ENVIRONMENT, you can find a folder you made for example "grid_memory" and `param.json` in it.  
 
 If you would like to train or eval, execute below.
 - Train : `python -u train.py`
 - Eval : `python -u eval.py`
-
-`memory_size.py` is used to make memory size, e.g.,`python memory_size.py --memory 32`
 
 ### ABCI
 Set up your venv on abci:
