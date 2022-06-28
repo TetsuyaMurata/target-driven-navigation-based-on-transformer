@@ -23,10 +23,6 @@ import math
 import pathlib #ADD
 import glob #ADD
 
-# ###### ADD ######
-# with open('target_path.txt', mode='r', encoding='utf-8') as f:
-#     target_path = f.readline().replace('\n', '')
-
 with open('.env', mode='r', encoding='utf-8') as f:
     target_path = "EXPERIMENT/" + f.readline().replace('\n', '')
 print("TARGET : {}".format(target_path.replace("EXPERIMENT/", "")))
@@ -37,11 +33,11 @@ with open('.target_path', mode='w', encoding='utf-8') as f:
 with open(".error_point", mode="w", encoding="utf-8") as f_error:
     f_error.write("")
 
-with open(".memory_size", mode="r", encoding="utf-8") as f_memory:
-    memory_size_read = int(f_memory.readline())
-print("!!! memory_size : {} !!!".format(memory_size_read)) #test
-# get_hist_num = target_path.replace(' ', '').split("hist")[0].split("/")[-1]
-# print("!!! evaluation {} !!!".format(get_hist_num)) #test
+json_open = open(target_path + "/"+ "param.json", "r")
+json_load = json.load(json_open)
+
+memory_size_read = json_load['memory']
+print("(evaluation) memory_size : {}".format(str(memory_size_read))) #test
 
 output_log_path = target_path
 

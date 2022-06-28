@@ -19,9 +19,16 @@ import csv
 import os
 from torchvision import transforms
 import math
+import json
 
-with open(".memory_size", mode="r", encoding="utf-8") as f_memory:
-    memory_size_read = int(f_memory.readline())
+with open('.env', mode='r', encoding='utf-8') as f:
+    target_path = "EXPERIMENT/" + f.readline().replace('\n', '')
+
+json_open = open(target_path + "/"+ "param.json", "r")
+json_load = json.load(json_open)
+
+memory_size_read = json_load['memory']
+print("(tr_thread) memory_size : {}".format(str(memory_size_read))) #test
 
 TrainingSample = namedtuple('TrainingSample', ('state', 'policy', 'value', 'action_taken', 'goal', 'R', 'temporary_difference'))
 

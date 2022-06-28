@@ -11,10 +11,14 @@ import scipy.sparse as sp
 import torchvision.models as models
 from agent import transformer as TF
 
-### ADD ###
-with open(".memory_size", mode="r", encoding="utf-8") as f_memory:
-    memory_size_read = int(f_memory.readline())
-### ADD ###
+with open('.env', mode='r', encoding='utf-8') as f:
+    target_path = "EXPERIMENT/" + f.readline().replace('\n', '')
+
+json_open = open(target_path + "/"+ "param.json", "r")
+json_load = json.load(json_open)
+
+memory_size_read = json_load['memory']
+print("(network) memory_size : {}".format(str(memory_size_read))) #test
 
 class SharedNetwork(nn.Module):
     """ Bottom network, will extract feature for the policy network
