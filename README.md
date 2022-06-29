@@ -93,7 +93,7 @@ If you would use these scripts at `ABCI`(AI Bridging Cloud Infrastructure), they
 - Eval : `bash eval_transformer_abci.sh`
 
 ### Calculation
-You can use `category_score_mean.py` to calculate an average score of an agent by FloorPlan from the log files after evaluation, even if there are a lot of them. The results will be generated as `category_score_mean_eval...csv`. You also are able to use `step_mean_sample_count.py` to know average steps or a number of data by FloorPlan under the circumstances are "Failure on the way", "Failure at max(300steps)", "Success". `category_score_mean_all_fin_ave.py` calculates the average of scores in all of "category_score_mean_eval.... .csv". These scripts need a `pandas` of library.
+You can use `category_score_mean.py` to calculate an average score of an agent by FloorPlan from the log files after evaluation, even if there are a lot of them. The results will be generated as `category_score_mean_eval...csv`. `category_score_mean_all_fin_ave.py` calculates the average of scores in all of "category_score_mean_eval.... .csv". You also are able to use `step_mean_sample_count.py` to know average steps or a number of data by FloorPlan under the circumstances are "Failure on the way", "Failure at max(300steps)", "Success". These scripts need a `pandas` of library.
 
 # Yolo_dataset
 
