@@ -116,7 +116,7 @@ if __name__ == '__main__':
                         help='action_size Ex : 9') #add
 
     parser.add_argument('--ngpu', default=4,
-                        help='NGPU Ex : 4') #add
+                        help='NGPU(Number of GPUs used) Ex : 4') #add
 
     parser.add_argument('--key', default="word2vec",
                         help='Key Ex : "word2vec"') #add
