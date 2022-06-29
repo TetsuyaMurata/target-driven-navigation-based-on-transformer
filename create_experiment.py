@@ -93,20 +93,15 @@ def extract_word_emb_vector(nlp, word_name):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
         description='Create param.json experiment file')
+
+    parser.add_argument('--env', default='',
+                        help='Create a directory and .env') #add Default, Output to EXPERIMENT, Escape override
+
     parser.add_argument('--train_range', nargs=2, default=TRAIN_SPLIT,
                         help='train scene range Ex : 1 11')
 
     parser.add_argument('--eval_range', nargs=2, default=TEST_SPLIT,
                         help='train scene range Ex : 22 27')
-    parser.add_argument('--method', type=str, default="grid_memory",
-                        help='Method to use Ex : grid_memory')
-    parser.add_argument('--reward', type=str, default="soft_goal",
-                        help='Method to use Ex : soft_goal')
-
-    parser.add_argument('--eval_objects', action="store_true")
-
-    parser.add_argument('--env', default='',
-                        help='Create a directory and .env') #add Default, Output to EXPERIMENT, Escape override
 
     parser.add_argument('--tstep', default=25000000,
                         help='total_step Ex : 25000000') #add
@@ -114,23 +109,46 @@ if __name__ == '__main__':
     parser.add_argument('--period', default=1000000,
                         help='saving_period Ex : 1000000') #add
 
-    parser.add_argument('--thread', default=8,
-                        help='num_thread Ex : 8') #add
+    parser.add_argument('--max_t', default=5,
+                        help='max_t Ex : 5') #add
+
+    parser.add_argument('--actions', default=9,
+                        help='action_size Ex : 9') #add
 
     parser.add_argument('--ngpu', default=4,
                         help='NGPU Ex : 4') #add
 
-    parser.add_argument('--seed', default=1993,
-                        help='seed Ex : 1993') #add
+    parser.add_argument('--key', default="word2vec",
+                        help='Key Ex : "word2vec"') #add
 
-    parser.add_argument('--nepi', default=250,
-                        help='num_episode Ex : 250') #add
+    parser.add_argument('--memory', default=32,
+                    help='memory size can be changed Ex : 32') #add
 
     parser.add_argument('--bbox_method', default='bbox',
                     help='bbox_method can be changed : bbox or yolo') #add
 
-    parser.add_argument('--memory', default=32,
-                    help='memory size can be changed Ex : 32') #add
+    parser.add_argument('--thread', default=8,
+                        help='num_thread Ex : 8') #add
+
+    parser.add_argument('--gamma', default=0.7,
+                        help='gamma Ex : 0.7') #add
+
+    parser.add_argument('--seed', default=1993,
+                        help='seed Ex : 1993') #add
+
+    parser.add_argument('--reward', type=str, default="soft_goal",
+                        help='Method to use Ex : soft_goal')
+
+    parser.add_argument('--masks', default=16,
+                        help='mask_size Ex : 16') #add
+
+    parser.add_argument('--nepi', default=250,
+                        help='num_episode Ex : 250') #add
+
+    parser.add_argument('--method', type=str, default="grid_memory",
+                        help='Method to use Ex : grid_memory')
+
+    parser.add_argument('--eval_objects', action="store_true")
 
     args_add = parser.parse_args() #add
 
@@ -206,11 +224,11 @@ if __name__ == '__main__':
     data["total_step"] = int(args_add.tstep) #origin 25000000
     data["h5_file_path"] = "./data/{scene}.h5"
     data["saving_period"] = int(args_add.period) #origin 1000000
-    data["max_t"] = 5
-    data["action_size"] = 9
-    data["SSL"] = False #add
+    data["max_t"] = int(args_add.max_t) #add origin 5
+    data["action_size"] = int(args_add.actions) #add origin 9
+    data["SSL"] = False #add 
     data["Posi"] = False #add
-    data["Key"] = "word2vec" #add
+    data["Key"] = str(args_add.key) #add
     data["NGPU"] = int(args_add.ngpu) #add origin 4
     data["memory"] = int(args_add.memory) #add
     data["bbox_method"] = str(args_add.bbox_method) #add
@@ -218,10 +236,10 @@ if __name__ == '__main__':
     train_param = {}
     train_param["cuda"] = True
     train_param["num_thread"] = int(args_add.thread) #origin 8
-    train_param["gamma"] = 0.7
+    train_param["gamma"] = float(args_add.gamma) #origin 0.7
     train_param["seed"] = int(args_add.seed) #origin 1993
     train_param["reward"] = args["reward"]
-    train_param["mask_size"] = 16
+    train_param["mask_size"] = int(args_add.masks) #origin 16
 
     data["train_param"] = train_param
     data["eval_param"] = {}
