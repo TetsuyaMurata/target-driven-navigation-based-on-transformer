@@ -266,28 +266,33 @@ if __name__ == '__main__':
 
                 bboxs = []
                 for key, value in curr_bbox.items():
-                    keys = key.split('|')
+                    try:
+                        keys = key.split('|')
 
-                    # Convert to x center
-                    x = (value[0] + value[2]) / 2
+                        # Convert to x center
+                        x = (value[0] + value[2]) / 2
 
-                    # Convert to y center
-                    y = (value[1] + value[3]) / 2
+                        # Convert to y center
+                        y = (value[1] + value[3]) / 2
 
-                    width = value[2] - value[0]
-                    height = value[3] - value[1]
+                        width = value[2] - value[0]
+                        height = value[3] - value[1]
 
-                    # Normalize
-                    x = x / 400
-                    width = width / 400
-                    y = y / 300
-                    height = height / 300
-                    if width < 0.025 or height < 0.025:
+                        # Normalize
+                        x = x / 400
+                        width = width / 400
+                        y = y / 300
+                        height = height / 300
+                        if width < 0.025 or height < 0.025:
+                            continue
+                        # print("!!!!!!!!!!!!!!!!!!!!! " + keys[0]) #add
+                        bbox_str = str(OBJECT_IDS[keys[0]]) + \
+                            " {} {} {} {}".format(x, y, width, height)
+                        # print("********************* " + bbox_str) #add
+                        bboxs.append(bbox_str)
+                    except:
+                        print("(skip) : " + keys[0]) #add
                         continue
-
-                    bbox_str = str(OBJECT_IDS[keys[0]]) + \
-                        " {} {} {} {}".format(x, y, width, height)
-                    bboxs.append(bbox_str)
                 with open(base_path + img_name + '.txt', 'w') as bbox_f:
                     for bb in bboxs:
                         bbox_f.write(bb + '\n')
