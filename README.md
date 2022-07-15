@@ -1,6 +1,8 @@
 # Target Driven Navigation Based On Transformer
 This is repo is created based on [jkulhanek work](https://github.com/jkulhanek/visual-navigation-agent-pytorch) and [norips work (which is already disappeared)](https://github.com/norips/visual-navigation-agent-pytorch)  
 
+The code has been implemented and tested on Ubuntu 18.04, python 3.6, PyTorch 1.10.1 and CUDA 10.1
+
 ## Introduction
 
 This repository provides a PyTorch implementation of the paper "[Object Memory Transformer for Object Goal Navigation](https://arxiv.org/abs/2203.14708)"
