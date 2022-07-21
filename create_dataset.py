@@ -19,6 +19,7 @@ from tensorflow.python.keras.backend import set_session #after
 from tensorflow.python.keras import backend as K # add
 from PIL import Image
 from tqdm import tqdm
+import random #add
 
 import torchvision.models as models
 import torchvision.transforms as transforms
@@ -28,9 +29,8 @@ from pytorchyolo3.utils import *
 
 scene_type = []
 SCENES = [0, 200, 300, 400]
-TRAIN_SPLIT = (1, 22) # before
-# TRAIN_SPLIT = (1, 31) # after
-TEST_SPLIT = (22, 27) # before
+TRAIN_SPLIT = (1, 22)
+TEST_SPLIT = (22, 27)
 
 KITCHEN_OBJECT_CLASS_LIST = [
     "Toaster",
@@ -70,7 +70,7 @@ def construct_scene_names():
     return names, scene_type
 
 
-grid_size = 0.25 # origin 0.5
+grid_size = 0.5
 
 actions = ["MoveAhead", "RotateRight", "RotateLeft",
            "MoveBack", "LookUp", "LookDown", "MoveRight", "MoveLeft"]
@@ -270,7 +270,8 @@ def create_states(h5_file, resnet_trained, resnet_places, controller, name, args
                                          randomSeed=100, forceVisible=True, maxNumRepeats=30))
         else:
             state = controller.step(dict(action='InitialRandomSpawn',
-                                         randomSeed=200, forceVisible=True, maxNumRepeats=30))
+                                        #  randomSeed=200, forceVisible=True, maxNumRepeats=30)) #origin
+                                         randomSeed=random.randint(0, int(1e9)), forceVisible=True, maxNumRepeats=30)) #random object position
 
         # Check that every object is in scene
         scene_task = SCENE_TASKS[scene_type]
@@ -278,6 +279,7 @@ def create_states(h5_file, resnet_trained, resnet_places, controller, name, args
         for obj in state.metadata['objects']:
             objectId = obj['objectId']
             obj_name = objectId.split('|')[0]
+            # print("objectId : {0}, obj_name : {1}".format(objectId, obj_name)) #test
             for idx, _ in enumerate(obj_present):
                 if obj_name == scene_task[idx]:
                     obj_present[idx] = True
@@ -735,8 +737,7 @@ def main():
             else:
                 if not os.path.exists("data/"):
                     os.makedirs("data/")
-                h5_file = h5py.File("data/" + name + '.h5', 'a') #origin
-                #h5_file = h5py.File("/home/dl-box/mnt/a/visual-navigation-agent-pytorch-data/data/" + name + '.h5', 'a') #add
+                h5_file = h5py.File("data/" + name + '.h5', 'a')
 
         write_object_feature(h5_file,
                              object_feature, object_vector_spacy, object_vector_visualgenome)
