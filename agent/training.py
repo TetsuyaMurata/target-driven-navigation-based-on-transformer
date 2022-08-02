@@ -24,11 +24,6 @@ with open('.env', mode='r', encoding='utf-8') as f:
     target_path = "EXPERIMENT/" + f.readline().replace('\n', '')
 print("TARGET : {}".format(target_path.replace("EXPERIMENT/", "")))
 
-# with open(".restore", mode="r", encoding="utf-8") as f:
-#     restore_read = f.readline().replace('\n', '')
-#     print("RESTORE : {}".format(restore_read))
-
-# add    
 json_open = open(target_path + "/"+ "param.json", "r")
 json_load = json.load(json_open)
 TOTAL_PROCESSED_FRAMES = json_load['total_step']
