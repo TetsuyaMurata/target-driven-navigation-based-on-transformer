@@ -15,10 +15,24 @@ import re
 import time
 from agent.environment import Environment, THORDiscreteEnvironment
 from agent.summary_thread import SummaryThread
-#TOTAL_PROCESSED_FRAMES = 25 * 10**6 # 25 million frames
+import json #add
+# TOTAL_PROCESSED_FRAMES = 25 * 10**6 # 25 million frames
 #TOTAL_PROCESSED_FRAMES = 50 * 10**6 # 50 million frames
 #TOTAL_PROCESSED_FRAMES = 100 * 10**6 # 100 million frames
 
+with open('.env', mode='r', encoding='utf-8') as f:
+    target_path = "EXPERIMENT/" + f.readline().replace('\n', '')
+print("TARGET : {}".format(target_path.replace("EXPERIMENT/", "")))
+
+# with open(".restore", mode="r", encoding="utf-8") as f:
+#     restore_read = f.readline().replace('\n', '')
+#     print("RESTORE : {}".format(restore_read))
+
+# add    
+json_open = open(target_path + "/"+ "param.json", "r")
+json_load = json.load(json_open)
+TOTAL_PROCESSED_FRAMES = json_load['total_step']
+print("(TOTAL_PROCESSED_FRAMES) : {}".format(TOTAL_PROCESSED_FRAMES)) #add
 
 class TrainingSaver:
     def __init__(self, shared_network, scene_networks, optimizer, config, SSL):
@@ -117,6 +131,7 @@ class TrainingOptimizer:
         state_dict['optimizer'] = self.optimizer.state_dict()
         state_dict['scheduler'] = self.scheduler.state_dict()
         state_dict["global_step"] = self.global_step
+        # print(f"state_dict : {}".format(state_dict)) #add
         return state_dict
 
     def share_memory(self):
@@ -178,46 +193,84 @@ class AnnealingLRScheduler(torch.optim.lr_scheduler._LRScheduler):
         #        for base_lr in self.base_lrs]
 
 class Training:
-    def __init__(self, config):
-    #def __init__(self, device, SSL, NGPU,NThreads, method, config):
-
-        if torch.cuda.is_available() and config.get('cuda'):
-            self.cuda = True
-        else:
-            self.cuda = False
-        #self.cuda = config.get('cuda')
-        self.SSL = config.get('SSL')
-        self.Posi = config.get('Posi')
-        self.Key = config.get('Key')
-        self.NGPU = config.get('NGPU')
-        self.NThreads = config.get('num_thread')
-        self.method = config.get('method')
-        self.tasks = config.get('task_list')
-        self.action_size = config.get('action_size')
-        #self.device = device    #json
-        #self.SSL = SSL          #json   
-        #self.NGPU = NGPU    #json
-        #self.NThreads = NThreads #json
-        #self.method = method #json
-        #if self.method == 'word2vec_notarget':
-        #    self.action_size = 5
-        #else:
-        #    self.action_size = 4
-        self.log_path = config.get('log_path')
-        self.config = config
-        self.logger : logging.Logger = self._init_logger()
-        self.learning_rate = config.get('learning_rate')
-        self.rmsp_alpha = config.get('rmsp_alpha')
-        self.rmsp_epsilon = config.get('rmsp_epsilon')
-        self.grad_norm = config.get('grad_norm', 40.0)
-        #self.tasks = config.get('tasks', TASK_LIST)
-        self.checkpoint_path = config.get('checkpoint_path', 'model/checkpoint-{checkpoint}.pth')
-        #self.max_t = config.get('max_t', 5)
-        self.max_t = config.get('max_t')
-        #self.total_epochs = TOTAL_PROCESSED_FRAMES // self.max_t
-        self.total_epochs = config.get('total_step') // self.max_t
-        #self.total_epochs = TOTAL_PROCESSED_FRAMES
-        self.initialize()
+    if json_load["restore"] == "restore":
+        def __init__(self, device, SSL, NGPU,NThreads, method, config):
+            if torch.cuda.is_available() and config.get('cuda'):
+                self.cuda = True
+            else:
+                self.cuda = False
+            #self.cuda = config.get('cuda')
+            self.SSL = config.get('SSL')
+            self.Posi = config.get('Posi')
+            self.Key = config.get('Key')
+            self.NGPU = config.get('NGPU')
+            self.NThreads = config.get('num_thread')
+            self.method = config.get('method')
+            self.tasks = config.get('task_list')
+            self.action_size = config.get('action_size')
+            #self.device = device    #json
+            #self.SSL = SSL          #json   
+            #self.NGPU = NGPU    #json
+            #self.NThreads = NThreads #json
+            #self.method = method #json
+            #if self.method == 'word2vec_notarget':
+            #    self.action_size = 5
+            #else:
+            #    self.action_size = 4
+            self.log_path = config.get('log_path')
+            self.config = config
+            self.logger : logging.Logger = self._init_logger()
+            self.learning_rate = config.get('learning_rate')
+            self.rmsp_alpha = config.get('rmsp_alpha')
+            self.rmsp_epsilon = config.get('rmsp_epsilon')
+            self.grad_norm = config.get('grad_norm', 40.0)
+            #self.tasks = config.get('tasks', TASK_LIST)
+            self.checkpoint_path = config.get('checkpoint_path', 'model/checkpoint-{checkpoint}.pth')
+            #self.max_t = config.get('max_t', 5)
+            self.max_t = config.get('max_t')
+            #self.total_epochs = TOTAL_PROCESSED_FRAMES // self.max_t
+            self.total_epochs = config.get('total_step') // self.max_t
+            #self.total_epochs = TOTAL_PROCESSED_FRAMES
+            self.initialize()
+    else:
+        def __init__(self, config): # from zero 
+            if torch.cuda.is_available() and config.get('cuda'):
+                self.cuda = True
+            else:
+                self.cuda = False
+            #self.cuda = config.get('cuda')
+            self.SSL = config.get('SSL')
+            self.Posi = config.get('Posi')
+            self.Key = config.get('Key')
+            self.NGPU = config.get('NGPU')
+            self.NThreads = config.get('num_thread')
+            self.method = config.get('method')
+            self.tasks = config.get('task_list')
+            self.action_size = config.get('action_size')
+            #self.device = device    #json
+            #self.SSL = SSL          #json   
+            #self.NGPU = NGPU    #json
+            #self.NThreads = NThreads #json
+            #self.method = method #json
+            #if self.method == 'word2vec_notarget':
+            #    self.action_size = 5
+            #else:
+            #    self.action_size = 4
+            self.log_path = config.get('log_path')
+            self.config = config
+            self.logger : logging.Logger = self._init_logger()
+            self.learning_rate = config.get('learning_rate')
+            self.rmsp_alpha = config.get('rmsp_alpha')
+            self.rmsp_epsilon = config.get('rmsp_epsilon')
+            self.grad_norm = config.get('grad_norm', 40.0)
+            #self.tasks = config.get('tasks', TASK_LIST)
+            self.checkpoint_path = config.get('checkpoint_path', 'model/checkpoint-{checkpoint}.pth')
+            #self.max_t = config.get('max_t', 5)
+            self.max_t = config.get('max_t')
+            #self.total_epochs = TOTAL_PROCESSED_FRAMES // self.max_t
+            self.total_epochs = config.get('total_step') // self.max_t
+            #self.total_epochs = TOTAL_PROCESSED_FRAMES
+            self.initialize()
 
     @staticmethod
     def load_checkpoint(device, SSL, NGPU, NThreads, method, config, fail = True):
@@ -249,8 +302,13 @@ class Training:
             
         print(f'Restoring from checkpoint {restore_point}')
         state = torch.load(open(os.path.join(os.path.dirname(checkpoint_path), base_name), 'rb'))
-        #training = Training(device, state['config'] if 'config' in state else config)
-        training = Training(device, SSL, NGPU, NThreads, method, state['config'] if 'config' in state else config)
+        # print("&&&&& (state) &&&&& : {}".format(state)) #test add
+        
+        if json_load["restore"] == "restore":
+        # training = Training(device, SSL, NGPU, NThreads, method, state['config'] if 'config' in state else config) #origin
+            training = Training(device, SSL, NGPU, NThreads, method, config) #add
+        else:
+            training = Training(device, state['config'] if 'config' in state else config) #origin
         training.saver.restore(state) 
         print('Configuration')
         training.saver.print_config(offset = 4)       
