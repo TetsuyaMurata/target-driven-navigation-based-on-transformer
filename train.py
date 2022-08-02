@@ -109,11 +109,11 @@ if __name__ == '__main__':
 
     if json_load['restore']=="restore":
         t = Training.load_checkpoint(device, SSL, NGPU, NThreads, method, args)
-        print("!!!!!!!!!! (load_checkpoint) !!!!!!!!!!\n"*50) #add
+        print("!!!!!!!!!! (load_checkpoint) !!!!!!!!!!") #check
     else:
         #t = Training(device, SSL, NGPU, NThreads, method, args)
         t = Training(args)
-        print("########## (not load_checkpoint) ##########\n"*50) #add
+        print("########## (not load_checkpoint) ##########") #check
 
     t.run()
 
