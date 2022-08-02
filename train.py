@@ -5,7 +5,9 @@ import multiprocessing as mp
 
 from agent.training import Training
 from agent.utils import populate_config
+import json #add
 
+                                                                                                                                                                                                         
 with open('.env', mode='r', encoding='utf-8') as f:
     target_path = "EXPERIMENT/" + f.readline().replace('\n', '')
 print("TARGET : {}".format(target_path.replace("EXPERIMENT/", "")))
@@ -92,11 +94,26 @@ if __name__ == '__main__':
     torch.backends.cudnn.benchmark = False
     torch.set_num_threads(1)
     torch.manual_seed(args['seed'])
-    if args['restore']:
+
+    # add    
+    json_open = open(target_path + "/"+ "param.json", "r")
+    json_load = json.load(json_open)
+
+    device = json_load['train_param']['cuda']
+    SSL = json_load['SSL']
+    NGPU = json_load['NGPU']
+    NThreads = json_load['train_param']['num_thread']
+    method = json_load['method']
+    print("device : {}, SSL : {}, NGPU : {}, NThreads : {}, method : {}".format(str(device), str(SSL), str(NGPU), str(NThreads), str(method))) #test
+    
+
+    if json_load['restore']=="restore":
         t = Training.load_checkpoint(device, SSL, NGPU, NThreads, method, args)
+        print("!!!!!!!!!! (load_checkpoint) !!!!!!!!!!\n"*50) #add
     else:
         #t = Training(device, SSL, NGPU, NThreads, method, args)
         t = Training(args)
+        print("########## (not load_checkpoint) ##########\n"*50) #add
 
     t.run()
 

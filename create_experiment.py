@@ -127,6 +127,9 @@ if __name__ == '__main__':
     parser.add_argument('--bbox_method', default='bbox',
                     help='bbox_method can be changed : bbox or yolo') #add
 
+    parser.add_argument('--restore', default='normal',
+                    help='Loading check point can be changeable Ex : normal or restore') #add
+
     parser.add_argument('--thread', default=8,
                         help='num_thread Ex : 8') #add
 
@@ -232,6 +235,7 @@ if __name__ == '__main__':
     data["NGPU"] = int(args_add.ngpu) #add origin 4
     data["memory"] = int(args_add.memory) #add
     data["bbox_method"] = str(args_add.bbox_method) #add
+    data["restore"] = str(args_add.restore) #add
 
     train_param = {}
     train_param["cuda"] = True
