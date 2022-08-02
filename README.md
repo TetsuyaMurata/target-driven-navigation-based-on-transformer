@@ -62,6 +62,8 @@ and if you would also like to change the number of threads, GPUs and memory size
 
 An experiment file which is named `.env` is for specifying processing target will be outputted. And In ENVIRONMENT, you can find a folder you made for example "grid_memory" and `param.json` in it.  
 
+If you want to use a pth file that has already been trained and start training from there, change `"restore": "normal"` to `"restore": "restore"` in param.json.
+
 If you would like to train or eval, execute below.
 - Train : `python -u train.py`
 - Eval : `python -u eval.py`
