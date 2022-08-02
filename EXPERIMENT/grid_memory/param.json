@@ -1494,6 +1494,7 @@
     "NGPU": 2,
     "memory": 32,
     "bbox_method": "bbox",
+    "restore": "",
     "train_param": {
         "cuda": true,
         "num_thread": 8,
