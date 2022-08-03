@@ -107,7 +107,7 @@ if __name__ == '__main__':
     print("device : {}, SSL : {}, NGPU : {}, NThreads : {}, method : {}".format(str(device), str(SSL), str(NGPU), str(NThreads), str(method))) #test
     
 
-    if json_load['restore']=="restore":
+    if json_load['restore']:
         t = Training.load_checkpoint(device, SSL, NGPU, NThreads, method, args)
         print("!!!!!!!!!! (load_checkpoint) !!!!!!!!!!") #check
     else:
