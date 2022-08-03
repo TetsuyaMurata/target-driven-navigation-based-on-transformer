@@ -189,7 +189,6 @@ class AnnealingLRScheduler(torch.optim.lr_scheduler._LRScheduler):
 
 class Training:
     if json_load["restore"]:
-        print("training.py restore : ({})".format(json_load["restore"])) #test
         def __init__(self, device, SSL, NGPU,NThreads, method, config):
             if torch.cuda.is_available() and config.get('cuda'):
                 self.cuda = True
