@@ -24,6 +24,11 @@ with open('.env', mode='r', encoding='utf-8') as f:
     target_path = "EXPERIMENT/" + f.readline().replace('\n', '')
 print("TARGET : {}".format(target_path.replace("EXPERIMENT/", "")))
 
+# with open(".restore", mode="r", encoding="utf-8") as f:
+#     restore_read = f.readline().replace('\n', '')
+#     print("RESTORE : {}".format(restore_read))
+
+# add    
 json_open = open(target_path + "/"+ "param.json", "r")
 json_load = json.load(json_open)
 TOTAL_PROCESSED_FRAMES = json_load['total_step']
@@ -178,17 +183,26 @@ class AnnealingLRScheduler(torch.optim.lr_scheduler._LRScheduler):
         #self.max_t = max_t
         super(AnnealingLRScheduler, self).__init__(optimizer, last_epoch)
 
-    def get_lr(self):
-        #num_warmup_steps = 200000
-        #if self.last_epoch < num_warmup_steps:
-        #    return [(float(self.last_epoch) / float(max(1.0, num_warmup_steps))) * base_lr for base_lr in self.base_lrs]
-        return [base_lr * (1.0 - self.last_epoch / self.total_epochs)  
-                for base_lr in self.base_lrs]                           ####note this is different Raph's work
-        #return [base_lr * (1.0 - (self.last_epoch * self.max_t) / self.total_epochs)
-        #        for base_lr in self.base_lrs]
+    # def get_lr(self):
+    #     #num_warmup_steps = 200000
+    #     #if self.last_epoch < num_warmup_steps:
+    #     #    return [(float(self.last_epoch) / float(max(1.0, num_warmup_steps))) * base_lr for base_lr in self.base_lrs]
+    #     print("learning_rate : {}".format([base_lr * (1.0 - self.last_epoch / self.total_epochs) for base_lr in self.base_lrs]))
+    #     return [base_lr * (1.0 - self.last_epoch / self.total_epochs)  
+    #             for base_lr in self.base_lrs]                           ####note this is different Raph's work
+    #     #return [base_lr * (1.0 - (self.last_epoch * self.max_t) / self.total_epochs)
+    #     #        for base_lr in self.base_lrs]
 
+    def get_lr(self):
+        get_lr =  [base_lr * (1.0 - self.last_epoch / self.total_epochs) for base_lr in self.base_lrs]
+
+        if get_lr[0] < 0.0007001643593729748 * 0.01:
+            return [0.0007001643593729748 * 0.01]
+        else:
+            return get_lr
+        
 class Training:
-    if json_load["restore"]:
+    if json_load["restore"] == "restore":
         def __init__(self, device, SSL, NGPU,NThreads, method, config):
             if torch.cuda.is_available() and config.get('cuda'):
                 self.cuda = True
@@ -299,7 +313,7 @@ class Training:
         state = torch.load(open(os.path.join(os.path.dirname(checkpoint_path), base_name), 'rb'))
         # print("&&&&& (state) &&&&& : {}".format(state)) #test add
         
-        if json_load["restore"]:
+        if json_load["restore"] == "restore":
         # training = Training(device, SSL, NGPU, NThreads, method, state['config'] if 'config' in state else config) #origin
             training = Training(device, SSL, NGPU, NThreads, method, config) #add
         else:
