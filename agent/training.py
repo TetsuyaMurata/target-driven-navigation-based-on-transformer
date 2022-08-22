@@ -188,12 +188,12 @@ class AnnealingLRScheduler(torch.optim.lr_scheduler._LRScheduler):
     #     #        for base_lr in self.base_lrs]
     
     def get_lr(self):
-        get_lr =  [base_lr * (1.0 - self.last_epoch / self.total_epochs) for base_lr in self.base_lrs]
+        get_lr_l =  [base_lr * (1.0 - self.last_epoch / self.total_epochs) for base_lr in self.base_lrs]
 
-        if get_lr[0] < 0.0007001643593729748 * 0.01:
+        if get_lr_l[0] < 0.0007001643593729748 * 0.01:
             return [0.0007001643593729748 * 0.01]
         else:
-            return get_lr
+            return get_lr_l
 
 class Training:
     if json_load["restore"]:
