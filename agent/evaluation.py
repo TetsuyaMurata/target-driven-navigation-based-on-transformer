@@ -27,6 +27,9 @@ with open('.env', mode='r', encoding='utf-8') as f:
     target_path = "EXPERIMENT/" + f.readline().replace('\n', '')
 print("TARGET : {}".format(target_path.replace("EXPERIMENT/", "")))
 
+# for making videos by directories
+os.makedirs("video/" + target_path.replace("EXPERIMENT/", ""), exist_ok=True)
+
 with open('.target_path', mode='w', encoding='utf-8') as f:
     f.write(target_path)
 
@@ -481,7 +484,8 @@ class Evaluation:
         name_video = ['best', 'median', 'worst']
         ind_list = [index_best, index_median, index_worst]
         # Create dir if not exisiting
-        directory = os.path.join('./video/'+str(scene_scope))
+        # directory = os.path.join('./video/'+str(scene_scope)) #origin
+        directory = os.path.join('./video/' + target_path.replace("EXPERIMENT/", "") + '/' + str(scene_scope)) #add
         if not os.path.exists(directory):
             os.makedirs(directory)
         #for ind in range(len(ep_lengths)):#0-179
@@ -567,7 +571,8 @@ class Evaluation:
             names_video = ['Fail_' + str(i) for i in range(len(ind_succ_or_fail_ep))]
 
         # Create dir if not exisiting
-        directory = os.path.join('./video/'+str(scene_scope))
+        # directory = os.path.join('./video/'+str(scene_scope)) #origin
+        directory = os.path.join('./video/' + target_path.replace("EXPERIMENT/", "") + '/' + str(scene_scope)) #add
         if not os.path.exists(directory):
             os.makedirs(directory)
         for idx_name, idx in enumerate(ind_list):
@@ -1263,13 +1268,13 @@ class Evaluation:
                     ep_start = np.array(ep_start)
                     #self.create_topdown(ep_lengths, ep_start, ep_pos_x,ep_pos_y,ep_pos_xy,scene_scope,task_scope,ep_target)
                     
-                    #self.save_video(ep_lengths, ep_actions, ep_start, env, scene_scope, task_scope)##Rui
+                    # self.save_video(ep_lengths, ep_actions, ep_start, env, scene_scope, task_scope)##Rui
                     
-                    #if self.method =='word2vec_notarget' or self.method=='Transformer_word2vec_notarget':
+                    # if self.method =='word2vec_notarget' or self.method=='Transformer_word2vec_notarget':
                     #    self.save_video_word2vec(ep_lengths, ep_actions, ep_start, ind_succeed_ep, env, scene_scope, task_scope)
-                    #elif self.method =='Transformer_word2vec_notarget_word2vec_posi'or self.method =='Transformer_word2vec_notarget_word2vec_action' or self.method =='grid_memory' or self.method=="Transformer_word2vec_notarget_word2vec":
+                    # elif self.method =='Transformer_word2vec_notarget_word2vec_posi'or self.method =='Transformer_word2vec_notarget_word2vec_action' or self.method =='grid_memory' or self.method=="Transformer_word2vec_notarget_word2vec":
                     #    self.save_video_word2vec(ep_lengths, ep_actions, ep_start, ind_succeed_ep, env, scene_scope, task_scope,ep_enco, ep_deco)
-                    #else:
+                    # else:
                     #    self.save_video(ep_lengths, ep_actions, ep_start, env, scene_scope, task_scope)##Rui
                     if VERBOSE:
                         # with open("test.log", "a", encoding="utf-8") as f:
