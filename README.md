@@ -119,6 +119,10 @@ You cau operate an Agent by using KeyBoard(KB) or GameController(GC).
 (GC) : `python sixaxis_explore.py -e {a path of param.json} -s {AI2THOR scene name} -o {target object}`
 - e.g., `python sixaxis_explore.py -e ./EXPERIMENT/grid_memory/param.json -s FloorPlan7 -o Bowl`
 
+# Videos
+If you would like to create videos for watching agent's actions, it is good for you to use save_video or save_video_word2vec functions.
+For using them, you uncomment out 1266 row(save_video) or 1268~1273 row(save_video_word2vec) in `evaluation.py`.
+
 # Citation
 Please use this BibTex entry to cite our paper.
 ```
