@@ -121,7 +121,7 @@ You cau operate an Agent by using KeyBoard(KB) or GameController(GC).
 
 # Videos
 If you would like to create videos for watching agent's actions, it is good for you to use `save_video` or `save_video_word2vec` functions  in `evaluation.py`.
-You need to uncomment out 1266 row(save_video) or 1268~1273 row(save_video_word2vec).
+You need to uncomment out 1266 row(save_video) or 1268~1273 rows(save_video_word2vec).
 
 # Citation
 Please use this BibTex entry to cite our paper.
