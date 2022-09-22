@@ -61,6 +61,8 @@ class SharedNetwork(nn.Module):
             self.net = gcn_transformer(method, mask_size=mask_size)
         elif self.method =="grid_memory": #OMT
             self.net = Grid_memory(method, mask_size=mask_size)
+        elif self.method =="grid_memory_no_observation":
+            self.net = Grid_memory_no_observation(method, mask_size=mask_size)
         elif self.method =="grid_memory_action":
             self.net = Grid_memory_action(method, mask_size=mask_size)
         else:
@@ -253,7 +255,9 @@ class SceneSpecificNetwork(nn.Module):
     def __init__(self, action_space_size, method):
         super(SceneSpecificNetwork, self).__init__()
         self.method = method
-        if self.method =="Transformer_word2vec_notarget_word2vec"or self.method =="Transformer_word2vec_notarget_word2vec_posi" or self.method =='gcn_transformer' or self.method =="Transformer_word2vec_notarget_word2vec_concat" or self.method =='Transformer_word2vec_notarget_word2vec_action' or self.method =='grid_memory' or self.method =='Transformer_word2vec_notarget_word2vec_action_posi' or self.method =='grid_memory_action':
+        # if self.method =="Transformer_word2vec_notarget_word2vec"or self.method =="Transformer_word2vec_notarget_word2vec_posi" or self.method =='gcn_transformer' or self.method =="Transformer_word2vec_notarget_word2vec_concat" or self.method =='Transformer_word2vec_notarget_word2vec_action' or self.method =='grid_memory' or self.method =='Transformer_word2vec_notarget_word2vec_action_posi' or self.method =='grid_memory_action': #origin
+        if self.method =="Transformer_word2vec_notarget_word2vec"or self.method =="Transformer_word2vec_notarget_word2vec_posi" or self.method =='gcn_transformer' or self.method =="Transformer_word2vec_notarget_word2vec_concat" or self.method =='Transformer_word2vec_notarget_word2vec_action' or self.method =='grid_memory' or self.method=='grid_memory_no_observation' or self.method =='Transformer_word2vec_notarget_word2vec_action_posi' or self.method =='grid_memory_action':
+
             self.fc1 = nn.Linear(300, 300)
             #self.fc1 = nn.Linear(912, 512)
 
@@ -302,7 +306,8 @@ class SceneSpecificNetwork(nn.Module):
 
             x_value = self.fc2_value(x)[0]
             return (x_policy, x_value, memory, mask, act_memory, act_mask, encoder_atten_weights, decoder_atten_weights)
-        elif self.method == "grid_memory":
+        # elif self.method == "grid_memory": #origin
+        elif self.method == "grid_memory" or self.method == "grid_memory_no_observation":
             (x, memory, mask, grid_memory, grid_mask, encoder_atten_weights, decoder_atten_weights) = inp
             x = x.view(-1)
             x = self.fc1(x)
@@ -1806,6 +1811,7 @@ class GCN(nn.Module):
         x = self.mapping(x)
         return x
 
+
 class Grid_memory(nn.Module):
     """GCN implementation
     """
@@ -1954,6 +1960,168 @@ class Grid_memory(nn.Module):
         #xy = F.relu(xy, True)
         #xy = xy.view(1, 1, -1)
         return (xy, memory, mask, grid_memory, grid_mask, encoder_atten_weights, decoder_atten_weights)
+
+class Grid_memory_no_observation(nn.Module):
+    """GCN implementation
+    """
+    def save_gradient(self, grad):
+        self.gradient = grad
+
+    def hook_backward(self, module, grad_input, grad_output):
+        self.gradient_vanilla = grad_input[0]
+
+    def __init__(self, method, mask_size=5):
+        super(Grid_memory_no_observation, self).__init__()
+        self.word_embedding_size = 300
+        # Observation layer
+        #$$$$$$$$$$$
+        #self.fc_siemense= nn.Linear(2049, 512) #PosEnco
+        self.fc_siemense= nn.Linear(2048, 512) #PosEnco
+        #$$$$$$$$$$$
+        self.e = math.e
+
+        # Merge layer
+        #$$$$$$$$$$$
+        self.fc_merge = nn.Linear(912, 300)
+        #no marge $$$$$$$$$$$
+        #self.fc_word = nn.Linear(300, 912)
+        #no marge $$$$$$$$$$$
+        #self.fc_grid = nn.Linear(400, 300)
+        #$$$$$$$$$$$
+
+        #Transformer
+        self.transformer_model = TF.Transformer(d_model=300,nhead=5, num_encoder_layers=1,num_decoder_layers=1,dim_feedforward=300)
+        #self.fc_1 = nn.Linear(1200, 600)
+        #self.fc_2 = nn.Linear(600, 300)
+        #self.fc_1 = nn.Linear(9600, 600)
+        #self.fc_2 = nn.Linear(600, 300)
+
+        #position encoding
+        self.pos_encoder = PositionalEncoding_Sum(300) #Sum
+        #self.pos_encoder = PositionalEncoding_Concat(1) #Concat
+        # GCN layer
+
+        # Convolution for similarity grid
+        #pooling_kernel = 2
+        #self.conv1 = nn.Conv2d(1, 8, 3, stride=1)
+        #self.conv1.register_backward_hook(self.hook_backward)
+        #self.pool = nn.MaxPool2d(pooling_kernel, pooling_kernel)
+        #self.conv2 = nn.Conv2d(8, 16, 5, stride=1)
+
+        #conv1_output = (mask_size - 3 + 1)//pooling_kernel
+        #conv2_output = (conv1_output - 5 + 1)//pooling_kernel
+        #self.flat_input = 16 * conv2_output * conv2_output
+
+        # Convolution for similarity grid2 
+        pooling_kernel_2 = 2
+        self.conv1_2 = nn.Conv2d(1, 8, 3, stride=1)
+        self.conv1_2.register_backward_hook(self.hook_backward)
+        self.pool_2 = nn.MaxPool2d(pooling_kernel_2, pooling_kernel_2)
+        self.conv2_2 = nn.Conv2d(8, 16, 5, stride=1)
+
+        # context Merge layer 
+        #self.fc_merge_context = nn.Linear(812, 300)
+
+        #Dropout
+        #self.dropout = nn.Dropout(p=0.2)
+
+    def forward(self, inp):
+        # x is the observation (resnet feature stacked)
+        # z is ContextGrid
+
+        (x, z, memory, mask, word2vec, grid_memory, grid_mask, device) = inp #origin
+        # (z, mask, word2vec, grid_memory, grid_mask, device) = inp #add
+
+        x = x.view(-1) #origin
+        # x = torch.zeros(2048).view(-1) #except for resnet
+        # print("(network) zero over ride") #test
+        x = torch.zeros_like(x) #except for resnet
+        x = x.to(device) #except for resnet
+        memory = memory.to(device)
+        # print("(network) memory : {}".format(memory)) #test
+
+        memory, mask = update_memory(x, memory, mask,device)
+        mask = mask.view(1,-1)
+        amask = torch.tensor(mask.clone().detach(), dtype=bool).to(device)
+        memory = torch.zeros_like(memory) #except for resnet
+        # print("(network) memory : {}".format(memory)) #test
+        emmemory = memory
+        ###Concat####
+        #emmemory = self.pos_encoder(emmemory) 
+        
+        i = (mask[0] == 0).nonzero()[-1].numpy()[-1] + 1
+        j = F.relu(self.fc_siemense(emmemory[0:i]),True).view(i,-1)
+        # print("(network) j : {}".format(j)) #test
+        #j = self.dropout(F.relu(self.fc_siemense(emmemory[0:i]),True)).view(i,-1)
+
+
+        z = z.view(16, 16)
+        z = torch.autograd.Variable(z, requires_grad=True)
+        ###
+        grid_memory = grid_memory.to(device)
+        grid_memory, grid_mask = update_grid_memory(z, grid_memory, grid_mask, device)
+        grid_amask = torch.tensor(grid_mask.clone().detach(), dtype=bool).to(device)
+        grid_emmemory = grid_memory
+        grid_em_memory = torch.zeros(i,1, 8, 14, 14).to(device)
+        for l in range(i):
+            grid_em_memory[l] = self.conv1_2(grid_emmemory[l].view(1, 1, 16, 16))
+        grid_em_memory.register_hook(self.save_gradient)
+        self.conv_output = grid_em_memory
+        grid_em_memory2 = torch.zeros(i, 8, 7, 7).to(device)
+        grid_em_memory3 = torch.zeros(i, 400).to(device)
+        for l in range(i):
+            grid_em_memory2[l] = self.pool_2(F.relu(grid_em_memory[l]))
+            grid_em_memory3[l] = self.pool_2(F.relu(self.conv2_2(grid_em_memory[l]))).view(-1)
+        ###
+
+        #$$$$$$$$$$$
+        # print("(network) j : {}".format(j)) #test
+        k = torch.cat([j, grid_em_memory3], dim=1) #origin
+        # k = grid_em_memory3 #except for resnet
+        k = F.relu(self.fc_merge(k), True)
+        k = torch.cat([k,torch.zeros(memory_size_read-i,300).to(device)])
+
+        word2vec = torch.from_numpy(word2vec).to(device)
+        word2vec=word2vec.view(1,1,-1)
+
+        #no marge $$$$$$$$$$$
+        #k = torch.cat([k,torch.zeros(16-i,912).to(device)])
+        #word2vec = F.relu(self.fc_word(word2vec), True)
+        #word2vec = word2vec.view(1,1,-1)
+        #no marge $$$$$$$$$$$
+
+        #only obs. $$$$$$$$$$$
+        #k = grid_em_memory3
+        #k = F.relu(self.fc_grid(k), True)
+        #k = torch.cat([k,torch.zeros(memory_size_read-i,300).to(device)])
+        #$$$$$$$$$$$
+        k = self.pos_encoder(k)
+        k = k.view(memory_size_read, 1, -1)
+
+
+        #only obs. $$$$$$$$$$$
+        #x = x.view(-1)
+        #x = self.fc_siemense(x)
+        #x = F.relu(x, True)
+
+        xy, encoder_atten_weights, decoder_atten_weights = self.transformer_model(k, word2vec, src_key_padding_mask = amask, memory_key_padding_mask = amask)
+        ###no trans####
+        #k = k.view(-1)
+        #xy = self.fc_1(k)
+        #xy = F.relu(xy, True)
+        #xy = self.fc_2(xy)
+        #xy = F.relu(xy, True)
+        #encoder_atten_weights =torch.zeros(1).to(device)
+        #decoder_atten_weights = torch.zeros(1).to(device)
+
+        #only obs. $$$$$$$$$$$
+        #xy = xy.view(-1)
+        #xy = torch.cat([xy, x])
+        #xy = self.fc_merge_context(xy)
+        #xy = F.relu(xy, True)
+        #xy = xy.view(1, 1, -1)
+        return (xy, memory, mask, grid_memory, grid_mask, encoder_atten_weights, decoder_atten_weights)
+
 
 def update_grid_memory(observation, memory, mask, device):
     """

@@ -178,22 +178,14 @@ class AnnealingLRScheduler(torch.optim.lr_scheduler._LRScheduler):
         #self.max_t = max_t
         super(AnnealingLRScheduler, self).__init__(optimizer, last_epoch)
 
-    # def get_lr(self):
-    #     #num_warmup_steps = 200000
-    #     #if self.last_epoch < num_warmup_steps:
-    #     #    return [(float(self.last_epoch) / float(max(1.0, num_warmup_steps))) * base_lr for base_lr in self.base_lrs]
-    #     return [base_lr * (1.0 - self.last_epoch / self.total_epochs)  
-    #             for base_lr in self.base_lrs]                           ####note this is different Raph's work
-    #     #return [base_lr * (1.0 - (self.last_epoch * self.max_t) / self.total_epochs)
-    #     #        for base_lr in self.base_lrs]
-    
     def get_lr(self):
-        get_lr_l =  [base_lr * (1.0 - self.last_epoch / self.total_epochs) for base_lr in self.base_lrs]
-
-        if get_lr_l[0] < 0.0007001643593729748 * 0.01:
-            return [0.0007001643593729748 * 0.01]
-        else:
-            return get_lr_l
+        #num_warmup_steps = 200000
+        #if self.last_epoch < num_warmup_steps:
+        #    return [(float(self.last_epoch) / float(max(1.0, num_warmup_steps))) * base_lr for base_lr in self.base_lrs]
+        return [base_lr * (1.0 - self.last_epoch / self.total_epochs)  
+                for base_lr in self.base_lrs]                           ####note this is different Raph's work
+        #return [base_lr * (1.0 - (self.last_epoch * self.max_t) / self.total_epochs)
+        #        for base_lr in self.base_lrs]
 
 class Training:
     if json_load["restore"]:
@@ -384,7 +376,8 @@ class Training:
 
         # Prepare threads
         print(self.method)
-        if self.method=='word2vec_notarget' or self.method=='Transformer_word2vec_notarget'or self.method=='Transformer_word2vec_notarget_withposi'or self.method=='Transformer_word2vec_notarget_word2vec'or self.method=='Transformer_word2vec_notarget_word2vec_posi' or self.method=="gcn_transformer" or self.method =="Transformer_word2vec_notarget_word2vec_concat" or self.method == 'Transformer_word2vec_notarget_word2vec_action' or self.method =='grid_memory' or self.method=='Transformer_word2vec_notarget_action'or self.method=='Transformer_word2vec_notarget_word2vec_action_posi'or self.method=='grid_memory_action':
+        # if self.method=='word2vec_notarget' or self.method=='Transformer_word2vec_notarget'or self.method=='Transformer_word2vec_notarget_withposi'or self.method=='Transformer_word2vec_notarget_word2vec'or self.method=='Transformer_word2vec_notarget_word2vec_posi' or self.method=="gcn_transformer" or self.method =="Transformer_word2vec_notarget_word2vec_concat" or self.method == 'Transformer_word2vec_notarget_word2vec_action' or self.method =='grid_memory' or self.method=='Transformer_word2vec_notarget_action'or self.method=='Transformer_word2vec_notarget_word2vec_action_posi'or self.method=='grid_memory_action': #origin
+        if self.method=='word2vec_notarget' or self.method=='Transformer_word2vec_notarget'or self.method=='Transformer_word2vec_notarget_withposi'or self.method=='Transformer_word2vec_notarget_word2vec'or self.method=='Transformer_word2vec_notarget_word2vec_posi' or self.method=="gcn_transformer" or self.method =="Transformer_word2vec_notarget_word2vec_concat" or self.method == 'Transformer_word2vec_notarget_word2vec_action' or self.method =='grid_memory'  or self.method =='grid_memory_no_observation' or self.method=='Transformer_word2vec_notarget_action'or self.method=='Transformer_word2vec_notarget_word2vec_action_posi'or self.method=='grid_memory_action':
             branches = []
             for scene in self.tasks.keys():
                 it = 0
@@ -466,7 +459,8 @@ class Training:
                 print('Saving training session')
                 self.saver.save()
         else:
-            if self.method == 'word2vec_notarget' or self.method=='Baseline' or self.method=='Transformer_word2vec_notarget' or self.method == 'Transformer_Concat'or self.method=='Transformer_word2vec_notarget_withposi'or self.method=='Transformer_word2vec_notarget_word2vec'or self.method=='Transformer_word2vec_notarget_word2vec_posi'or self.method=="gcn_transformer" or self.method =="Transformer_word2vec_notarget_word2vec_concat"or self.method == 'Transformer_word2vec_notarget_word2vec_action'or self.method =='grid_memory'or self.method=='Transformer_word2vec_notarget_action'or self.method=='Transformer_word2vec_notarget_word2vec_action_posi'or self.method=='grid_memory_action':
+            # if self.method == 'word2vec_notarget' or self.method=='Baseline' or self.method=='Transformer_word2vec_notarget' or self.method == 'Transformer_Concat'or self.method=='Transformer_word2vec_notarget_withposi'or self.method=='Transformer_word2vec_notarget_word2vec'or self.method=='Transformer_word2vec_notarget_word2vec_posi'or self.method=="gcn_transformer" or self.method =="Transformer_word2vec_notarget_word2vec_concat"or self.method == 'Transformer_word2vec_notarget_word2vec_action'or self.method =='grid_memory'or self.method=='Transformer_word2vec_notarget_action'or self.method=='Transformer_word2vec_notarget_word2vec_action_posi'or self.method=='grid_memory_action': #origin
+            if self.method == 'word2vec_notarget' or self.method=='Baseline' or self.method=='Transformer_word2vec_notarget' or self.method == 'Transformer_Concat'or self.method=='Transformer_word2vec_notarget_withposi'or self.method=='Transformer_word2vec_notarget_word2vec'or self.method=='Transformer_word2vec_notarget_word2vec_posi'or self.method=="gcn_transformer" or self.method =="Transformer_word2vec_notarget_word2vec_concat"or self.method == 'Transformer_word2vec_notarget_word2vec_action'or self.method =='grid_memory'or self.method =='grid_memory_no_observation' or self.method=='Transformer_word2vec_notarget_action'or self.method=='Transformer_word2vec_notarget_word2vec_action_posi'or self.method=='grid_memory_action': #oadd
                 self.threads = []
                 # Queues will be used to pass info to summary thread
                 summary_queue = mp.Queue()
@@ -551,4 +545,3 @@ class Training:
         logger.setLevel(logging.INFO)
         logger.addHandler(logging.StreamHandler(sys.stdout))
         return logger
-

@@ -401,7 +401,8 @@ class Evaluation:
             #self.scene_nets = SceneSpecificNetwork(ACTION_SPACE_SIZE,self.method).to(self.device)
             self.scene_nets = SceneSpecificNetwork(self.action_size,self.method).to(self.device).eval()
         self.add_reward = config.get('ADDREWARD')
-        if self.method == "Transformer_Sum" or self.method =="Transformer_Concat" or "Transformer_word2vec_notarget" or self.method=="Transformer_word2vec_notarget_withposi" or self.method=="Transformer_word2vec_notarget_word2vec"or self.method=="Transformer_word2vec_notarget_word2vec_posi" or self.method=="Transformer_word2vec_notarget_word2vec_concat" or self.method=="Transformer_word2vec_notarget_action" or self.method=="Transformer_word2vec_notarget_word2vec_action" or self.method=="grid_memory" or self.method=='Transformer_word2vec_notarget_word2vec_action_posi' or self.method=="grid_memory_action":
+        # if self.method == "Transformer_Sum" or self.method =="Transformer_Concat" or "Transformer_word2vec_notarget" or self.method=="Transformer_word2vec_notarget_withposi" or self.method=="Transformer_word2vec_notarget_word2vec"or self.method=="Transformer_word2vec_notarget_word2vec_posi" or self.method=="Transformer_word2vec_notarget_word2vec_concat" or self.method=="Transformer_word2vec_notarget_action" or self.method=="Transformer_word2vec_notarget_word2vec_action" or self.method=="grid_memory" or self.method=='Transformer_word2vec_notarget_word2vec_action_posi' or self.method=="grid_memory_action": #origin
+        if self.method == "Transformer_Sum" or self.method =="Transformer_Concat" or "Transformer_word2vec_notarget" or self.method=="Transformer_word2vec_notarget_withposi" or self.method=="Transformer_word2vec_notarget_word2vec"or self.method=="Transformer_word2vec_notarget_word2vec_posi" or self.method=="Transformer_word2vec_notarget_word2vec_concat" or self.method=="Transformer_word2vec_notarget_action" or self.method=="Transformer_word2vec_notarget_word2vec_action" or self.method=="grid_memory" or self.method=="grid_memory_no_observation" or self.method=='Transformer_word2vec_notarget_word2vec_action_posi' or self.method=="grid_memory_action":
             ############MEMORY############
             # self.memory_size =32 #origin
             self.memory_size = memory_size_read #add
@@ -415,7 +416,8 @@ class Evaluation:
         (base_name, restore_point) = find_restore_point(checkpoint_path, fail)
         print(f'Restoring from checkpoint {restore_point}')
         ###### ADD ######
-        p_new = pathlib.Path(str(output_log_path) + '/eval' + str(restore_point) + '.log')
+        p_new = pathlib.Path(str(output_log_path) + '/eval' + str(restore_point) + '.log') #origin
+        # p_new = pathlib.Path(str(output_log_path) + '/vild/eval' + str(restore_point) + '.log') # log file outout dir change
         # print("$$$$$$$$$$ {} : ".format(count_files)) # count ok?
         with open("./tmp/output_log_path_{}.txt".format(count_files), mode="w", encoding="utf-8") as f:
             f.write(str(p_new))
@@ -486,6 +488,7 @@ class Evaluation:
         # Create dir if not exisiting
         # directory = os.path.join('./video/'+str(scene_scope)) #origin
         directory = os.path.join('./video/' + target_path.replace("EXPERIMENT/", "") + '/' + str(scene_scope)) #add
+
         if not os.path.exists(directory):
             os.makedirs(directory)
         #for ind in range(len(ep_lengths)):#0-179
@@ -525,7 +528,8 @@ class Evaluation:
             with open(text_name, 'w') as outfile:
                 json.dump(data, outfile, cls=MyEncoder, sort_keys=True, indent=4)
 
-    def save_video_word2vec(self, ep_lengths, ep_actions, ep_start, ind_succ_or_fail_ep, env, scene_scope, task_scope, ep_enco, ep_deco,success=True):
+    def save_video_word2vec(self, ep_lengths, ep_actions, ep_start, ind_succ_or_fail_ep, env, scene_scope, task_scope, ep_enco, ep_deco,success=True): #Origin
+    # def save_video_word2vec(self, ep_lengths, ep_actions, ep_start, ind_succ_or_fail_ep, env, scene_scope, task_scope, ep_enco, ep_deco,success=False):
         # Find episode based on episode length
         if not ind_succ_or_fail_ep:
             return
@@ -563,12 +567,12 @@ class Evaluation:
             # Extract index
             index_median = index_median[0][0]
             # print("Median", ep_lengths_succeed[index_median])
-
             names_video = ['best', 'median', 'worst']
             ind_list = [index_best, index_median, index_worst]
         else:
             ind_list = [i for i in range(len(ind_succ_or_fail_ep))]
             names_video = ['Fail_' + str(i) for i in range(len(ind_succ_or_fail_ep))]
+            print("names_video : {}".format(names_video)) #add
 
         # Create dir if not exisiting
         # directory = os.path.join('./video/'+str(scene_scope)) #origin
@@ -585,6 +589,7 @@ class Evaluation:
             video_name = os.path.join(filename + '.avi')
             text_name = os.path.join(filename + '.json')
             FPS = 5
+            # print("(evaluation) video output") #test
             video = cv2.VideoWriter(
                 video_name, cv2.VideoWriter_fourcc(*"MJPG"), FPS, (width, height))
             # Retrieve start position
@@ -694,7 +699,8 @@ class Evaluation:
                 "current": env.render('resnet_features'),
                 "goal": env.render_target('word_features')
             }
-            if self.method == 'word2vec_notarget' or self.method=='Transformer_word2vec_notarget' or self.method=="Transformer_word2vec_notarget_withposi"or self.method=="Transformer_word2vec_notarget_word2vec"or self.method=="Transformer_word2vec_notarget_word2vec_posi"or self.method=="Transformer_word2vec_notarget_word2vec_concat"or self.method=="Transformer_word2vec_notarget_action" or self.method=="Transformer_word2vec_notarget_word2vec_action"or self.method=="grid_memory"or self.method=='Transformer_word2vec_notarget_word2vec_action_posi'or self.method=="grid_memory_action":
+            # if self.method == 'word2vec_notarget' or self.method=='Transformer_word2vec_notarget' or self.method=="Transformer_word2vec_notarget_withposi"or self.method=="Transformer_word2vec_notarget_word2vec"or self.method=="Transformer_word2vec_notarget_word2vec_posi"or self.method=="Transformer_word2vec_notarget_word2vec_concat"or self.method=="Transformer_word2vec_notarget_action" or self.method=="Transformer_word2vec_notarget_word2vec_action"or self.method=="grid_memory"or self.method=='Transformer_word2vec_notarget_word2vec_action_posi'or self.method=="grid_memory_action": #origin
+            if self.method == 'word2vec_notarget' or self.method=='Transformer_word2vec_notarget' or self.method=="Transformer_word2vec_notarget_withposi"or self.method=="Transformer_word2vec_notarget_word2vec"or self.method=="Transformer_word2vec_notarget_word2vec_posi"or self.method=="Transformer_word2vec_notarget_word2vec_concat"or self.method=="Transformer_word2vec_notarget_action" or self.method=="Transformer_word2vec_notarget_word2vec_action"or self.method=="grid_memory"or self.method=="grid_memory_no_observation"or self.method=='Transformer_word2vec_notarget_word2vec_action_posi'or self.method=="grid_memory_action": #add
                 state["object_mask"] = env.render_mask_similarity()
                 x_processed = torch.from_numpy(state["current"])
                 object_mask = torch.from_numpy(state['object_mask'])
@@ -719,7 +725,8 @@ class Evaluation:
                 scene_net = self.scene_nets[scene_scope]
             else:
                 scene_net = self.scene_nets
-            if self.method=='word2vec_notarget' or self.method=='Baseline' or self.method=='Transformer_word2vec_notarget' or self.method =='Transformer_Concat' or self.method=="Transformer_word2vec_notarget_withposi"or self.method=="Transformer_word2vec_notarget_word2vec"or self.method=="Transformer_word2vec_notarget_word2vec_posi"or self.method=="Transformer_word2vec_notarget_word2vec_concat"or self.method=="Transformer_word2vec_notarget_action" or self.method=="Transformer_word2vec_notarget_word2vec_action"or self.method=="grid_memory"or self.method=='Transformer_word2vec_notarget_word2vec_action_posi'or self.method=="grid_memory_action":
+            # if self.method=='word2vec_notarget' or self.method=='Baseline' or self.method=='Transformer_word2vec_notarget' or self.method =='Transformer_Concat' or self.method=="Transformer_word2vec_notarget_withposi"or self.method=="Transformer_word2vec_notarget_word2vec"or self.method=="Transformer_word2vec_notarget_word2vec_posi"or self.method=="Transformer_word2vec_notarget_word2vec_concat"or self.method=="Transformer_word2vec_notarget_action" or self.method=="Transformer_word2vec_notarget_word2vec_action"or self.method=="grid_memory"or self.method=='Transformer_word2vec_notarget_word2vec_action_posi'or self.method=="grid_memory_action": #origin
+            if self.method=='word2vec_notarget' or self.method=='Baseline' or self.method=='Transformer_word2vec_notarget' or self.method =='Transformer_Concat' or self.method=="Transformer_word2vec_notarget_withposi"or self.method=="Transformer_word2vec_notarget_word2vec"or self.method=="Transformer_word2vec_notarget_word2vec_posi"or self.method=="Transformer_word2vec_notarget_word2vec_concat"or self.method=="Transformer_word2vec_notarget_action" or self.method=="Transformer_word2vec_notarget_word2vec_action"or self.method=="grid_memory"or self.method=="grid_memory_no_observation"or self.method=='Transformer_word2vec_notarget_word2vec_action_posi'or self.method=="grid_memory_action": #add
                 scene_stats[scene_scope] = dict()
                 scene_stats[scene_scope]["length"] = list()
                 scene_stats[scene_scope]["spl"] = list()
@@ -732,7 +739,8 @@ class Evaluation:
             scene_success[scene_scope] = list()
             for task_scope in items:
                 try: #add
-                    if self.method=='word2vec_notarget' or self.method=='Transformer_word2vec_notarget' or self.method=="Transformer_word2vec_notarget_withposi"or self.method=="Transformer_word2vec_notarget_word2vec"or self.method=="Transformer_word2vec_notarget_word2vec_posi"or self.method=="Transformer_word2vec_notarget_word2vec_concat"or self.method=="Transformer_word2vec_notarget_action" or self.method=="Transformer_word2vec_notarget_word2vec_action"or self.method=="grid_memory"or self.method=='Transformer_word2vec_notarget_word2vec_action_posi'or self.method=="grid_memory_action":
+                    # if self.method=='word2vec_notarget' or self.method=='Transformer_word2vec_notarget' or self.method=="Transformer_word2vec_notarget_withposi"or self.method=="Transformer_word2vec_notarget_word2vec"or self.method=="Transformer_word2vec_notarget_word2vec_posi"or self.method=="Transformer_word2vec_notarget_word2vec_concat"or self.method=="Transformer_word2vec_notarget_action" or self.method=="Transformer_word2vec_notarget_word2vec_action"or self.method=="grid_memory"or self.method=='Transformer_word2vec_notarget_word2vec_action_posi'or self.method=="grid_memory_action": #origin
+                    if self.method=='word2vec_notarget' or self.method=='Transformer_word2vec_notarget' or self.method=="Transformer_word2vec_notarget_withposi"or self.method=="Transformer_word2vec_notarget_word2vec"or self.method=="Transformer_word2vec_notarget_word2vec_posi"or self.method=="Transformer_word2vec_notarget_word2vec_concat"or self.method=="Transformer_word2vec_notarget_action" or self.method=="Transformer_word2vec_notarget_word2vec_action"or self.method=="grid_memory"or self.method=="grid_memory_no_observation"or self.method=='Transformer_word2vec_notarget_word2vec_action_posi'or self.method=="grid_memory_action": #add
                         env = THORDiscreteEnvironment(
                                                     scene_name=scene_scope,
                                                     terminal_state=task_scope,
@@ -773,7 +781,8 @@ class Evaluation:
                     ep_enco = []
                     ep_deco = []
                     ep_fail_threshold = 300
-                    if self.method=='word2vec_notarget' or self.method=='Baseline' or self.method=='Transformer_word2vec_notarget'or self.method =='Transformer_Concat' or self.method=="Transformer_word2vec_notarget_withposi"or self.method=="Transformer_word2vec_notarget_word2vec"or self.method=="Transformer_word2vec_notarget_word2vec_posi"or self.method=="Transformer_word2vec_notarget_word2vec_concat"or self.method=="Transformer_word2vec_notarget_action" or self.method=="Transformer_word2vec_notarget_word2vec_action"or self.method=="grid_memory"or self.method=='Transformer_word2vec_notarget_word2vec_action_posi'or self.method=="grid_memory_action":
+                    # if self.method=='word2vec_notarget' or self.method=='Baseline' or self.method=='Transformer_word2vec_notarget'or self.method =='Transformer_Concat' or self.method=="Transformer_word2vec_notarget_withposi"or self.method=="Transformer_word2vec_notarget_word2vec"or self.method=="Transformer_word2vec_notarget_word2vec_posi"or self.method=="Transformer_word2vec_notarget_word2vec_concat"or self.method=="Transformer_word2vec_notarget_action" or self.method=="Transformer_word2vec_notarget_word2vec_action"or self.method=="grid_memory"or self.method=='Transformer_word2vec_notarget_word2vec_action_posi'or self.method=="grid_memory_action": #origin
+                    if self.method=='word2vec_notarget' or self.method=='Baseline' or self.method=='Transformer_word2vec_notarget'or self.method =='Transformer_Concat' or self.method=="Transformer_word2vec_notarget_withposi"or self.method=="Transformer_word2vec_notarget_word2vec"or self.method=="Transformer_word2vec_notarget_word2vec_posi"or self.method=="Transformer_word2vec_notarget_word2vec_concat"or self.method=="Transformer_word2vec_notarget_action" or self.method=="Transformer_word2vec_notarget_word2vec_action"or self.method=="grid_memory"or self.method=="grid_memory_no_observation"or self.method=='Transformer_word2vec_notarget_word2vec_action_posi'or self.method=="grid_memory_action": #add
                         ep_shortest_distance = []
                         embedding_vectors = []
                         state_ids = list()
@@ -824,12 +833,14 @@ class Evaluation:
                             self.states = [[-1] for i in range(self.memory_size)]
                             self.actions = [[-1] for i in range(self.memory_size)]
                             self.prev_states = [[-1] for i in range(self.memory_size)]
-                        if self.method =="Transformer_Concat" or self.method =="Transformer_Sum" or self.method=='Transformer_word2vec_notarget' or self.method=="Transformer_word2vec_notarget_withposi"or self.method=="Transformer_word2vec_notarget_word2vec"or self.method=="Transformer_word2vec_notarget_word2vec_posi"or self.method=="Transformer_word2vec_notarget_word2vec_concat"or self.method=="Transformer_word2vec_notarget_action" or self.method=="Transformer_word2vec_notarget_word2vec_action"or self.method=="grid_memory"or self.method=='Transformer_word2vec_notarget_word2vec_action_posi'or self.method=="grid_memory_action":
+                        # if self.method =="Transformer_Concat" or self.method =="Transformer_Sum" or self.method=='Transformer_word2vec_notarget' or self.method=="Transformer_word2vec_notarget_withposi"or self.method=="Transformer_word2vec_notarget_word2vec"or self.method=="Transformer_word2vec_notarget_word2vec_posi"or self.method=="Transformer_word2vec_notarget_word2vec_concat"or self.method=="Transformer_word2vec_notarget_action" or self.method=="Transformer_word2vec_notarget_word2vec_action"or self.method=="grid_memory"or self.method=='Transformer_word2vec_notarget_word2vec_action_posi'or self.method=="grid_memory_action": #origin
+                        if self.method =="Transformer_Concat" or self.method =="Transformer_Sum" or self.method=='Transformer_word2vec_notarget' or self.method=="Transformer_word2vec_notarget_withposi"or self.method=="Transformer_word2vec_notarget_word2vec"or self.method=="Transformer_word2vec_notarget_word2vec_posi"or self.method=="Transformer_word2vec_notarget_word2vec_concat"or self.method=="Transformer_word2vec_notarget_action" or self.method=="Transformer_word2vec_notarget_word2vec_action"or self.method=="grid_memory"or self.method=="grid_memory_no_observation"or self.method=='Transformer_word2vec_notarget_word2vec_action_posi'or self.method=="grid_memory_action":
                             memory = torch.zeros(self.memory_size, self.embed_size)            
                             mask = torch.ones(self.memory_size)
                             theta = 0
                             positions = [[0,0, theta] for i in range(self.memory_size)]
-                        if self.method=="grid_memory"or self.method=="grid_memory_action":
+                        # if self.method=="grid_memory"or self.method=="grid_memory_action": #origin
+                        if self.method=="grid_memory"or self.method=="grid_memory_no_observation"or self.method=="grid_memory_action": #add
                             grid_memory = torch.zeros(self.memory_size, 16, 16)
                             grid_mask = torch.ones(self.memory_size)
                         if self.method=="Transformer_word2vec_notarget_action" or self.method=="Transformer_word2vec_notarget_word2vec_action"or self.method=='Transformer_word2vec_notarget_word2vec_action_posi'or self.method=="grid_memory_action":
@@ -962,7 +973,8 @@ class Evaluation:
                                     mask = mask.view(self.memory_size)
                                     act_memory = act_memory.view(self.memory_size, 8)
                                     act_mask = act_mask.view(self.memory_size)
-                            elif self.method=="grid_memory":
+                            # elif self.method=="grid_memory": #origin
+                            elif self.method=="grid_memory" or self.method=="grid_memory_no_observation":
                                 state, x_processed, object_mask = self.extract_input(env, self.device)
                                 (policy, value, memory, mask, grid_memory, grid_mask, encoder_atten_weights, decoder_atten_weights) = scene_net.forward(self.shared_net.forward((x_processed[:,-1], object_mask, memory, mask, env.s_target, grid_memory, grid_mask, self.device)))
                                 if self.device != "cpu":
@@ -1151,7 +1163,8 @@ class Evaluation:
                             pos_xy.append(Pos_xy)
                             enco_attens.append(encoder_atten_weights)
                             deco_attens.append(decoder_atten_weights)
-                            if self.method =='word2vec_notarget' or self.method=='Transformer_word2vec_notarget' or self.method=="Transformer_word2vec_notarget_withposi"or self.method=="Transformer_word2vec_notarget_word2vec" or self.method=="Transformer_word2vec_notarget_word2vec_posi"or self.method=="Transformer_word2vec_notarget_word2vec_concat" or self.method=="Transformer_word2vec_notarget_action"or self.method =="Transformer_word2vec_notarget_word2vec_action"or self.method =="grid_memory"or self.method =="Transformer_word2vec_notarget_word2vec_action_posi" or self.method=="grid_memory_action":
+                            # if self.method =='word2vec_notarget' or self.method=='Transformer_word2vec_notarget' or self.method=="Transformer_word2vec_notarget_withposi"or self.method=="Transformer_word2vec_notarget_word2vec" or self.method=="Transformer_word2vec_notarget_word2vec_posi"or self.method=="Transformer_word2vec_notarget_word2vec_concat" or self.method=="Transformer_word2vec_notarget_action"or self.method =="Transformer_word2vec_notarget_word2vec_action"or self.method =="grid_memory"or self.method =="Transformer_word2vec_notarget_word2vec_action_posi" or self.method=="grid_memory_action": #origin
+                            if self.method =='word2vec_notarget' or self.method=='Transformer_word2vec_notarget' or self.method=="Transformer_word2vec_notarget_withposi"or self.method=="Transformer_word2vec_notarget_word2vec" or self.method=="Transformer_word2vec_notarget_word2vec_posi"or self.method=="Transformer_word2vec_notarget_word2vec_concat" or self.method=="Transformer_word2vec_notarget_action"or self.method =="Transformer_word2vec_notarget_word2vec_action"or self.method =="grid_memory"or self.method =="grid_memory_no_observation"or self.method =="Transformer_word2vec_notarget_word2vec_action_posi" or self.method=="grid_memory_action": #add
                                 if ep_t >= ep_fail_threshold:##Rui
                                     terminal = True#Rui
                             else:
@@ -1159,7 +1172,8 @@ class Evaluation:
                                     terminal = True
 
 
-                        if self.method =='word2vec_notarget' or self.method=='Transformer_word2vec_notarget' or self.method=="Transformer_word2vec_notarget_withposi"or self.method=="Transformer_word2vec_notarget_word2vec" or self.method=="Transformer_word2vec_notarget_word2vec_posi"or self.method=="Transformer_word2vec_notarget_word2vec_concat"or self.method=="Transformer_word2vec_notarget_action"or self.method =="Transformer_word2vec_notarget_word2vec_action"or self.method =="grid_memory"or self.method =="Transformer_word2vec_notarget_word2vec_action_posi"or self.method=="grid_memory_action":
+                        # if self.method =='word2vec_notarget' or self.method=='Transformer_word2vec_notarget' or self.method=="Transformer_word2vec_notarget_withposi"or self.method=="Transformer_word2vec_notarget_word2vec" or self.method=="Transformer_word2vec_notarget_word2vec_posi"or self.method=="Transformer_word2vec_notarget_word2vec_concat"or self.method=="Transformer_word2vec_notarget_action"or self.method =="Transformer_word2vec_notarget_word2vec_action"or self.method =="grid_memory"or self.method =="Transformer_word2vec_notarget_word2vec_action_posi"or self.method=="grid_memory_action": #origin
+                        if self.method =='word2vec_notarget' or self.method=='Transformer_word2vec_notarget' or self.method=="Transformer_word2vec_notarget_withposi"or self.method=="Transformer_word2vec_notarget_word2vec" or self.method=="Transformer_word2vec_notarget_word2vec_posi"or self.method=="Transformer_word2vec_notarget_word2vec_concat"or self.method=="Transformer_word2vec_notarget_action"or self.method =="Transformer_word2vec_notarget_word2vec_action"or self.method =="grid_memory"or self.method =="grid_memory_no_observation"or self.method =="Transformer_word2vec_notarget_word2vec_action_posi"or self.method=="grid_memory_action": #add
                             if env.success:
                                 ep_success.append(True)
                             else:
@@ -1205,7 +1219,8 @@ class Evaluation:
                     #        f.write(f"{output_eval}\n")#ADD
                     #        print(output_eval)#ADD 
                     #print('evaluation: %s %s' % (scene_scope, task_scope))#origin
-                    if self.method =='word2vec_notarget' or self.method=='Transformer_word2vec_notarget' or self.method=="Transformer_word2vec_notarget_withposi"or self.method=="Transformer_word2vec_notarget_word2vec" or self.method=="Transformer_word2vec_notarget_word2vec_posi"or self.method=="Transformer_word2vec_notarget_word2vec_concat"or self.method=="Transformer_word2vec_notarget_action"or self.method =="Transformer_word2vec_notarget_word2vec_action"or self.method =="grid_memory"or self.method =="Transformer_word2vec_notarget_word2vec_action_posi"or self.method=="grid_memory_action":
+                    # if self.method =='word2vec_notarget' or self.method=='Transformer_word2vec_notarget' or self.method=="Transformer_word2vec_notarget_withposi"or self.method=="Transformer_word2vec_notarget_word2vec" or self.method=="Transformer_word2vec_notarget_word2vec_posi"or self.method=="Transformer_word2vec_notarget_word2vec_concat"or self.method=="Transformer_word2vec_notarget_action"or self.method =="Transformer_word2vec_notarget_word2vec_action"or self.method =="grid_memory"or self.method =="Transformer_word2vec_notarget_word2vec_action_posi"or self.method=="grid_memory_action": #origin
+                    if self.method =='word2vec_notarget' or self.method=='Transformer_word2vec_notarget' or self.method=="Transformer_word2vec_notarget_withposi"or self.method=="Transformer_word2vec_notarget_word2vec" or self.method=="Transformer_word2vec_notarget_word2vec_posi"or self.method=="Transformer_word2vec_notarget_word2vec_concat"or self.method=="Transformer_word2vec_notarget_action"or self.method =="Transformer_word2vec_notarget_word2vec_action"or self.method =="grid_memory"or self.method =="grid_memory_no_observation"or self.method =="Transformer_word2vec_notarget_word2vec_action_posi"or self.method=="grid_memory_action":
                         ind_succeed_ep = [
                             i for (i, ep_suc) in enumerate(ep_success) if ep_suc]
                         #print(ind_succeed_ep)
@@ -1269,10 +1284,10 @@ class Evaluation:
                     #self.create_topdown(ep_lengths, ep_start, ep_pos_x,ep_pos_y,ep_pos_xy,scene_scope,task_scope,ep_target)
                     
                     # self.save_video(ep_lengths, ep_actions, ep_start, env, scene_scope, task_scope)##Rui
-                    
                     # if self.method =='word2vec_notarget' or self.method=='Transformer_word2vec_notarget':
                     #    self.save_video_word2vec(ep_lengths, ep_actions, ep_start, ind_succeed_ep, env, scene_scope, task_scope)
-                    # elif self.method =='Transformer_word2vec_notarget_word2vec_posi'or self.method =='Transformer_word2vec_notarget_word2vec_action' or self.method =='grid_memory' or self.method=="Transformer_word2vec_notarget_word2vec":
+                    # # elif self.method =='Transformer_word2vec_notarget_word2vec_posi'or self.method =='Transformer_word2vec_notarget_word2vec_action' or self.method =='grid_memory' or self.method=="Transformer_word2vec_notarget_word2vec": #origin
+                    # elif self.method =='Transformer_word2vec_notarget_word2vec_posi'or self.method =='Transformer_word2vec_notarget_word2vec_action' or self.method =='grid_memory' or self.method =='grid_memory_no_observation' or self.method=="Transformer_word2vec_notarget_word2vec": #add
                     #    self.save_video_word2vec(ep_lengths, ep_actions, ep_start, ind_succeed_ep, env, scene_scope, task_scope,ep_enco, ep_deco)
                     # else:
                     #    self.save_video(ep_lengths, ep_actions, ep_start, env, scene_scope, task_scope)##Rui
