@@ -80,7 +80,8 @@ class THORDiscreteEnvironment(Environment):
         self.time = 0
         ###
         self.method = method
-        if self.method == 'word2vec_notarget' or self.method=='Transformer_word2vec_notarget'or self.method=='Transformer_word2vec_notarget_withposi'or self.method=='Transformer_word2vec_notarget_word2vec'or self.method=='Transformer_word2vec_notarget_word2vec_posi' or self.method=='gcn_transformer'or self.method =='Transformer_word2vec_notarget_word2vec_concat'or self.method == 'Transformer_word2vec_notarget_word2vec_action'or self.method =='grid_memory'or self.method=='Transformer_word2vec_notarget_action'or self.method=='Transformer_word2vec_notarget_word2vec_action_posi'or self.method=='grid_memory_action':
+        # if self.method == 'word2vec_notarget' or self.method=='Transformer_word2vec_notarget'or self.method=='Transformer_word2vec_notarget_withposi'or self.method=='Transformer_word2vec_notarget_word2vec'or self.method=='Transformer_word2vec_notarget_word2vec_posi' or self.method=='gcn_transformer'or self.method =='Transformer_word2vec_notarget_word2vec_concat'or self.method == 'Transformer_word2vec_notarget_word2vec_action'or self.method =='grid_memory'or self.method=='Transformer_word2vec_notarget_action'or self.method=='Transformer_word2vec_notarget_word2vec_action_posi'or self.method=='grid_memory_action': #origin
+        if self.method == 'word2vec_notarget' or self.method=='Transformer_word2vec_notarget'or self.method=='Transformer_word2vec_notarget_withposi'or self.method=='Transformer_word2vec_notarget_word2vec'or self.method=='Transformer_word2vec_notarget_word2vec_posi' or self.method=='gcn_transformer'or self.method =='Transformer_word2vec_notarget_word2vec_concat'or self.method == 'Transformer_word2vec_notarget_word2vec_action'or self.method =='grid_memory'or self.method =='grid_memory_no_observation'or self.method=='Transformer_word2vec_notarget_action'or self.method=='Transformer_word2vec_notarget_word2vec_action_posi'or self.method=='grid_memory_action': #add
             self.scene = scene_name
             self.success = False
             self.bbox_method = bbox_method
@@ -101,7 +102,8 @@ class THORDiscreteEnvironment(Environment):
 
     def get_initial_states(self, method, goal):
         initial_states = list()
-        if method =='Transformer_word2vec_notarget'or self.method=='Transformer_word2vec_notarget_withposi'or self.method=='Transformer_word2vec_notarget_word2vec'or self.method=='Transformer_word2vec_notarget_word2vec_posi' or self.method=='gcn_transformer'or self.method =='Transformer_word2vec_notarget_word2vec_concat'or self.method == 'Transformer_word2vec_notarget_word2vec_action'or self.method =='grid_memory'or self.method=='Transformer_word2vec_notarget_action'or self.method=='Transformer_word2vec_notarget_word2vec_action_posi'or self.method=='grid_memory_action':
+        # if method =='Transformer_word2vec_notarget'or self.method=='Transformer_word2vec_notarget_withposi'or self.method=='Transformer_word2vec_notarget_word2vec'or self.method=='Transformer_word2vec_notarget_word2vec_posi' or self.method=='gcn_transformer'or self.method =='Transformer_word2vec_notarget_word2vec_concat'or self.method == 'Transformer_word2vec_notarget_word2vec_action'or self.method =='grid_memory'or self.method=='Transformer_word2vec_notarget_action'or self.method=='Transformer_word2vec_notarget_word2vec_action_posi'or self.method=='grid_memory_action': #origin
+        if method =='Transformer_word2vec_notarget'or self.method=='Transformer_word2vec_notarget_withposi'or self.method=='Transformer_word2vec_notarget_word2vec'or self.method=='Transformer_word2vec_notarget_word2vec_posi' or self.method=='gcn_transformer'or self.method =='Transformer_word2vec_notarget_word2vec_concat'or self.method == 'Transformer_word2vec_notarget_word2vec_action'or self.method =='grid_memory'or self.method =='grid_memory_no_observation'or self.method=='Transformer_word2vec_notarget_action'or self.method=='Transformer_word2vec_notarget_word2vec_action_posi'or self.method=='grid_memory_action': #add
             while True:
                 for k in range(self.n_locations):
                     min_d = self.shortest_path_terminal(k)
@@ -168,7 +170,8 @@ class THORDiscreteEnvironment(Environment):
             return
         if self.transition_graph[k][action] != -1:
             self.current_state_id = self.transition_graph[k][action]
-            if self.method != 'word2vec_notarget' and self.method!='Transformer_word2vec_notarget'and self.method!='Transformer_word2vec_notarget_withposi'and self.method!='Transformer_word2vec_notarget_word2vec'and self.method!='Transformer_word2vec_notarget_word2vec_posi' and self.method!='gcn_transformer'and self.method !='Transformer_word2vec_notarget_word2vec_concat'and self.method != 'Transformer_word2vec_notarget_word2vec_action'and self.method !='grid_memory'and self.method!='Transformer_word2vec_notarget_action'and self.method!='Transformer_word2vec_notarget_word2vec_action_posi'and self.method!='grid_memory_action':
+            # if self.method != 'word2vec_notarget' and self.method!='Transformer_word2vec_notarget'and self.method!='Transformer_word2vec_notarget_withposi'and self.method!='Transformer_word2vec_notarget_word2vec'and self.method!='Transformer_word2vec_notarget_word2vec_posi' and self.method!='gcn_transformer'and self.method !='Transformer_word2vec_notarget_word2vec_concat'and self.method != 'Transformer_word2vec_notarget_word2vec_action'and self.method !='grid_memory'and self.method!='Transformer_word2vec_notarget_action'and self.method!='Transformer_word2vec_notarget_word2vec_action_posi'and self.method!='grid_memory_action': #origin
+            if self.method != 'word2vec_notarget' and self.method!='Transformer_word2vec_notarget'and self.method!='Transformer_word2vec_notarget_withposi'and self.method!='Transformer_word2vec_notarget_word2vec'and self.method!='Transformer_word2vec_notarget_word2vec_posi' and self.method!='gcn_transformer'and self.method !='Transformer_word2vec_notarget_word2vec_concat'and self.method != 'Transformer_word2vec_notarget_word2vec_action'and self.method !='grid_memory'and self.method !='grid_memory_no_observation'and self.method!='Transformer_word2vec_notarget_action'and self.method!='Transformer_word2vec_notarget_word2vec_action_posi'and self.method!='grid_memory_action': #add
                 if self.terminals[self.current_state_id]:
                     self.terminal = True
                     self.collided = False
@@ -182,7 +185,8 @@ class THORDiscreteEnvironment(Environment):
         self.s_t = np.append(self.s_t[:,1:], self._get_state(self.current_state_id), axis=1)
         self.time = self.time + 1
         self.last_action = action
-        if self.method == 'word2vec_notarget' or self.method=='Transformer_word2vec_notarget'or self.method=='Transformer_word2vec_notarget_withposi'or self.method=='Transformer_word2vec_notarget_word2vec'or self.method=='Transformer_word2vec_notarget_word2vec_posi' or self.method=='gcn_transformer'or self.method =='Transformer_word2vec_notarget_word2vec_concat'or self.method == 'Transformer_word2vec_notarget_word2vec_action'or self.method =='grid_memory'or self.method=='Transformer_word2vec_notarget_action'or self.method=='Transformer_word2vec_notarget_word2vec_action_posi'or self.method=='grid_memory_action':
+        # if self.method == 'word2vec_notarget' or self.method=='Transformer_word2vec_notarget'or self.method=='Transformer_word2vec_notarget_withposi'or self.method=='Transformer_word2vec_notarget_word2vec'or self.method=='Transformer_word2vec_notarget_word2vec_posi' or self.method=='gcn_transformer'or self.method =='Transformer_word2vec_notarget_word2vec_concat'or self.method == 'Transformer_word2vec_notarget_word2vec_action'or self.method =='grid_memory'or self.method=='Transformer_word2vec_notarget_action'or self.method=='Transformer_word2vec_notarget_word2vec_action_posi'or self.method=='grid_memory_action': #origin
+        if self.method == 'word2vec_notarget' or self.method=='Transformer_word2vec_notarget'or self.method=='Transformer_word2vec_notarget_withposi'or self.method=='Transformer_word2vec_notarget_word2vec'or self.method=='Transformer_word2vec_notarget_word2vec_posi' or self.method=='gcn_transformer'or self.method =='Transformer_word2vec_notarget_word2vec_concat'or self.method == 'Transformer_word2vec_notarget_word2vec_action'or self.method =='grid_memory'or self.method =='grid_memory_no_observation'or self.method=='Transformer_word2vec_notarget_action'or self.method=='Transformer_word2vec_notarget_word2vec_action_posi'or self.method=='grid_memory_action': #add
             self.bbox_area = self._get_max_bbox_area(
                 self.boudingbox, self.terminal_state['object'])
         #print(self.current_state_id)
@@ -208,7 +212,8 @@ class THORDiscreteEnvironment(Environment):
     
     def _calculate_reward(self, terminal, collided, method):
         # positive reward upon task completion
-        if method == 'word2vec_notarget' or method == 'Transformer_word2vec_notarget'or self.method=='Transformer_word2vec_notarget_withposi'or self.method=='Transformer_word2vec_notarget_word2vec'or self.method=='Transformer_word2vec_notarget_word2vec_posi' or self.method=='gcn_transformer'or self.method =='Transformer_word2vec_notarget_word2vec_concat'or self.method == 'Transformer_word2vec_notarget_word2vec_action'or self.method =='grid_memory'or self.method=='Transformer_word2vec_notarget_action'or self.method=='Transformer_word2vec_notarget_word2vec_action_posi'or self.method=='grid_memory_action':
+        # if method == 'word2vec_notarget' or method == 'Transformer_word2vec_notarget'or self.method=='Transformer_word2vec_notarget_withposi'or self.method=='Transformer_word2vec_notarget_word2vec'or self.method=='Transformer_word2vec_notarget_word2vec_posi' or self.method=='gcn_transformer'or self.method =='Transformer_word2vec_notarget_word2vec_concat'or self.method == 'Transformer_word2vec_notarget_word2vec_action'or self.method =='grid_memory'or self.method=='Transformer_word2vec_notarget_action'or self.method=='Transformer_word2vec_notarget_word2vec_action_posi'or self.method=='grid_memory_action': #origin
+        if method == 'word2vec_notarget' or method == 'Transformer_word2vec_notarget'or self.method=='Transformer_word2vec_notarget_withposi'or self.method=='Transformer_word2vec_notarget_word2vec'or self.method=='Transformer_word2vec_notarget_word2vec_posi' or self.method=='gcn_transformer'or self.method =='Transformer_word2vec_notarget_word2vec_concat'or self.method == 'Transformer_word2vec_notarget_word2vec_action'or self.method =='grid_memory'or self.method =='grid_memory_no_observation'or self.method=='Transformer_word2vec_notarget_action'or self.method=='Transformer_word2vec_notarget_word2vec_action_posi'or self.method=='grid_memory_action': #add
             return self.reward_soft_goal()
         else:
             if terminal: return 10.0
@@ -241,6 +246,8 @@ class THORDiscreteEnvironment(Environment):
             out_x = int(x * ratio_w)
             out_y = int(y * ratio_h)
             output[out_x, out_y] = max(output[out_x, out_y], similarity)
+        
+        #print(output)
         return output
 
     @property
@@ -260,6 +267,13 @@ class THORDiscreteEnvironment(Environment):
         elif self.bbox_method == 'yolo':
             # print("2) self.bbox_method : {}".format(self.bbox_method)) #test
             return json.loads(self.h5_file['yolo_bbox'][self.current_state_id])
+        elif self.bbox_method == 'vild':
+            # print("2) self.bbox_method : {}".format(self.bbox_method)) #test
+            return json.loads(self.h5_file['vild_bbox'][self.current_state_id])
+        elif self.bbox_method == 'yolov7':
+            # print("2) self.bbox_method : {}".format(self.bbox_method)) #test
+            return json.loads(self.h5_file['yolov7_bbox'][self.current_state_id])
+
 
     def render(self, mode):
         if mode == 'resnet_features':
@@ -282,7 +296,8 @@ class THORDiscreteEnvironment(Environment):
     def render_mask_similarity(self):
         # Get shape of observation to downsample bbox location
         h, w, _ = np.shape(self.h5_file['observation'][0])
-
+        #print(h)
+        #print(w)
         bbox_location = []
         for key, value in self.boudingbox.items():
             keys = key.split('|')
@@ -307,12 +322,28 @@ class THORDiscreteEnvironment(Environment):
                 self.s_target, self.object_vector[curr_obj_id])
             # for x in range(value[0], value[2], 1):
             #     for y in range(value[1], value[3], 1):
-            bbox_location.append(((x, y), similarity))
+            # print("(type(h) and type(w)) : {}".format((isinstance(h, int)) and (isinstance(w, int)))) #add
+            # print("x : {}, y : {}, similarity : {}".format(x, y, similarity)) #add
+            # print("x : {}, y : {}, similarity : {}".format(x>0, y>0, similarity>0)) #add
+            # if not np.isnan(x) and not np.isnan(y) and similarity>0:
+            
+            # latest(object detection)
+            if not np.isnan(similarity) and similarity>0 and 0<=y<=h and 0<=x<=w : #(main) add
+                bbox_location.append(((x, y), similarity))
+
+            # pass(No object detection)
+            # if self.bbox_method=="bbox" or self.bbox_method=="yolo":
+            #     bbox_location.append(((x, y), similarity))
+            # else:
+            #     pass
+
         try:
             output = self._downsample_bbox(
                 (h, w), (self.mask_size, self.mask_size), bbox_location)
+            # print("ok : {}\n".format((h, w), (self.mask_size, self.mask_size), bbox_location)) #add
         except IndexError as e:
-            print((h, w), bbox_location)
+                                                                                                        
+            print((h, w), bbox_location) #origin
             raise e
         return output[np.newaxis, np.newaxis, ...]
 
@@ -353,7 +384,8 @@ class THORDiscreteEnvironment(Environment):
         return ["MoveForward", "RotateRight", "RotateLeft", "MoveBackward","LookUp", "LookDown", "MoveRight", "MoveLeft","Done"]
 
     def shortest_path_terminal(self, state):
-        if self.method == 'Transformer_word2vec_notarget'or self.method=='Transformer_word2vec_notarget_withposi'or self.method=='Transformer_word2vec_notarget_word2vec'or self.method=='Transformer_word2vec_notarget_word2vec_posi' or self.method=='gcn_transformer'or self.method =='Transformer_word2vec_notarget_word2vec_concat'or self.method=='Transformer_word2vec_notarget_word2vec_action'or self.method =='grid_memory'or self.method=='Transformer_word2vec_notarget_action'or self.method=='Transformer_word2vec_notarget_word2vec_action_posi'or self.method=='grid_memory_action':
+        # if self.method == 'Transformer_word2vec_notarget'or self.method=='Transformer_word2vec_notarget_withposi'or self.method=='Transformer_word2vec_notarget_word2vec'or self.method=='Transformer_word2vec_notarget_word2vec_posi' or self.method=='gcn_transformer'or self.method =='Transformer_word2vec_notarget_word2vec_concat'or self.method=='Transformer_word2vec_notarget_word2vec_action'or self.method =='grid_memory'or self.method=='Transformer_word2vec_notarget_action'or self.method=='Transformer_word2vec_notarget_word2vec_action_posi'or self.method=='grid_memory_action': #origin
+        if self.method == 'Transformer_word2vec_notarget'or self.method=='Transformer_word2vec_notarget_withposi'or self.method=='Transformer_word2vec_notarget_word2vec'or self.method=='Transformer_word2vec_notarget_word2vec_posi' or self.method=='gcn_transformer'or self.method =='Transformer_word2vec_notarget_word2vec_concat'or self.method=='Transformer_word2vec_notarget_word2vec_action'or self.method =='grid_memory'or self.method =='grid_memory_no_observation'or self.method=='Transformer_word2vec_notarget_action'or self.method=='Transformer_word2vec_notarget_word2vec_action_posi'or self.method=='grid_memory_action': #add
             lengths = []
             for i, object_visibility in enumerate(self.object_visibility):
                 for objectId in object_visibility:
