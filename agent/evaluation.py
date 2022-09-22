@@ -417,7 +417,6 @@ class Evaluation:
         print(f'Restoring from checkpoint {restore_point}')
         ###### ADD ######
         p_new = pathlib.Path(str(output_log_path) + '/eval' + str(restore_point) + '.log') #origin
-        # p_new = pathlib.Path(str(output_log_path) + '/vild/eval' + str(restore_point) + '.log') # log file outout dir change
         # print("$$$$$$$$$$ {} : ".format(count_files)) # count ok?
         with open("./tmp/output_log_path_{}.txt".format(count_files), mode="w", encoding="utf-8") as f:
             f.write(str(p_new))
