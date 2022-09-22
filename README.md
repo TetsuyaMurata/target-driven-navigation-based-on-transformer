@@ -47,7 +47,7 @@ Each file contains:
 - **object_vector_visualgenome** 300-d spacy feature extracted using object name using weigh trained on visualgenome caption
 - **shortest_path_distance** a square matrix of shortest path distance (in number of steps) between pairwise locations, where `-1` means two states are unreachable from each other.  
 
-If you would run `create_dateset.py`, you need to put `yolov3_ai2thor_last.weights` to `"yolo_dataset/backup"`
+If you would run `create_dateset.py`, you need to put `yolov4_ai2thor_last.weights` to `"yolo_dataset/backup"`
 
 If you want to change the angle at which the agent bends, change `rotation_possible_inplace` on line 77 of `create_dataset.py`. 360 divided by `rotation_possible_inplace` is the number of directions to bend, e.g., it is good for you to change `rotation_possible_ inplace = 4` for 90 degrees, and `rotation_possible_inplace = 8` for 45 degrees.
   
