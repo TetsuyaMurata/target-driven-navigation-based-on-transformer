@@ -70,7 +70,7 @@ def construct_scene_names():
     return names, scene_type
 
 
-grid_size = 0.5
+grid_size = 0.9
 
 actions = ["MoveAhead", "RotateRight", "RotateLeft",
            "MoveBack", "LookUp", "LookDown", "MoveRight", "MoveLeft"]
@@ -630,6 +630,7 @@ def extract_yolobbox(m, h5_file):
 
             current_bbox = dict()
             boxes = do_detect(m, sized, 0.5, 0.4, 1)
+            print("boxes : {}".format(boxes)) #add
             width, height = img.size
             for box in boxes:
                 x1 = int(round(float((box[0] - box[2]/2.0) * width)))
@@ -641,6 +642,7 @@ def extract_yolobbox(m, h5_file):
                 cls_id = box[6]
 
                 obj_name = class_names[cls_id] + '|'
+                print("obj_name : {}".format(obj_name)) #add
                 current_bbox[obj_name] = [x1, y1, x2, y2]
             yolo_bbox.append(json.dumps(
                 current_bbox, cls=NumpyEncoder))
@@ -712,7 +714,7 @@ def main():
 
     m = Darknet("yolo_dataset/yolov3_ai2thor.cfg")
     # m.load_weights("yolo_dataset/backup/yolov3_ai2thor_best.weights") # before
-    m.load_weights("yolo_dataset/backup/yolov3_ai2thor_last.weights") # after
+    m.load_weights("yolo_dataset/backup/yolov4_ai2thor_last.weights") # after
     m.print_network()
     m.cuda()
 
