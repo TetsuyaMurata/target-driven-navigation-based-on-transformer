@@ -13,4 +13,4 @@ scipy
 networkx
 gensim
 spacy==2.3.5
-tensorflow==2.6.2
+tensorflow==2.2.0
