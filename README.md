@@ -52,7 +52,7 @@ If you would run `create_dateset.py`, you need to put `yolov4_ai2thor_last.weigh
 If you want to change the angle at which the agent bends, change `rotation_possible_inplace` on line 77 of `create_dataset.py`. 360 divided by `rotation_possible_inplace` is the number of directions to bend, e.g., it is good for you to change `rotation_possible_ inplace = 4` for 90 degrees, and `rotation_possible_inplace = 8` for 45 degrees.
   
 ### Training or Evaluation
-to train or evaluate your network you need to use a json file as experiment. You can create a experiment file using the script `create_experiment.py`. One experiment file contains training set and evaluation set, reward function and network used. You can set these values using the script (``--help`` to see documentation).
+To train or evaluate your network, you need to use a json file as experiment. You can create a experiment file using the script `create_experiment.py`. One experiment file contains training set and evaluation set, reward function and network used. You can set these values using the script (``--help`` to see documentation).
 
 If you would adopt method of 'grid_memory' to reproduce `Object Memory Transformer`, you cau run `create_experiment.py` like below.
  - `python create_experiment.py --env grid_memory --method grid_memory`
