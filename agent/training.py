@@ -377,7 +377,7 @@ class Training:
         # Prepare threads
         print(self.method)
         # if self.method=='word2vec_notarget' or self.method=='Transformer_word2vec_notarget'or self.method=='Transformer_word2vec_notarget_withposi'or self.method=='Transformer_word2vec_notarget_word2vec'or self.method=='Transformer_word2vec_notarget_word2vec_posi' or self.method=="gcn_transformer" or self.method =="Transformer_word2vec_notarget_word2vec_concat" or self.method == 'Transformer_word2vec_notarget_word2vec_action' or self.method =='grid_memory' or self.method=='Transformer_word2vec_notarget_action'or self.method=='Transformer_word2vec_notarget_word2vec_action_posi'or self.method=='grid_memory_action': #origin
-        if self.method=='word2vec_notarget' or self.method=='Transformer_word2vec_notarget'or self.method=='Transformer_word2vec_notarget_withposi'or self.method=='Transformer_word2vec_notarget_word2vec'or self.method=='Transformer_word2vec_notarget_word2vec_posi' or self.method=="gcn_transformer" or self.method =="Transformer_word2vec_notarget_word2vec_concat" or self.method == 'Transformer_word2vec_notarget_word2vec_action' or self.method =='grid_memory'  or self.method =='grid_memory_no_observation' or self.method=='Transformer_word2vec_notarget_action'or self.method=='Transformer_word2vec_notarget_word2vec_action_posi'or self.method=='grid_memory_action':
+        if self.method=='word2vec_notarget' or self.method=='Transformer_word2vec_notarget'or self.method=='Transformer_word2vec_notarget_withposi'or self.method=='Transformer_word2vec_notarget_word2vec'or self.method=='Transformer_word2vec_notarget_word2vec_posi' or self.method=="gcn_transformer" or self.method =="Transformer_word2vec_notarget_word2vec_concat" or self.method == 'Transformer_word2vec_notarget_word2vec_action' or self.method =='grid_memory'  or self.method =='grid_memory_no_observation' or self.method=='Transformer_word2vec_notarget_action'or self.method=='Transformer_word2vec_notarget_word2vec_action_posi'or self.method=='grid_memory_action'or self.method =='scene_only':
             branches = []
             for scene in self.tasks.keys():
                 it = 0
@@ -389,7 +389,8 @@ class Training:
             if self.SSL:
                 branches = [scene for scene in TASK_LIST.keys()]
             else:
-                branches = [(scene, int(target)) for scene in self.tasks.keys() for target in self.tasks.get(scene)]
+                # branches = [(scene, int(target)) for scene in self.tasks.keys() for target in self.tasks.get(scene)] #origin
+                branches = [(scene, str(target)) for scene in self.tasks.keys() for target in self.tasks.get(scene)] #add
                 #branches = [(scene, int(target)) for scene in TASK_LIST.keys() for target in TASK_LIST.get(scene)]
         print(branches)
         
@@ -398,13 +399,14 @@ class Training:
             net.share_memory()
             return TrainingThread(
                 id = id,
-                optimizer = self.optimizer,
                 network = net,
-                device = device,
                 saver = self.saver,
+                device = device,
+                optimizer = self.optimizer,
                 tasks = task,
-                method = self.method,
-                action_size = self.action_size,
+                # method = self.method,
+                # action_size = self.action_size,
+                summary_queue = mp.Queue,
                 **self.config)
 
         def _createThreadwithque(id, task,device,summary_queue):
@@ -460,7 +462,7 @@ class Training:
                 self.saver.save()
         else:
             # if self.method == 'word2vec_notarget' or self.method=='Baseline' or self.method=='Transformer_word2vec_notarget' or self.method == 'Transformer_Concat'or self.method=='Transformer_word2vec_notarget_withposi'or self.method=='Transformer_word2vec_notarget_word2vec'or self.method=='Transformer_word2vec_notarget_word2vec_posi'or self.method=="gcn_transformer" or self.method =="Transformer_word2vec_notarget_word2vec_concat"or self.method == 'Transformer_word2vec_notarget_word2vec_action'or self.method =='grid_memory'or self.method=='Transformer_word2vec_notarget_action'or self.method=='Transformer_word2vec_notarget_word2vec_action_posi'or self.method=='grid_memory_action': #origin
-            if self.method == 'word2vec_notarget' or self.method=='Baseline' or self.method=='Transformer_word2vec_notarget' or self.method == 'Transformer_Concat'or self.method=='Transformer_word2vec_notarget_withposi'or self.method=='Transformer_word2vec_notarget_word2vec'or self.method=='Transformer_word2vec_notarget_word2vec_posi'or self.method=="gcn_transformer" or self.method =="Transformer_word2vec_notarget_word2vec_concat"or self.method == 'Transformer_word2vec_notarget_word2vec_action'or self.method =='grid_memory'or self.method =='grid_memory_no_observation' or self.method=='Transformer_word2vec_notarget_action'or self.method=='Transformer_word2vec_notarget_word2vec_action_posi'or self.method=='grid_memory_action': #oadd
+            if self.method == 'word2vec_notarget' or self.method=='Baseline' or self.method=='Transformer_word2vec_notarget' or self.method == 'Transformer_Concat'or self.method=='Transformer_word2vec_notarget_withposi'or self.method=='Transformer_word2vec_notarget_word2vec'or self.method=='Transformer_word2vec_notarget_word2vec_posi'or self.method=="gcn_transformer" or self.method =="Transformer_word2vec_notarget_word2vec_concat"or self.method == 'Transformer_word2vec_notarget_word2vec_action'or self.method =='grid_memory'or self.method =='grid_memory_no_observation' or self.method=='Transformer_word2vec_notarget_action'or self.method=='Transformer_word2vec_notarget_word2vec_action_posi'or self.method=='grid_memory_action'or self.method =='scene_only': #oadd
                 self.threads = []
                 # Queues will be used to pass info to summary thread
                 summary_queue = mp.Queue()
