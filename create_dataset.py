@@ -70,7 +70,7 @@ def construct_scene_names():
     return names, scene_type
 
 
-grid_size = 0.9
+grid_size = 0.5
 
 actions = ["MoveAhead", "RotateRight", "RotateLeft",
            "MoveBack", "LookUp", "LookDown", "MoveRight", "MoveLeft"]
@@ -615,40 +615,40 @@ def create_shortest_path(h5_file, states, graph):
         [json.dumps(json_graph.node_link_data(G), cls=NumpyEncoder)], dtype='S'))
 
 
-def extract_yolobbox(m, h5_file):
+# def extract_yolobbox(m, h5_file):
 
-    if 'yolo_bbox' not in h5_file.keys():
-        # print("###### EXTRACTING YOLO #######")
-        yolo_bbox = []
+#     if 'yolo_bbox' not in h5_file.keys():
+#         # print("###### EXTRACTING YOLO #######")
+#         yolo_bbox = []
 
-        namesfile = "yolo_dataset/obj.names"
-        class_names = load_class_names(namesfile)
+#         namesfile = "yolo_dataset/obj.names"
+#         class_names = load_class_names(namesfile)
 
-        for obs in h5_file['observation']:
-            img = Image.fromarray(obs).convert('RGB')
-            sized = img.resize((m.width, m.height))
+#         for obs in h5_file['observation']:
+#             img = Image.fromarray(obs).convert('RGB')
+#             sized = img.resize((m.width, m.height))
 
-            current_bbox = dict()
-            boxes = do_detect(m, sized, 0.5, 0.4, 1)
-            print("boxes : {}".format(boxes)) #add
-            width, height = img.size
-            for box in boxes:
-                x1 = int(round(float((box[0] - box[2]/2.0) * width)))
-                y1 = int(round(float((box[1] - box[3]/2.0) * height)))
-                x2 = int(round(float((box[0] + box[2]/2.0) * width)))
-                y2 = int(round(float((box[1] + box[3]/2.0) * height)))
+#             current_bbox = dict()
+#             boxes = do_detect(m, sized, 0.5, 0.4, 1)
+#             print("boxes : {}".format(boxes)) #add
+#             width, height = img.size
+#             for box in boxes:
+#                 x1 = int(round(float((box[0] - box[2]/2.0) * width)))
+#                 y1 = int(round(float((box[1] - box[3]/2.0) * height)))
+#                 x2 = int(round(float((box[0] + box[2]/2.0) * width)))
+#                 y2 = int(round(float((box[1] + box[3]/2.0) * height)))
 
-                cls_conf = box[5]
-                cls_id = box[6]
+#                 cls_conf = box[5]
+#                 cls_id = box[6]
 
-                obj_name = class_names[cls_id] + '|'
-                print("obj_name : {}".format(obj_name)) #add
-                current_bbox[obj_name] = [x1, y1, x2, y2]
-            yolo_bbox.append(json.dumps(
-                current_bbox, cls=NumpyEncoder))
+#                 obj_name = class_names[cls_id] + '|'
+#                 print("obj_name : {}".format(obj_name)) #add
+#                 current_bbox[obj_name] = [x1, y1, x2, y2]
+#             yolo_bbox.append(json.dumps(
+#                 current_bbox, cls=NumpyEncoder))
 
-        h5_file.create_dataset('yolo_bbox',
-                               data=[y.encode("ascii", "ignore") for y in yolo_bbox])
+#         h5_file.create_dataset('yolo_bbox',
+#                                data=[y.encode("ascii", "ignore") for y in yolo_bbox])
 
 
 def main():
@@ -714,7 +714,7 @@ def main():
 
     m = Darknet("yolo_dataset/yolov3_ai2thor.cfg")
     # m.load_weights("yolo_dataset/backup/yolov3_ai2thor_best.weights") # before
-    m.load_weights("yolo_dataset/backup/yolov4_ai2thor_last.weights") # after
+    # m.load_weights("yolo_dataset/backup/yolov4_ai2thor_last.weights") # after
     m.print_network()
     m.cuda()
 
@@ -758,7 +758,7 @@ def main():
         create_shortest_path(h5_file, states, graph)
 
         # Extract yolo bbox
-        extract_yolobbox(m, h5_file)
+        # extract_yolobbox(m, h5_file)
 
         h5_file.close()
 
