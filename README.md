@@ -47,12 +47,9 @@ Each file contains:
 - **object_vector_visualgenome** 300-d spacy feature extracted using object name using weigh trained on visualgenome caption
 - **shortest_path_distance** a square matrix of shortest path distance (in number of steps) between pairwise locations, where `-1` means two states are unreachable from each other.  
 
-If you would run `create_dateset.py`, you need to put `yolov4_ai2thor_last.weights` to `"yolo_dataset/backup"`
-
 If you want to change the angle at which the agent bends, change `rotation_possible_inplace` on line 77 of `create_dataset.py`. 360 divided by `rotation_possible_inplace` is the number of directions to bend, e.g., it is good for you to change `rotation_possible_ inplace = 4` for 90 degrees, and `rotation_possible_inplace = 8` for 45 degrees.
 
-If you want to use YOLO for bounding boxes, you will need to create a weights file obtained from the training by YOLO. (Name example: yolov4_ai2thor_last.weights)
-If you create the weights file, name the model as in the Name example, and uncomment lines 618~651, 717, and 761 of "create_dataset.py", you can create an h5 file with YOLO added to the bounding box.
+If you want to use YOLOv4 for bounding boxes, you will need to create a weights file obtained from the training by YOLOv4.  If you create the weights file, name the model like "yolov4_ai2thor_last.weights", and uncomment lines 618~651, 717, and 761 of "create_dataset.py", you can create an h5 file with YOLOv4 added to the bounding box. You need to put weights file to "yolo_dataset/backup".
 
 ### Training or Evaluation
 To train or evaluate your network, you need to use a json file as experiment. You can create a experiment file using the script `create_experiment.py`. One experiment file contains training set and evaluation set, reward function and network used. You can set these values using the script (``--help`` to see documentation).
