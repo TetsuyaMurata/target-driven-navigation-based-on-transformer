@@ -713,8 +713,8 @@ def main():
 
 
     m = Darknet("yolo_dataset/yolov3_ai2thor.cfg")
-    # m.load_weights("yolo_dataset/backup/yolov3_ai2thor_best.weights") # before
-    # m.load_weights("yolo_dataset/backup/yolov4_ai2thor_last.weights") # after
+    # m.load_weights("yolo_dataset/backup/yolov3_ai2thor_best.weights") # origin
+    # m.load_weights("yolo_dataset/backup/yolov4_ai2thor_last.weights") # YOLOv4
     m.print_network()
     m.cuda()
 
