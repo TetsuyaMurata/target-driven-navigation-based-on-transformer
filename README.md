@@ -1,7 +1,7 @@
 # Target Driven Navigation Based On Transformer
 This is repo is created based on [jkulhanek work](https://github.com/jkulhanek/visual-navigation-agent-pytorch) and [norips work (which is already disappeared)](https://github.com/norips/visual-navigation-agent-pytorch)  
 
-These scripts have been implemented and tested on "Ubuntu 18.04, python 3.6, PyTorch 1.10.1 and CUDA 10.1", "Windows by using Ubuntu 18.04 WSL , python 3.6, PyTorch 1.10.1 and CUDA 9.1.85"
+These scripts have been implemented and tested on "Ubuntu 18.04, python 3.6, PyTorch 1.10.1 and CUDA 10.1", "Windows by using Ubuntu 18.04 WSL(Windows Subsystem for Linux) , python 3.6, PyTorch 1.10.1 and CUDA 9.1.85"
 
 ## Introduction
 
