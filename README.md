@@ -51,7 +51,7 @@ If you want to change the angle at which the agent bends, change `rotation_possi
 
 If you want to use YOLOv4 for bounding boxes, you will need to create a weights file obtained from the training by YOLOv4. If you create it, name the model like "yolov4_ai2thor_last.weights", and uncomment out lines 618~651, 717, and 761 of "create_dataset.py", you can create an h5 file with YOLOv4 added to the bounding box. You need to put it to "yolo_dataset/backup".
 
-If you want to execute `create_dataset.py` on Windows, you need to prepare Ubuntu with 'WSL'(Windows Subsystem for Linux).
+If you want to execute `create_dataset.py` on Windows, you need to prepare Ubuntu with `WSL`(Windows Subsystem for Linux).
 
 ### Training or Evaluation
 To train or evaluate your network, you need to use a json file as experiment. You can create a experiment file using the script `create_experiment.py`. One experiment file contains training set and evaluation set, reward function and network used. You can set these values using the script (``--help`` to see documentation).
