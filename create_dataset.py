@@ -630,7 +630,6 @@ def create_shortest_path(h5_file, states, graph):
 
 #             current_bbox = dict()
 #             boxes = do_detect(m, sized, 0.5, 0.4, 1)
-#             print("boxes : {}".format(boxes)) #add
 #             width, height = img.size
 #             for box in boxes:
 #                 x1 = int(round(float((box[0] - box[2]/2.0) * width)))
@@ -642,7 +641,6 @@ def create_shortest_path(h5_file, states, graph):
 #                 cls_id = box[6]
 
 #                 obj_name = class_names[cls_id] + '|'
-#                 print("obj_name : {}".format(obj_name)) #add
 #                 current_bbox[obj_name] = [x1, y1, x2, y2]
 #             yolo_bbox.append(json.dumps(
 #                 current_bbox, cls=NumpyEncoder))
