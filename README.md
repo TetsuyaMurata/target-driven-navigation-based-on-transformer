@@ -49,7 +49,7 @@ Each file contains:
 
 If you want to change the angle at which the agent bends, change `rotation_possible_inplace` on line 77 of `create_dataset.py`. 360 divided by `rotation_possible_inplace` is the number of directions to bend, e.g., it is good for you to change `rotation_possible_ inplace = 4` for 90 degrees, and `rotation_possible_inplace = 8` for 45 degrees.
 
-If you want to use YOLOv4 for bounding boxes, you will need to create a weights file obtained from the training by YOLOv4. If you create it, name the model like "yolov4_ai2thor_last.weights", and uncomment out lines from 618 to 651, 715, from 717 to 719 and 761 of "create_dataset.py", you can create an h5 file with YOLOv4 added to the bounding box. You need to put it to "yolo_dataset/backup".
+If you want to use YOLOv4 for bounding boxes, you will need to create a weights file obtained from the training by YOLOv4. If you create it, name the model like "yolov4_ai2thor_last.weights", and uncomment out lines 618-651, 715, 717-719 and 761 of "create_dataset.py", you can create an h5 file with YOLOv4 added to the bounding box. You need to put it to "yolo_dataset/backup".
 
 If you want to execute `create_dataset.py` on Windows, you need to prepare Ubuntu with `WSL`(Windows Subsystem for Linux).
 
