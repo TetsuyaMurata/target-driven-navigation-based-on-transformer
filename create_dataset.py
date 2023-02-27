@@ -712,11 +712,11 @@ def main():
     pbar_names = tqdm(names, position=0)
 
 
-    m = Darknet("yolo_dataset/yolov3_ai2thor.cfg")
+    # m = Darknet("yolo_dataset/yolov3_ai2thor.cfg")
     # m.load_weights("yolo_dataset/backup/yolov3_ai2thor_best.weights") # origin
     # m.load_weights("yolo_dataset/backup/yolov4_ai2thor_last.weights") # YOLOv4
-    m.print_network()
-    m.cuda()
+    # m.print_network()
+    # m.cuda()
 
     for idx, name in enumerate(pbar_names):
         pbar_names.set_description("%s" % name)
